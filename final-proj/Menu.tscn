@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgfe2wtg6tqyy"]
+[gd_scene load_steps=6 format=3 uid="uid://cgfe2wtg6tqyy"]
 
 [ext_resource type="StyleBox" uid="uid://bemc8ooh0xucc" path="res://resources/Theme & Stylebox.tres" id="1_5yleq"]
 [ext_resource type="Texture2D" uid="uid://cf12dragvbkvb" path="res://assets/Humble Gift - Paper UI System v1.1/Sprites/Book Desk/1.png" id="1_uubjt"]
+[ext_resource type="StyleBox" uid="uid://uctjmx2pnqv" path="res://resources/hover_button.tres" id="1_ylpcl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ylpcl"]
 
 [sub_resource type="Theme" id="Theme_5yleq"]
 default_font_size = 50
 Button/font_sizes/font_size = 30
+Button/styles/focus = SubResource("StyleBoxEmpty_ylpcl")
+Button/styles/hover = ExtResource("1_ylpcl")
 Button/styles/normal = ExtResource("1_5yleq")
 
 [node name="Control" type="Control"]
