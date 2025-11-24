@@ -34,10 +34,15 @@ var state: State = State.NORMAL
 # Attack combo index for attack_1 and attack_2
 var attack_combo_index: int = 0
 
+# Jump buffer
+var is_jump_buffered: bool = false
+var jump_buffer_time: float = 0.3
+var jump_timer: float = 0.0
+
 # Cached AnimatedSprite2D
 @onready var anim: AnimatedSprite2D = $Anim
-# If your node is named "Anim" instead, use:
-# @onready var anim: AnimatedSprite2D = $Anim
+# If your node is named "AnimatedSprite2D" instead, use:
+# @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
@@ -89,15 +94,22 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
+	# Handle delayed jump
+	if is_jump_buffered:
+		jump_timer -= delta
+		if jump_timer <= 0.0:
+			is_jump_buffered = false
+			velocity.y = JUMP_VELOCITY
+
 	var input_dir: float = 0.0
 
 	# Only allow input in NORMAL state
 	if state == State.NORMAL:
 		input_dir = Input.get_axis("move_left", "move_right")
 
-		# Jump
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
+		# Jump (buffered)
+		if Input.is_action_just_pressed("jump") and is_on_floor() and not is_jump_buffered:
+			_start_jump_buffer()
 
 		# Melee attack
 		if Input.is_action_just_pressed("attack_melee"):
@@ -137,6 +149,11 @@ func _update_movement_animation() -> void:
 	if state != State.NORMAL:
 		return
 
+	# While jump is buffered, keep playing jump start animation on ground
+	if is_jump_buffered:
+		_play_if_not("jump_start")
+		return
+
 	# In air
 	if not is_on_floor():
 		_play_if_not("jump")
@@ -162,6 +179,13 @@ func _play_if_not(name: String) -> void:
 
 func _play_idle() -> void:
 	_play_if_not("idle")
+
+
+func _start_jump_buffer() -> void:
+	# Start jump delay on ground and play jump start animation
+	is_jump_buffered = true
+	jump_timer = jump_buffer_time
+	_play_if_not("jump_start")
 
 
 func _start_melee_attack() -> void:
@@ -210,9 +234,10 @@ func take_damage(amount: int) -> void:
 		state = State.HURT
 		anim.play("hurt")
 
+
 func _on_anim_animation_finished() -> void:
 	var anim_name := anim.animation
-	match anim_name: 
+	match anim_name:
 		"attack_1", "attack_2", "shot", "recharge", "hurt":
 			if state != State.DEAD:
 				state = State.NORMAL
