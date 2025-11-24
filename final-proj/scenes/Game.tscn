@@ -1,0 +1,144 @@
+[gd_scene load_steps=15 format=3 uid="uid://ckoy6qcnqrqyy"]
+
+[ext_resource type="Texture2D" uid="uid://dtismfauaccsx" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/road.png" id="1_qbsmt"]
+[ext_resource type="Texture2D" uid="uid://d3nq2wpd0518y" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/sky.png" id="2_cpr0p"]
+[ext_resource type="Texture2D" uid="uid://bb6njekxyxf3o" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses4.png" id="3_400sg"]
+[ext_resource type="Texture2D" uid="uid://c5310mga87ysc" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses2.png" id="4_g4kob"]
+[ext_resource type="Texture2D" uid="uid://dj8xj4ssjerxe" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/wall.png" id="5_qy1jj"]
+[ext_resource type="Texture2D" uid="uid://c7h5chypv85f2" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses1.png" id="6_3xj3m"]
+[ext_resource type="Texture2D" uid="uid://ds2d4i3s4pu8d" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses3.png" id="7_mcffj"]
+[ext_resource type="Texture2D" uid="uid://nektt2sgimdp" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Pale/houses1.png" id="8_2rd6h"]
+[ext_resource type="Script" uid="uid://duat1ekh0wjim" path="res://scripts/Player.gd" id="9_45i86"]
+[ext_resource type="SpriteFrames" uid="uid://do6xochcykwox" path="res://resources/frames_balanced.tres" id="10_qy1jj"]
+[ext_resource type="SpriteFrames" uid="uid://bblb82qfdrkbc" path="res://resources/frames_speed.tres" id="11_mcffj"]
+[ext_resource type="SpriteFrames" uid="uid://xhwvmhbfvbv2" path="res://resources/frames_tank.tres" id="12_2rd6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78awf"]
+size = Vector2(4143, 48.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45i86"]
+size = Vector2(61.125, 136)
+
+[node name="GameRoot" type="Node2D"]
+
+[node name="Test_Level" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 19.0
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(481, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(1586.5, 608.25)
+shape = SubResource("RectangleShape2D_78awf")
+
+[node name="Tile_0" type="Sprite2D" parent="Ground"]
+position = Vector2(94.00003, 345.00006)
+scale = Vector2(0.596875, 0.53055555)
+texture = ExtResource("1_qbsmt")
+
+[node name="Tile_1" type="Sprite2D" parent="Ground"]
+position = Vector2(2384, 345.00003)
+scale = Vector2(0.596875, 0.53055555)
+texture = ExtResource("1_qbsmt")
+
+[node name="Tile_2" type="Sprite2D" parent="Ground"]
+position = Vector2(1239, 345)
+scale = Vector2(0.596875, 0.53055555)
+texture = ExtResource("1_qbsmt")
+
+[node name="Tile_3" type="Sprite2D" parent="Ground"]
+position = Vector2(3529.9998, 346.00003)
+scale = Vector2(0.596875, 0.53055555)
+texture = ExtResource("1_qbsmt")
+
+[node name="ParallaxBackground" type="Parallax2D" parent="."]
+
+[node name="Layer_far" type="Parallax2D" parent="ParallaxBackground"]
+z_index = -4
+scroll_scale = Vector2(0.1, 0.1)
+
+[node name="Tile_0" type="Sprite2D" parent="ParallaxBackground/Layer_far"]
+position = Vector2(2295, 405)
+scale = Vector2(2.386979, 1)
+texture = ExtResource("2_cpr0p")
+
+[node name="Layer_mid" type="Parallax2D" parent="ParallaxBackground"]
+z_index = -3
+scroll_scale = Vector2(0.3, 0.3)
+
+[node name="Tile_0" type="Sprite2D" parent="ParallaxBackground/Layer_mid"]
+position = Vector2(732, 390)
+scale = Vector2(0.76927084, 0.6638889)
+texture = ExtResource("3_400sg")
+
+[node name="Tile_1" type="Sprite2D" parent="ParallaxBackground/Layer_mid"]
+position = Vector2(2302.9998, 377)
+scale = Vector2(0.8736978, 0.74861103)
+texture = ExtResource("3_400sg")
+
+[node name="Tile_2" type="Sprite2D" parent="ParallaxBackground/Layer_mid"]
+position = Vector2(3880, 381.00003)
+scale = Vector2(0.76927084, 0.6638889)
+texture = ExtResource("3_400sg")
+
+[node name="Layer_near" type="Parallax2D" parent="ParallaxBackground"]
+z_index = -2
+scroll_scale = Vector2(0.7, 0.7)
+
+[node name="Tile_0" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(336, 426)
+scale = Vector2(0.34999996, 0.3361111)
+texture = ExtResource("4_g4kob")
+
+[node name="Tile_1" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(2108, 416)
+scale = Vector2(0.34999996, 0.3361111)
+texture = ExtResource("4_g4kob")
+
+[node name="Tile_2" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(1005, 423)
+scale = Vector2(0.34999996, 0.3361111)
+texture = ExtResource("5_qy1jj")
+
+[node name="Tile_3" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(1563, 412.99988)
+scale = Vector2(0.34999996, 0.3361111)
+texture = ExtResource("6_3xj3m")
+
+[node name="Tile_4" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(2763, 447.00003)
+scale = Vector2(0.34999996, 0.3361111)
+texture = ExtResource("7_mcffj")
+
+[node name="Tile_5" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(3501, 412)
+scale = Vector2(0.34999996, 0.3361111)
+texture = ExtResource("5_qy1jj")
+
+[node name="Tile_6" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(4188, 308)
+scale = Vector2(0.521875, 0.55601853)
+texture = ExtResource("8_2rd6h")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("9_45i86")
+character_class = 1
+frames_balanced = ExtResource("10_qy1jj")
+frames_speed = ExtResource("11_mcffj")
+frames_tank = ExtResource("12_2rd6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(104.4375, 520)
+shape = SubResource("RectangleShape2D_45i86")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(92, 278)
+
+[node name="Anim" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(108, 457)
+scale = Vector2(1.9296875, 2.03125)
+sprite_frames = ExtResource("10_qy1jj")
+animation = &"attack_1"
+
+[connection signal="animation_finished" from="Player/Anim" to="Player" method="_on_anim_animation_finished"]
