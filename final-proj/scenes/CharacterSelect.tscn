@@ -1,0 +1,159 @@
+[gd_scene load_steps=13 format=3 uid="uid://dh8hjs7hlojqx"]
+
+[ext_resource type="Script" uid="uid://d2eq8oxo5wxhr" path="res://scripts/CharacterSelect.gd" id="1_d8y2c"]
+[ext_resource type="Texture2D" uid="uid://bumdgf7mcxyj1" path="res://assets/Humble Gift - Paper UI System v1.1/Sprites/Book Desk/7.png" id="2_7rt4t"]
+[ext_resource type="Texture2D" uid="uid://bqjj2vqvntq3t" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_1/potrait.png" id="3_22h0e"]
+[ext_resource type="Texture2D" uid="uid://d2053m5r4adbh" path="res://assets/Humble Gift - Paper UI System v1.1/Sprites/Paper UI Pack/Folding & Cutout/6 Player HUD/1.png" id="4_1h2j8"]
+[ext_resource type="Texture2D" uid="uid://bxqaqit3s6rs1" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_2/potrait.png" id="5_yyo81"]
+[ext_resource type="Texture2D" uid="uid://dj3v5wamqdhkv" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_3/potrait.png" id="6_1w4ot"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o7dgy"]
+font_size = 120
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7bb3"]
+atlas = ExtResource("3_22h0e")
+region = Rect2(327.04196, -3.55336, 336.66788, 316.69604)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js5o4"]
+atlas = ExtResource("4_1h2j8")
+region = Rect2(27.288872, 18.850292, 234.08737, 120.45874)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ux7it"]
+font_size = 37
+font_color = Color(0.008202022, 0.008202025, 0.008202025, 1)
+outline_size = 17
+shadow_size = 19
+shadow_offset = Vector2(6, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x712l"]
+atlas = ExtResource("5_yyo81")
+region = Rect2(327.04196, -3.55336, 336.66788, 316.69604)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjv7q"]
+atlas = ExtResource("6_1w4ot")
+region = Rect2(327.04196, -3.55336, 336.66788, 316.69604)
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_d8y2c")
+
+[node name="Panel" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_7rt4t")
+
+[node name="LayoutRoot" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel/LayoutRoot"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 16.0
+offset_right = 880.0
+offset_bottom = 285.0
+text = "Select Your Role
+"
+label_settings = SubResource("LabelSettings_o7dgy")
+
+[node name="PortraitBalanced" type="TextureRect" parent="Panel/LayoutRoot"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 144.0
+offset_right = 376.0
+offset_bottom = 432.0
+texture = SubResource("AtlasTexture_k7bb3")
+expand_mode = 1
+
+[node name="BtnBalanced" type="Button" parent="Panel/LayoutRoot/PortraitBalanced"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.026
+anchor_bottom = 0.11100001
+offset_top = 296.0
+offset_right = 312.096
+offset_bottom = 432.03198
+icon = SubResource("AtlasTexture_js5o4")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Panel/LayoutRoot/PortraitBalanced"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 336.0
+offset_right = 307.0
+offset_bottom = 468.0
+text = "Elias Ward
+Balanecd Stamia and attack
+"
+label_settings = SubResource("LabelSettings_ux7it")
+horizontal_alignment = 1
+
+[node name="PortraitSpeed" type="TextureRect" parent="Panel/LayoutRoot"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 144.0
+offset_right = 720.0
+offset_bottom = 432.0
+texture = SubResource("AtlasTexture_x712l")
+expand_mode = 1
+
+[node name="BtnSpeed" type="Button" parent="Panel/LayoutRoot/PortraitSpeed"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.026
+anchor_bottom = 0.11100001
+offset_top = 296.0
+offset_right = 312.096
+offset_bottom = 432.03198
+icon = SubResource("AtlasTexture_js5o4")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Panel/LayoutRoot/PortraitSpeed"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 320.0
+offset_right = 307.0
+offset_bottom = 497.0
+text = "Mira Kessler
+Strong Mobility and Lower 
+Physical Strength
+"
+label_settings = SubResource("LabelSettings_ux7it")
+horizontal_alignment = 1
+
+[node name="PortraitTank" type="TextureRect" parent="Panel/LayoutRoot"]
+layout_mode = 0
+offset_left = 760.0
+offset_top = 144.0
+offset_right = 1064.0
+offset_bottom = 432.0
+texture = SubResource("AtlasTexture_tjv7q")
+expand_mode = 1
+
+[node name="BtnTank" type="Button" parent="Panel/LayoutRoot/PortraitTank"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.026
+anchor_bottom = 0.11100001
+offset_top = 296.0
+offset_right = 312.096
+offset_bottom = 432.03198
+icon = SubResource("AtlasTexture_js5o4")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Panel/LayoutRoot/PortraitTank"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 336.0
+offset_right = 307.0
+offset_bottom = 468.0
+text = "Jonah Reed
+Stronger But Slower
+"
+label_settings = SubResource("LabelSettings_ux7it")
+horizontal_alignment = 1
