@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogueGroup" load_steps=7 format=3 uid="uid://lqehuveyf0st"]
+
+[ext_resource type="Script" uid="uid://dmm3mp7q41ecx" path="res://scripts/dialogue.gd" id="1_21dv4"]
+[ext_resource type="Script" uid="uid://go7u1647l0uc" path="res://scripts/dialogue_group.gd" id="2_6je7j"]
+[ext_resource type="Texture2D" uid="uid://bqjj2vqvntq3t" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_1/potrait.png" id="2_airvr"]
+[ext_resource type="Texture2D" uid="uid://dj3v5wamqdhkv" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_3/potrait.png" id="3_airvr"]
+
+[sub_resource type="Resource" id="Resource_21dv4"]
+script = ExtResource("1_21dv4")
+character_name = "Elias"
+content = "我有抑郁症"
+avatar = ExtResource("2_airvr")
+show_on_left = true
+metadata/_custom_type_script = "uid://dmm3mp7q41ecx"
+
+[sub_resource type="Resource" id="Resource_6je7j"]
+script = ExtResource("1_21dv4")
+character_name = "Jonah"
+content = "我是黑人"
+avatar = ExtResource("3_airvr")
+metadata/_custom_type_script = "uid://dmm3mp7q41ecx"
+
+[resource]
+script = ExtResource("2_6je7j")
+diaglogue_list = Array[ExtResource("1_21dv4")]([SubResource("Resource_21dv4"), SubResource("Resource_6je7j")])
+metadata/_custom_type_script = "uid://go7u1647l0uc"
