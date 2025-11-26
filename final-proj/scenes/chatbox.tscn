@@ -1,17 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://4le6yslmtifu"]
+[gd_scene load_steps=6 format=3 uid="uid://4le6yslmtifu"]
 
-[ext_resource type="Script" uid="uid://cr4xvol1ek3kv" path="res://scripts/dialogue_manager.gd" id="1_lrioa"]
-[ext_resource type="Texture2D" uid="uid://d4kwmkas31es6" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_1/talking.png" id="2_cnlj2"]
-[ext_resource type="FontFile" uid="uid://7rgx1gvuhomo" path="res://assets/Silver.ttf" id="3_0nxwe"]
+[ext_resource type="Script" uid="uid://cr4xvol1ek3kv" path="res://scripts/dialogue_manager.gd" id="1_koub6"]
+[ext_resource type="Resource" uid="uid://lqehuveyf0st" path="res://dialogues/dialogue1.tres" id="2_kri7l"]
+[ext_resource type="Texture2D" uid="uid://d4kwmkas31es6" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_1/talking.png" id="3_qehmk"]
+[ext_resource type="FontFile" uid="uid://7rgx1gvuhomo" path="res://assets/Silver.ttf" id="4_3v5oq"]
+[ext_resource type="Texture2D" uid="uid://qd6n40rolrc3" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_3/Talking.png" id="5_sdv6x"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" node_paths=PackedStringArray("character_name_text", "text_box", "left_avatar", "right_avatar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_lrioa")
+script = ExtResource("1_koub6")
+character_name_text = NodePath("HBoxContainer/Panel/MarginContainer/VBoxContainer/Name")
+text_box = NodePath("HBoxContainer/Panel/MarginContainer/VBoxContainer/Content")
+left_avatar = NodePath("HBoxContainer/LeftAvatar")
+right_avatar = NodePath("HBoxContainer/RightAvatar")
+main_dialogue = ExtResource("2_kri7l")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -26,7 +33,7 @@ grow_vertical = 0
 [node name="LeftAvatar" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
-texture = ExtResource("2_cnlj2")
+texture = ExtResource("3_qehmk")
 expand_mode = 1
 stretch_mode = 5
 
@@ -51,7 +58,7 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_0nxwe")
+theme_override_fonts/font = ExtResource("4_3v5oq")
 theme_override_font_sizes/font_size = 36
 text = "Elias
 "
@@ -59,15 +66,17 @@ text = "Elias
 [node name="Content" type="Label" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_0nxwe")
+theme_override_fonts/font = ExtResource("4_3v5oq")
 theme_override_font_sizes/font_size = 30
 text = "sup dog"
-autowrap_mode = 1
+autowrap_mode = 3
 
 [node name="RightAvatar" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-texture = ExtResource("2_cnlj2")
-expand_mode = 1
+texture = ExtResource("5_sdv6x")
+expand_mode = 3
 stretch_mode = 5
 flip_h = true
+
+[connection signal="gui_input" from="HBoxContainer/Panel/MarginContainer" to="." method="_on_click"]
