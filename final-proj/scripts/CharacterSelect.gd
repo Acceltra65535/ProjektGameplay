@@ -3,12 +3,14 @@ extends Control
 @onready var btn_balanced: Button = $Panel/LayoutRoot/PortraitBalanced/BtnBalanced
 @onready var btn_speed: Button = $Panel/LayoutRoot/PortraitSpeed/BtnSpeed
 @onready var btn_tank: Button = $Panel/LayoutRoot/PortraitTank/BtnTank
+@onready var bgm_player: AudioStreamPlayer  = $BgmPlayer
 
 
 func _ready() -> void:
 	btn_balanced.pressed.connect(_on_balanced_pressed)
 	btn_speed.pressed.connect(_on_speed_pressed)
 	btn_tank.pressed.connect(_on_tank_pressed)
+	bgm_player.play()
 
 
 func _on_balanced_pressed() -> void:

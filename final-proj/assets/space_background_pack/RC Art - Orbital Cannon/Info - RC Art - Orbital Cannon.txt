@@ -1,0 +1,18 @@
+Reactorcore Art (RC Art)
+==
+PACK: Orbital Cannon
+
+--
+
+Pixel-art sprites depicting an enourmous space based orbital artillery energy cannon. Theres a simpler version with simply on/off states and an advanced version with 3 extra frames of idle animation too.
+
+--
+
+By default in image import settings, all sprites/textures have been set to 32 pixels per unit and using a point filter so they appear crisp.
+
+--
+
+Contact:
+mailto:reactorcoregames@gmail.com
+
+Enjoy!
