@@ -18,6 +18,7 @@ script = ExtResource("1_21dv4")
 character_name = "Jonah"
 content = "我是黑人"
 avatar = ExtResource("3_airvr")
+show_on_left = true
 metadata/_custom_type_script = "uid://dmm3mp7q41ecx"
 
 [resource]
