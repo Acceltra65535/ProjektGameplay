@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dh8hjs7hlojqx"]
+[gd_scene load_steps=14 format=3 uid="uid://dh8hjs7hlojqx"]
 
 [ext_resource type="Script" uid="uid://d2eq8oxo5wxhr" path="res://scripts/CharacterSelect.gd" id="1_d8y2c"]
 [ext_resource type="Texture2D" uid="uid://bumdgf7mcxyj1" path="res://assets/Humble Gift - Paper UI System v1.1/Sprites/Book Desk/7.png" id="2_7rt4t"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d2053m5r4adbh" path="res://assets/Humble Gift - Paper UI System v1.1/Sprites/Paper UI Pack/Folding & Cutout/6 Player HUD/1.png" id="4_1h2j8"]
 [ext_resource type="Texture2D" uid="uid://bxqaqit3s6rs1" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_2/potrait.png" id="5_yyo81"]
 [ext_resource type="Texture2D" uid="uid://dj3v5wamqdhkv" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_3/potrait.png" id="6_1w4ot"]
+[ext_resource type="AudioStream" uid="uid://x0sh35s0mtxf" path="res://assets/SoundTrail/PAWeather/Setelment.mp3" id="7_7rt4t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o7dgy"]
 font_size = 120
@@ -157,3 +158,6 @@ Stronger But Slower
 "
 label_settings = SubResource("LabelSettings_ux7it")
 horizontal_alignment = 1
+
+[node name="BgmPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7rt4t")
