@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bnkrbhcf5deyc"
+path="res://.godot/imported/sks_near3.wav-df5bc0cf7aa5507b68a180dc954ff8db.sample"
+
+[deps]
+
+source_file="res://audio/Prepared SFX Library/SKS/sks_near3.wav"
+dest_files=["res://.godot/imported/sks_near3.wav-df5bc0cf7aa5507b68a180dc954ff8db.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

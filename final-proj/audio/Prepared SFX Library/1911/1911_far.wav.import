@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://gfevjy6afog6"
+path="res://.godot/imported/1911_far.wav-d2041e1d52a1dcfcf78ac06e7ee27c2a.sample"
+
+[deps]
+
+source_file="res://audio/Prepared SFX Library/1911/1911_far.wav"
+dest_files=["res://.godot/imported/1911_far.wav-d2041e1d52a1dcfcf78ac06e7ee27c2a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

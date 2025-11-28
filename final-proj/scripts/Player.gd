@@ -62,7 +62,7 @@ func _apply_class_stats() -> void:
 			character_class = CharacterClass.BALANCED
 			max_health = 100
 			max_stamina = 100
-			walk_speed = 160.0
+			walk_speed = 100.0
 			run_speed = 260.0
 			if frames_balanced != null:
 				anim.sprite_frames = frames_balanced
@@ -71,7 +71,7 @@ func _apply_class_stats() -> void:
 			character_class = CharacterClass.SPEED
 			max_health = 80
 			max_stamina = 80
-			walk_speed = 190.0
+			walk_speed = 120.0
 			run_speed = 300.0
 			if frames_speed != null:
 				anim.sprite_frames = frames_speed
@@ -80,7 +80,7 @@ func _apply_class_stats() -> void:
 			character_class = CharacterClass.TANK
 			max_health = 140
 			max_stamina = 130
-			walk_speed = 130.0
+			walk_speed = 80.0
 			run_speed = 210.0
 			if frames_tank != null:
 				anim.sprite_frames = frames_tank
