@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://byahbxu18cyha"
+path="res://.godot/imported/carl_one.wav-b26fd9dc38dadce528b85bc5c97b3a3a.sample"
+
+[deps]
+
+source_file="res://audio/Prepared SFX Library/Carl Gustav M45/carl_one.wav"
+dest_files=["res://.godot/imported/carl_one.wav-b26fd9dc38dadce528b85bc5c97b3a3a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

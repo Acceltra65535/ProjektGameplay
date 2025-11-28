@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bi2xyg5pyoihj"
+path="res://.godot/imported/Metal Hit 3.wav-ef620acd6963b6695d52e5f452112f7b.sample"
+
+[deps]
+
+source_file="res://audio/Hits/Metal Hit 3.wav"
+dest_files=["res://.godot/imported/Metal Hit 3.wav-ef620acd6963b6695d52e5f452112f7b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://djik3bgvc78ep"
+path="res://.godot/imported/Semi 22LR Reload Part 2 WAV.wav-81282a055431d8c56dcd7cb9d7bc0208.sample"
+
+[deps]
+
+source_file="res://audio/Prepared SFX Library/1917/Semi 22LR Reload Part 2 WAV.wav"
+dest_files=["res://.godot/imported/Semi 22LR Reload Part 2 WAV.wav-81282a055431d8c56dcd7cb9d7bc0208.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

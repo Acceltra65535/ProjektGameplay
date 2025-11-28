@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cby56lrvbwxo"
+path="res://.godot/imported/ak47_far4.wav-a65c5a5aaf83285163b3ad16a85062f6.sample"
+
+[deps]
+
+source_file="res://audio/Prepared SFX Library/AK-47/ak47_far4.wav"
+dest_files=["res://.godot/imported/ak47_far4.wav-a65c5a5aaf83285163b3ad16a85062f6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

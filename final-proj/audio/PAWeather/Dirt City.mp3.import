@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cohvcqi4ns748"
+path="res://.godot/imported/Dirt City.mp3-4292730624d4f485de0e72e6f582b2ba.mp3str"
+
+[deps]
+
+source_file="res://audio/PAWeather/Dirt City.mp3"
+dest_files=["res://.godot/imported/Dirt City.mp3-4292730624d4f485de0e72e6f582b2ba.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://boxt8pxdm6imp"
+path="res://.godot/imported/ak47_near_double4.wav-ff2ffae49f86ef0e48aa365b75dc0dd2.sample"
+
+[deps]
+
+source_file="res://audio/Prepared SFX Library/AK-47/ak47_near_double4.wav"
+dest_files=["res://.godot/imported/ak47_near_double4.wav-ff2ffae49f86ef0e48aa365b75dc0dd2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

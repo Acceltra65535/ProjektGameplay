@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c68fvi3tiqxos"
+path="res://.godot/imported/1917_near2.wav-46cb0928805b52e109df65034dd9cded.sample"
+
+[deps]
+
+source_file="res://audio/Prepared SFX Library/1917/1917_near2.wav"
+dest_files=["res://.godot/imported/1917_near2.wav-46cb0928805b52e109df65034dd9cded.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

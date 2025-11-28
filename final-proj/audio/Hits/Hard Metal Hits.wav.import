@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b0p225nvmdikw"
+path="res://.godot/imported/Hard Metal Hits.wav-85771e3fac9e74fcf286d53467f781cb.sample"
+
+[deps]
+
+source_file="res://audio/Hits/Hard Metal Hits.wav"
+dest_files=["res://.godot/imported/Hard Metal Hits.wav-85771e3fac9e74fcf286d53467f781cb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

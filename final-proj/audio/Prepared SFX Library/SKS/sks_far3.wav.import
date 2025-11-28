@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://n6kmc5v3x53q"
+path="res://.godot/imported/sks_far3.wav-0213153da5acef7442c5e7b31df51e44.sample"
+
+[deps]
+
+source_file="res://audio/Prepared SFX Library/SKS/sks_far3.wav"
+dest_files=["res://.godot/imported/sks_far3.wav-0213153da5acef7442c5e7b31df51e44.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

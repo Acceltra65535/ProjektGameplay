@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0tc4gri6hjko"
+path="res://.godot/imported/Moving Metal Hits.wav-585d61d5665c1e7753554876d0842159.sample"
+
+[deps]
+
+source_file="res://audio/Hits/Moving Metal Hits.wav"
+dest_files=["res://.godot/imported/Moving Metal Hits.wav-585d61d5665c1e7753554876d0842159.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
