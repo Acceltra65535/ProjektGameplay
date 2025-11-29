@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://db3qju1cyuacj"]
+
+[ext_resource type="Script" uid="uid://h5d8oes81nar" path="res://scripts/projectile.gd" id="1_qxf0c"]
+[ext_resource type="Texture2D" uid="uid://do2cc0rna7g4s" path="res://assets/PostApocalypse_AssetPack_v1.1.2/Character/Guns/Bullets/Gun-bullet_Casing.png" id="2_dgwo2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sxmqc"]
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_qxf0c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.536743e-07, -0.06250006)
+scale = Vector2(18, 3.8749995)
+texture = ExtResource("2_dgwo2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sxmqc")
