@@ -468,7 +468,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"recharge",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,

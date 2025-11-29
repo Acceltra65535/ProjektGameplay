@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckoy6qcnqrqyy"]
+[gd_scene load_steps=16 format=3 uid="uid://ckoy6qcnqrqyy"]
 
 [ext_resource type="Texture2D" uid="uid://dtismfauaccsx" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/road.png" id="1_qbsmt"]
 [ext_resource type="Texture2D" uid="uid://d3nq2wpd0518y" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/sky.png" id="2_cpr0p"]
@@ -17,7 +17,10 @@
 size = Vector2(4143, 48.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45i86"]
-size = Vector2(61.125, 136)
+size = Vector2(63.180523, 133.03)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcffj"]
+size = Vector2(65.15997, 69.22499)
 
 [node name="GameRoot" type="Node2D"]
 
@@ -122,23 +125,61 @@ scale = Vector2(0.521875, 0.55601853)
 texture = ExtResource("8_2rd6h")
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(599.085, 524.345)
+slide_on_ceiling = false
 script = ExtResource("9_45i86")
-character_class = 1
+character_class = 2
 frames_balanced = ExtResource("10_qy1jj")
 frames_speed = ExtResource("11_mcffj")
 frames_tank = ExtResource("12_2rd6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(104.4375, 520)
+position = Vector2(-0.275, 0)
 shape = SubResource("RectangleShape2D_45i86")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(92, 278)
+position = Vector2(-4, -191.89499)
 
 [node name="Anim" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(108, 457)
-scale = Vector2(1.9296875, 2.03125)
+position = Vector2(-84.085045, -125.34497)
+scale = Vector2(1.875, 1.973)
 sprite_frames = ExtResource("10_qy1jj")
-animation = &"attack_1"
+animation = &"idle"
+centered = false
+offset = Vector2(-20.71, -30.24)
+flip_h = true
+
+[node name="VoicePlayer" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(-63, -103)
+
+[node name="GunPlayer" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(-62, -103)
+
+[node name="ReloadPlayer" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(-64, -103)
+
+[node name="HitPlayer" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(-66, -103)
+
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(-65, -104)
+
+[node name="Muzzle" type="Node2D" parent="Player"]
+position = Vector2(62.22, -36.145)
+
+[node name="MeleeHitbox" type="Area2D" parent="Player"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/MeleeHitbox"]
+position = Vector2(66.33502, -5.9574585)
+shape = SubResource("RectangleShape2D_mcffj")
+
+[node name="Hurtbox" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hurtbox"]
+position = Vector2(-0.355, -0.345)
+shape = SubResource("RectangleShape2D_45i86")
 
 [connection signal="animation_finished" from="Player/Anim" to="Player" method="_on_anim_animation_finished"]
+[connection signal="body_entered" from="Player/MeleeHitbox" to="Player" method="_on_melee_hitbox_body_entered"]
+[connection signal="area_entered" from="Player/Hurtbox" to="Player" method="_on_hurtbox_area_entered"]
