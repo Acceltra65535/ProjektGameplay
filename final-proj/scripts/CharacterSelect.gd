@@ -32,4 +32,4 @@ func _on_tank_pressed() -> void:
 
 
 func _start_game() -> void:
-	get_tree().change_scene_to_file("res://scenes/Game.tscn")
+	get_tree().change_scene_to_file("res://scenes/CityOutskirtsIntro.tscn")
