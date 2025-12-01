@@ -5,7 +5,7 @@
 [ext_resource type="StyleBox" uid="uid://bemc8ooh0xucc" path="res://resources/Theme & Stylebox.tres" id="2_jmdev"]
 [ext_resource type="Script" uid="uid://3xlcgqaj3wl1" path="res://scripts/Menu.gd" id="3_b6cxs"]
 [ext_resource type="Texture2D" uid="uid://0bp71jm1iyt3" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War1/Pale/War.png" id="4_aaywf"]
-[ext_resource type="AudioStream" uid="uid://cd6r6e4vhim7h" path="res://assets/SoundTrail/PAWeather/Grey land.mp3" id="6_b6cxs"]
+[ext_resource type="AudioStream" uid="uid://cd6r6e4vhim7h" path="res://audio/PAWeather/Grey land.mp3" id="6_b6cxs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ylpcl"]
 
