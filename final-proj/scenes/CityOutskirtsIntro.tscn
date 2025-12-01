@@ -186,7 +186,7 @@ position = Vector2(-0.355, -0.345)
 shape = SubResource("RectangleShape2D_45i86")
 
 [node name="enemy_raider" parent="." groups=["Enemy"] instance=ExtResource("15_kghyg")]
-position = Vector2(1409, 525)
+position = Vector2(1727, 523)
 scale = Vector2(1.5, 1.5)
 
 [node name="UI" type="CanvasLayer" parent="."]

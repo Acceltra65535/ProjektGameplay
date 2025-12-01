@@ -23,6 +23,13 @@ enum State { IDLE, CHASE, ATTACK, AIMING, SHOOT, RECHARGE, COOLDOWN, HURT, DEATH
 @onready var attack_cooldown: Timer = $AttackCooldown
 @onready var aim_timer: Timer = $AimTimer
 @onready var shoot_point: Marker2D = $ShootPoint
+@onready var hurtbox: CollisionShape2D = $AttackArea/CollisionShape2D
+
+# Directional node original offsets (local positions)
+var shoot_point_original_offset: Vector2 = Vector2.ZERO
+var attack_area_original_offset: Vector2 = Vector2.ZERO
+var hurtbox_original_offset: Vector2 = Vector2.ZERO
+var directional_offsets_initialized: bool = false
 
 # State variables
 var current_state: State = State.IDLE
@@ -49,6 +56,18 @@ func _ready() -> void:
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	
 	animated_sprite.play("idle")
+	
+		# Cache original local offsets for directional nodes
+	if not directional_offsets_initialized:
+		if shoot_point:
+			shoot_point_original_offset = shoot_point.position
+		if attack_area:
+			attack_area_original_offset = attack_area.position
+		if hurtbox:
+			hurtbox_original_offset = hurtbox.position
+
+		directional_offsets_initialized = true
+		_update_directional_offsets()
 
 
 func set_frozen(value: bool) -> void:
@@ -88,6 +107,35 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func _update_directional_offsets() -> void:
+	# Update directional nodes (shoot point, hitbox, hurtbox) based on current flip state.
+	if not directional_offsets_initialized:
+		return
+
+	var sign := 1.0
+	if animated_sprite.flip_h:
+		# When facing left, mirror on X axis
+		sign = -1.0
+
+	if shoot_point:
+		shoot_point.position = Vector2(
+			abs(shoot_point_original_offset.x) * sign,
+			shoot_point_original_offset.y
+		)
+
+	if attack_area:
+		attack_area.position = Vector2(
+			abs(attack_area_original_offset.x) * sign,
+			attack_area_original_offset.y
+		)
+
+	if hurtbox:
+		hurtbox.position = Vector2(
+			abs(hurtbox_original_offset.x) * sign,
+			hurtbox_original_offset.y
+		)
+		
+
 # State logic
 func _state_idle() -> void:
 	velocity = Vector2.ZERO
@@ -111,6 +159,8 @@ func _state_chase() -> void:
 	velocity.x = direction * move_speed
 	
 	animated_sprite.flip_h = (direction < 0)
+	_update_directional_offsets()
+	
 	if animated_sprite.animation != "run":
 		animated_sprite.play("run")
 
@@ -126,6 +176,7 @@ func _state_aiming() -> void:
 		var direction = sign(target.global_position.x - global_position.x)
 		facing_direction = direction
 		animated_sprite.flip_h = (direction < 0)
+		_update_directional_offsets()
 
 
 func _state_shoot() -> void:
@@ -207,7 +258,7 @@ func _do_shoot() -> void:
 # Deal damage when attack animation hits
 func _deal_attack_damage() -> void:
 	for body in attack_area.get_overlapping_bodies():
-		if body.is_in_group("player") and body.has_method("take_damage"):
+		if body.is_in_group("Player") and body.has_method("take_damage"):
 			var knockback_dir = sign(body.global_position.x - global_position.x)
 			body.take_damage(attack_damage)
 
@@ -247,7 +298,7 @@ func _on_animation_finished() -> void:
 
 # Signal callbacks
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("Player"):
 		target = body
 		if current_state == State.IDLE:
 			_change_state(State.CHASE)
@@ -261,7 +312,7 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("Player"):
 		if current_state == State.CHASE or current_state == State.AIMING:
 			_change_state(State.ATTACK)
 
@@ -275,7 +326,7 @@ func _on_attack_cooldown_timeout() -> void:
 	var player_in_attack_range = false
 	
 	for body in bodies_in_range:
-		if body.is_in_group("player"):
+		if body.is_in_group("Player"):
 			player_in_attack_range = true
 			break
 	

@@ -105,7 +105,7 @@ static func _build_mira_intro() -> DialogueGroup:
 	var list: Array[Dialogue] = []
 
 	var avatar_mira := preload("res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_2/talk.png")
-	var avatar_radio := preload("res://assets/space_background_pack/Assets/Blue Version/layered/prop-planet-big.png")
+	var avatar_radio := preload("res://assets/space_background_pack/RC Art - Orbital Cannon/Sprites/Type A Ion Cannon_5.png")
 
 	var d: Dialogue
 
@@ -184,7 +184,7 @@ static func _build_jonah_intro() -> DialogueGroup:
 
 	var avatar_jonah    := preload("res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_3/Talking.png")
 	var avatar_echo     := preload("res://assets/space_background_pack/Assets/Blue Version/layered/prop-planet-big.png")
-	var avatar_recorder := preload("res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_3/Talking.png")
+	var avatar_recorder := preload("res://assets/PostApocalypse_AssetPack_v1.1.2/Objects/Washing-machine.png")
 
 	var d: Dialogue
 
