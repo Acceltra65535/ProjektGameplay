@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://7rgx1gvuhomo" path="res://assets/Silver.ttf" id="1_jmdev"]
 [ext_resource type="StyleBox" uid="uid://uctjmx2pnqv" path="res://resources/hover_button.tres" id="1_o0tnf"]
 [ext_resource type="StyleBox" uid="uid://bemc8ooh0xucc" path="res://resources/Theme & Stylebox.tres" id="2_jmdev"]
-[ext_resource type="Script" uid="uid://3xlcgqaj3wl1" path="res://scripts/Menu.gd" id="3_b6cxs"]
+[ext_resource type="Script" uid="uid://3xlcgqaj3wl1" path="res://scripts/UIs/Menu.gd" id="3_b6cxs"]
 [ext_resource type="Texture2D" uid="uid://0bp71jm1iyt3" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War1/Pale/War.png" id="4_aaywf"]
 [ext_resource type="AudioStream" uid="uid://cd6r6e4vhim7h" path="res://audio/PAWeather/Grey land.mp3" id="6_b6cxs"]
 
@@ -67,10 +67,9 @@ layout_mode = 2
 text = "Start
 "
 
-[node name="Save" type="Button" parent="Menu/VBoxContainer"]
+[node name="Load" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
-text = "Save
-"
+text = "Load"
 
 [node name="Exit" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
@@ -79,3 +78,7 @@ text = "Exit
 
 [node name="BgmPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_b6cxs")
+
+[connection signal="pressed" from="Menu/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

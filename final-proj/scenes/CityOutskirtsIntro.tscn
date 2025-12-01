@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckoy6qcnqrqyy"]
+[gd_scene load_steps=21 format=3 uid="uid://ckoy6qcnqrqyy"]
 
-[ext_resource type="Script" uid="uid://doto5p6akygop" path="res://scenes/CityOutskirtsIntro.gd" id="1_3vqtv"]
+[ext_resource type="Script" uid="uid://doto5p6akygop" path="res://scripts/CityOutskirtsIntro.gd" id="1_3vqtv"]
 [ext_resource type="Texture2D" uid="uid://dtismfauaccsx" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/road.png" id="2_8kmui"]
 [ext_resource type="Texture2D" uid="uid://d3nq2wpd0518y" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/sky.png" id="3_kghyg"]
 [ext_resource type="Texture2D" uid="uid://bb6njekxyxf3o" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses4.png" id="4_rihqr"]
@@ -15,6 +15,7 @@
 [ext_resource type="SpriteFrames" uid="uid://xhwvmhbfvbv2" path="res://resources/frames_tank.tres" id="13_f57h4"]
 [ext_resource type="PackedScene" uid="uid://4le6yslmtifu" path="res://scenes/chatbox.tscn" id="14_8kmui"]
 [ext_resource type="PackedScene" uid="uid://d1qodutatnp6n" path="res://scenes/enemies/enemy_raider.tscn" id="15_kghyg"]
+[ext_resource type="Script" uid="uid://318gphvcyns7" path="res://scripts/UIs/Save&Load/save_load_manager.gd" id="15_rsuxw"]
 [ext_resource type="PackedScene" uid="uid://daf0l6760wxfn" path="res://Weather2D/sky_setting.tscn" id="16_rihqr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78awf"]
@@ -189,7 +190,9 @@ shape = SubResource("RectangleShape2D_45i86")
 position = Vector2(1727, 523)
 scale = Vector2(1.5, 1.5)
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("15_rsuxw")
+player = NodePath("../Player")
 
 [node name="DialogueManager" parent="UI" groups=["DialogueManager"] instance=ExtResource("14_8kmui")]
 offset_left = 18.0
@@ -202,6 +205,13 @@ visible = false
 rainAmount = 0.20300000000000007
 rainDelta = 0.0
 
+[node name="Save" type="Button" parent="UI"]
+offset_left = 1183.0
+offset_top = 281.0
+offset_right = 1191.0
+offset_bottom = 289.0
+
 [connection signal="animation_finished" from="Player/Anim" to="Player" method="_on_anim_animation_finished"]
 [connection signal="body_entered" from="Player/MeleeHitbox" to="Player" method="_on_melee_hitbox_body_entered"]
 [connection signal="area_entered" from="Player/Hurtbox" to="Player" method="_on_hurtbox_area_entered"]
+[connection signal="pressed" from="UI/Save" to="UI" method="_on_save_pressed"]

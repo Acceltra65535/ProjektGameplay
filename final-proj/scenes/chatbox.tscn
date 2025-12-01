@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://4le6yslmtifu"]
 
-[ext_resource type="Script" uid="uid://cr4xvol1ek3kv" path="res://scripts/dialogue_manager.gd" id="1_koub6"]
+[ext_resource type="Script" uid="uid://cr4xvol1ek3kv" path="res://scripts/UIs/Dialogue/dialogue_manager.gd" id="1_koub6"]
 [ext_resource type="Resource" uid="uid://lqehuveyf0st" path="res://dialogues/dialogue1.tres" id="2_kri7l"]
 [ext_resource type="Texture2D" uid="uid://d4kwmkas31es6" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_1/talking.png" id="3_qehmk"]
 [ext_resource type="FontFile" uid="uid://7rgx1gvuhomo" path="res://assets/Silver.ttf" id="4_3v5oq"]
