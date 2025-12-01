@@ -5,14 +5,14 @@
 [ext_resource type="SpriteFrames" uid="uid://bblb82qfdrkbc" path="res://resources/frames_speed.tres" id="3_tuyoq"]
 [ext_resource type="SpriteFrames" uid="uid://xhwvmhbfvbv2" path="res://resources/frames_tank.tres" id="4_fjrip"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(61.28125, 134.75)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smehm"]
+size = Vector2(63.180523, 133.03)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
-size = Vector2(75.140625, 55.75)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur7pv"]
+size = Vector2(65.15997, 69.22499)
 
-[node name="Player" type="CharacterBody2D"]
-position = Vector2(600, 464.895)
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(599.085, 524.345)
 slide_on_ceiling = false
 script = ExtResource("1_dqkch")
 character_class = 2
@@ -21,16 +21,20 @@ frames_speed = ExtResource("3_tuyoq")
 frames_tank = ExtResource("4_fjrip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-28, 62)
-shape = SubResource("RectangleShape2D_dqkch")
+position = Vector2(-0.275, 0)
+shape = SubResource("RectangleShape2D_smehm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-4, -191.89499)
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.9296875, 2.03125)
+position = Vector2(-84.085045, -125.34497)
+scale = Vector2(1.875, 1.973)
 sprite_frames = ExtResource("2_qlg0r")
 animation = &"idle"
+centered = false
+offset = Vector2(-20.71, -30.24)
+flip_h = true
 
 [node name="VoicePlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-63, -103)
@@ -48,20 +52,20 @@ position = Vector2(-66, -103)
 position = Vector2(-65, -104)
 
 [node name="Muzzle" type="Node2D" parent="."]
-position = Vector2(55.695, 23.63)
+position = Vector2(62.22, -36.145)
 
 [node name="MeleeHitbox" type="Area2D" parent="."]
 monitorable = false
 
-[node name="MeleeHitboxShape" type="CollisionShape2D" parent="MeleeHitbox"]
-position = Vector2(41.429688, 49.00003)
-shape = SubResource("RectangleShape2D_qlg0r")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeHitbox"]
+position = Vector2(66.33502, -5.9574585)
+shape = SubResource("RectangleShape2D_ur7pv")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
-[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-28.640625, 62)
-shape = SubResource("RectangleShape2D_dqkch")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.355, -0.345)
+shape = SubResource("RectangleShape2D_smehm")
 
 [connection signal="animation_finished" from="Anim" to="." method="_on_anim_animation_finished"]
 [connection signal="body_entered" from="MeleeHitbox" to="." method="_on_melee_hitbox_body_entered"]
