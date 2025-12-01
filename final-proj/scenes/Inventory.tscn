@@ -1,0 +1,296 @@
+[gd_scene load_steps=5 format=3 uid="uid://85yiknyrxbim"]
+
+[ext_resource type="FontFile" uid="uid://7rgx1gvuhomo" path="res://assets/Silver.ttf" id="1_kh8if"]
+
+[sub_resource type="Theme" id="Theme_ki15f"]
+default_font = ExtResource("1_kh8if")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwt7c"]
+bg_color = Color(0.28078392, 0.28078392, 0.28078392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqulp"]
+bg_color = Color(0.55, 0.55, 0.55, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ki15f")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 26.0
+offset_right = 124.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 32
+text = "Add item
+"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 74.0
+offset_right = 183.0
+offset_bottom = 119.0
+theme_override_font_sizes/font_size = 32
+text = "Open Inventory"
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -264.0
+offset_right = 300.0
+offset_bottom = 154.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nwt7c")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 14.0
+offset_right = 65.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 30
+text = "Inventory"
+
+[node name="Items" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -205.0
+offset_top = -368.0
+offset_right = 205.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer2" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer3" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer4" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer5" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer6" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer7" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer8" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer9" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer10" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer11" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer12" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer13" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer14" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer15" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer16" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer17" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer18" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer19" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer20" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer21" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer22" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer23" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer24" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer25" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer26" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer27" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer28" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer29" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer30" type="PanelContainer" parent="Panel/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="User" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = 215.0
+offset_right = 300.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nwt7c")
+metadata/_edit_group_ = true
+
+[node name="Items" type="GridContainer" parent="User"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -205.0
+offset_top = -88.0
+offset_right = 205.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 6
+metadata/_edit_group_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="User/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer2" type="PanelContainer" parent="User/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer3" type="PanelContainer" parent="User/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer4" type="PanelContainer" parent="User/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer5" type="PanelContainer" parent="User/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[node name="PanelContainer6" type="PanelContainer" parent="User/Items"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
