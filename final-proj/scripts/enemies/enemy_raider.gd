@@ -7,9 +7,9 @@ enum State { IDLE, CHASE, ATTACK, AIMING, SHOOT, RECHARGE, COOLDOWN, HURT, DEATH
 
 # Export variables
 @export var move_speed: float = 150.0
-@export var max_health: int = 30
+@export var max_health: int = 50
 @export var attack_damage: int = 10
-@export var bullet_damage: float = 20.0
+@export var bullet_damage: float = 15.0
 @export var attack_cooldown_time: float = 2.0
 @export var aim_time: float = 3.0
 @export var knockback_force: float = 200.0
@@ -30,6 +30,8 @@ var health: int
 var target: Node2D = null
 var facing_direction: int = -1  # -1 left, 1 right
 
+var is_frozen: bool = false
+
 
 func _ready() -> void:
 	health = max_health
@@ -49,7 +51,20 @@ func _ready() -> void:
 	animated_sprite.play("idle")
 
 
+func set_frozen(value: bool) -> void:
+	is_frozen = value
+	if is_frozen:
+		# Stop horizontal movement immediately when frozen
+		velocity.x = 0.0
+
+
 func _physics_process(delta: float) -> void:
+	if is_frozen:
+		# Still apply gravity so the player can land nicely,
+		# but ignore input and commands
+		move_and_slide()
+		return
+
 	match current_state:
 		State.IDLE:
 			_state_idle()
@@ -170,13 +185,22 @@ func _do_attack() -> void:
 # Ranged attack logic
 func _do_shoot() -> void:
 	if bullet_scene and is_instance_valid(target):
-		var bullet = bullet_scene.instantiate()
-		get_tree().current_scene.add_child(bullet)
-		bullet.global_position = shoot_point.global_position
-		
-		var direction = Vector2(facing_direction, 0)
-		bullet.setup(direction, bullet_damage, self, 0)
-	
+		var base_dir := Vector2(facing_direction, 0).normalized()
+
+		var angle_list := [-5.0, 0.0, 5.0]
+
+		for angle_deg in angle_list:
+			var bullet = bullet_scene.instantiate()
+			get_tree().current_scene.add_child(bullet)
+
+			bullet.global_position = shoot_point.global_position
+
+			var angle_rad = deg_to_rad(angle_deg)
+			var dir = base_dir.rotated(angle_rad)
+
+			var bullet_speed = 600.0
+			bullet.setup(dir, bullet_damage, self, bullet_speed)
+
 	_change_state(State.RECHARGE)
 
 

@@ -160,6 +160,8 @@ var melee_command: PlayerCommand
 var shot_command: PlayerCommand
 var recharge_command: PlayerCommand
 
+var is_frozen: bool = false
+
 
 func _ready() -> void:
 	randomize()
@@ -254,7 +256,22 @@ func _apply_class_stats() -> void:
 	stamina = float(max_stamina)
 
 
+func set_frozen(value: bool) -> void:
+	is_frozen = value
+	if is_frozen:
+		# Stop horizontal movement immediately when frozen
+		velocity.x = 0.0
+
+
 func _physics_process(delta: float) -> void:
+	if is_frozen:
+		# Still apply gravity so the player can land nicely,
+		# but ignore input and commands.
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		move_and_slide()
+		return
+
 	# Gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
