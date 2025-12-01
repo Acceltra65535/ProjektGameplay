@@ -1,15 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://85yiknyrxbim"]
+[gd_scene load_steps=10 format=3 uid="uid://85yiknyrxbim"]
 
 [ext_resource type="FontFile" uid="uid://7rgx1gvuhomo" path="res://assets/Silver.ttf" id="1_kh8if"]
+[ext_resource type="Script" uid="uid://de3nen1auuqjr" path="res://scripts/UIs/Inventory.gd" id="2_brmsw"]
+[ext_resource type="Texture2D" uid="uid://c1yubtavimimu" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/Inventory/Inventory_1.png" id="3_njucy"]
 
 [sub_resource type="Theme" id="Theme_ki15f"]
 default_font = ExtResource("1_kh8if")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwt7c"]
-bg_color = Color(0.28078392, 0.28078392, 0.28078392, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7uqmy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5d712"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7f7tj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqulp"]
 bg_color = Color(0.55, 0.55, 0.55, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q3t5a"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -19,24 +26,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ki15f")
+script = ExtResource("2_brmsw")
 
-[node name="Button" type="Button" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 37.0
-offset_top = 26.0
-offset_right = 124.0
-offset_bottom = 53.0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_njucy")
+metadata/_edit_group_ = true
+
+[node name="Add_Item" type="Button" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 59.0
+offset_right = 144.0
+offset_bottom = 104.0
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7uqmy")
 text = "Add item
 "
 
-[node name="Button2" type="Button" parent="."]
+[node name="Open_Inventory" type="Button" parent="."]
 layout_mode = 0
-offset_left = 37.0
-offset_top = 74.0
-offset_right = 183.0
-offset_bottom = 119.0
+offset_left = 57.0
+offset_top = 118.0
+offset_right = 203.0
+offset_bottom = 163.0
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5d712")
 text = "Open Inventory"
 
 [node name="Panel" type="Panel" parent="."]
@@ -48,12 +65,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -300.0
-offset_top = -264.0
+offset_top = -279.0
 offset_right = 300.0
-offset_bottom = 154.5
+offset_bottom = 139.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nwt7c")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7f7tj")
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
@@ -239,12 +256,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -300.0
-offset_top = 215.0
+offset_top = 176.0
 offset_right = 300.0
-offset_bottom = 324.0
+offset_bottom = 285.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nwt7c")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_q3t5a")
 metadata/_edit_group_ = true
 
 [node name="Items" type="GridContainer" parent="User"]
@@ -294,3 +311,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+
+[connection signal="pressed" from="Add_Item" to="." method="_on_add_item_pressed"]

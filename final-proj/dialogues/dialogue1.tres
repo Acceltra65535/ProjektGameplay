@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DialogueGroup" load_steps=7 format=3 uid="uid://lqehuveyf0st"]
 
-[ext_resource type="Script" path="res://scripts/dialogue.gd" id="1_21dv4"]
-[ext_resource type="Script" path="res://scripts/dialogue_group.gd" id="2_6je7j"]
+[ext_resource type="Script" uid="uid://dmm3mp7q41ecx" path="res://scripts/UIs/Dialogue/dialogue.gd" id="1_21dv4"]
+[ext_resource type="Script" uid="uid://go7u1647l0uc" path="res://scripts/UIs/Dialogue/dialogue_group.gd" id="2_6je7j"]
 [ext_resource type="Texture2D" uid="uid://d4kwmkas31es6" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_1/talking.png" id="2_airvr"]
 [ext_resource type="Texture2D" uid="uid://qd6n40rolrc3" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_3/Talking.png" id="3_3yb2m"]
 

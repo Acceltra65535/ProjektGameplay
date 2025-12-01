@@ -18,7 +18,14 @@ func _ready() -> void:
 	#    These signals are defined in DialogueManager.
 	dialogue_manager.dialogue_started.connect(_on_dialogue_started)
 	dialogue_manager.dialogue_finished.connect(_on_dialogue_finished)
-
+	# 3) Check if we're loading from a save
+	if Global.pending_load_data != null:
+		_apply_load_data()
+		Global.pending_load_data = null  # Clear after applying
+		intro_started = true  # Skip intro dialogue
+		intro_finished = true
+		dialogue_manager.visible = false
+		return
 	# 3) Build the intro DialogueGroup based on the current character
 	var character_id := _get_current_character_id()
 	intro_group = StoryDialogueLibrary.build_intro_for(character_id)
@@ -30,6 +37,36 @@ func _ready() -> void:
 	#    DialogueManager._ready() already sets visible = false and is_active = false,
 	#    so we do not need to touch is_active here.
 	dialogue_manager.visible = false
+
+func _apply_load_data() -> void:
+	var data = Global.pending_load_data
+	
+	# Apply selected_class FIRST (before player applies its stats)
+	if "selected_class" in data:
+		Global.selected_class = data.selected_class
+		print("Loaded class: ", Global.selected_class)
+	
+	var player := get_tree().get_first_node_in_group("Player")
+	if player == null:
+		push_warning("Player not found when applying load data!")
+		return
+	
+	# Re-apply class stats since we changed Global.selected_class
+	if player.has_method("_apply_class_stats"):
+		player._apply_class_stats()
+	
+	# Apply position
+	if "player_position" in data:
+		player.global_position = data.player_position
+	
+	# Apply facing direction
+	if "is_facing_left" in data:
+		var anim = player.get_node("Anim")
+		if anim:
+			anim.flip_h = data.is_facing_left
+			# Also update directional offsets if the method exists
+			if player.has_method("_update_directional_offsets"):
+				player._update_directional_offsets()
 
 
 func _unhandled_input(event: InputEvent) -> void:
