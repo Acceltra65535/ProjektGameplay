@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://d2e2x7f5mpx8c"]
+
+[ext_resource type="Texture2D" uid="uid://k5v2j3e0qol8" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/Inventory/Inventory-Chosen.png" id="1_yqpdx"]
+
+[resource]
+texture = ExtResource("1_yqpdx")

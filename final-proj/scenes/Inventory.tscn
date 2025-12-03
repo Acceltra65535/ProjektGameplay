@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://85yiknyrxbim"]
+[gd_scene load_steps=8 format=3 uid="uid://85yiknyrxbim"]
 
 [ext_resource type="FontFile" uid="uid://7rgx1gvuhomo" path="res://assets/Silver.ttf" id="1_kh8if"]
 [ext_resource type="Script" uid="uid://de3nen1auuqjr" path="res://scripts/UIs/Inventory.gd" id="2_brmsw"]
+[ext_resource type="StyleBox" uid="uid://d2e2x7f5mpx8c" path="res://resources/inventory_icon.tres" id="3_brmsw"]
 
 [sub_resource type="Theme" id="Theme_ki15f"]
 default_font = ExtResource("1_kh8if")
@@ -251,29 +252,29 @@ metadata/_edit_group_ = true
 [node name="PanelContainer" type="PanelContainer" parent="User/Items"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+theme_override_styles/panel = ExtResource("3_brmsw")
 
 [node name="PanelContainer2" type="PanelContainer" parent="User/Items"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+theme_override_styles/panel = ExtResource("3_brmsw")
 
 [node name="PanelContainer3" type="PanelContainer" parent="User/Items"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+theme_override_styles/panel = ExtResource("3_brmsw")
 
 [node name="PanelContainer4" type="PanelContainer" parent="User/Items"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+theme_override_styles/panel = ExtResource("3_brmsw")
 
 [node name="PanelContainer5" type="PanelContainer" parent="User/Items"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+theme_override_styles/panel = ExtResource("3_brmsw")
 
 [node name="PanelContainer6" type="PanelContainer" parent="User/Items"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jqulp")
+theme_override_styles/panel = ExtResource("3_brmsw")
