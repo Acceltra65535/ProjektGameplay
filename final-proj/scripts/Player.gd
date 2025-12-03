@@ -174,7 +174,11 @@ func _ready() -> void:
 
 	if melee_hitbox:
 		melee_hitbox.monitoring = false
-	
+
+	# Configure collision: Player on layer 1, don't collide with layer 2 (enemies)
+	set_collision_layer_value(1, true)   # Player is on layer 1
+	set_collision_mask_value(2, false)   # Don't collide with enemies (layer 2)
+
 	# Cache original offsets for directional nodes
 	if not directional_offsets_initialized:
 		if muzzle:
