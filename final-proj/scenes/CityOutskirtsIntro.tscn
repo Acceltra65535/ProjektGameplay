@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://ckoy6qcnqrqyy"]
 
-[ext_resource type="Script" uid="uid://doto5p6akygop" path="res://scripts/CityOutskirtsIntro.gd" id="1_3vqtv"]
+[ext_resource type="Script" path="res://scripts/CityOutskirtsIntro.gd" id="1_3vqtv"]
 [ext_resource type="Texture2D" uid="uid://dtismfauaccsx" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/road.png" id="2_8kmui"]
 [ext_resource type="Texture2D" uid="uid://d3nq2wpd0518y" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/sky.png" id="3_kghyg"]
 [ext_resource type="Texture2D" uid="uid://bb6njekxyxf3o" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses4.png" id="4_rihqr"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ds2d4i3s4pu8d" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses3.png" id="8_vmr7k"]
 [ext_resource type="Texture2D" uid="uid://nektt2sgimdp" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Pale/houses1.png" id="9_3lpca"]
 [ext_resource type="PackedScene" uid="uid://b30mqinvev5b3" path="res://player.tscn" id="11_8kmui"]
-[ext_resource type="PackedScene" uid="uid://disbb1knb7m3q" path="res://scenes/crate.tscn" id="12_rsuxw"]
+[ext_resource type="PackedScene" path="res://scenes/crate.tscn" id="12_rsuxw"]
 [ext_resource type="Resource" uid="uid://du5nxt14mek2x" path="res://resources/loot_tables/crate_common.tres" id="13_rsuxw"]
 [ext_resource type="PackedScene" uid="uid://4le6yslmtifu" path="res://scenes/chatbox.tscn" id="14_8kmui"]
 [ext_resource type="PackedScene" uid="uid://d1qodutatnp6n" path="res://scenes/enemies/enemy_raider.tscn" id="15_kghyg"]
@@ -128,7 +128,6 @@ texture = ExtResource("9_3lpca")
 position = Vector2(1727, 523)
 scale = Vector2(1.5, 1.5)
 behavior_type = 1
-sprite_left_offset = 0.0
 attack_damage = 15
 bullet_damage = 10.0
 
