@@ -7,6 +7,8 @@
 
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_qxf0c")
+collision_layer = 0
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(9.536743e-07, -0.06250006)

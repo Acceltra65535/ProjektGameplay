@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://ckoy6qcnqrqyy"]
+[gd_scene load_steps=16 format=3 uid="uid://ckoy6qcnqrqyy"]
 
-[ext_resource type="Script" uid="uid://doto5p6akygop" path="res://scripts/CityOutskirtsIntro.gd" id="1_3vqtv"]
+[ext_resource type="Script" path="res://scripts/CityOutskirtsIntro.gd" id="1_3vqtv"]
 [ext_resource type="Texture2D" uid="uid://dtismfauaccsx" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/road.png" id="2_8kmui"]
 [ext_resource type="Texture2D" uid="uid://d3nq2wpd0518y" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/sky.png" id="3_kghyg"]
 [ext_resource type="Texture2D" uid="uid://bb6njekxyxf3o" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses4.png" id="4_rihqr"]
@@ -9,10 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c7h5chypv85f2" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses1.png" id="7_5x06x"]
 [ext_resource type="Texture2D" uid="uid://ds2d4i3s4pu8d" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses3.png" id="8_vmr7k"]
 [ext_resource type="Texture2D" uid="uid://nektt2sgimdp" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Pale/houses1.png" id="9_3lpca"]
-[ext_resource type="Script" uid="uid://duat1ekh0wjim" path="res://scripts/Player.gd" id="10_0jx8y"]
-[ext_resource type="SpriteFrames" uid="uid://do6xochcykwox" path="res://resources/frames_balanced.tres" id="11_w380d"]
-[ext_resource type="SpriteFrames" uid="uid://bblb82qfdrkbc" path="res://resources/frames_speed.tres" id="12_2vkgx"]
-[ext_resource type="SpriteFrames" uid="uid://xhwvmhbfvbv2" path="res://resources/frames_tank.tres" id="13_f57h4"]
+[ext_resource type="PackedScene" uid="uid://b30mqinvev5b3" path="res://player.tscn" id="11_8kmui"]
 [ext_resource type="PackedScene" uid="uid://4le6yslmtifu" path="res://scenes/chatbox.tscn" id="14_8kmui"]
 [ext_resource type="PackedScene" uid="uid://d1qodutatnp6n" path="res://scenes/enemies/enemy_raider.tscn" id="15_kghyg"]
 [ext_resource type="Script" uid="uid://318gphvcyns7" path="res://scripts/UIs/Save&Load/save_load_manager.gd" id="15_rsuxw"]
@@ -20,12 +17,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78awf"]
 size = Vector2(4143, 48.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_45i86"]
-size = Vector2(63.180523, 133.03)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcffj"]
-size = Vector2(65.15997, 69.22499)
 
 [node name="GameRoot" type="Node2D"]
 script = ExtResource("1_3vqtv")
@@ -130,69 +121,18 @@ position = Vector2(4188, 308)
 scale = Vector2(0.521875, 0.55601853)
 texture = ExtResource("9_3lpca")
 
-[node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
-position = Vector2(599.085, 524.345)
-slide_on_ceiling = false
-script = ExtResource("10_0jx8y")
-character_class = 2
-frames_balanced = ExtResource("11_w380d")
-frames_speed = ExtResource("12_2vkgx")
-frames_tank = ExtResource("13_f57h4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-0.275, 0)
-shape = SubResource("RectangleShape2D_45i86")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-4, -191.89499)
-
-[node name="Anim" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(-84.085045, -125.34497)
-scale = Vector2(1.875, 1.973)
-sprite_frames = ExtResource("11_w380d")
-animation = &"idle"
-centered = false
-offset = Vector2(-20.71, -30.24)
-flip_h = true
-
-[node name="VoicePlayer" type="AudioStreamPlayer2D" parent="Player"]
-position = Vector2(-63, -103)
-
-[node name="GunPlayer" type="AudioStreamPlayer2D" parent="Player"]
-position = Vector2(-62, -103)
-
-[node name="ReloadPlayer" type="AudioStreamPlayer2D" parent="Player"]
-position = Vector2(-64, -103)
-
-[node name="HitPlayer" type="AudioStreamPlayer2D" parent="Player"]
-position = Vector2(-66, -103)
-
-[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="Player"]
-position = Vector2(-65, -104)
-
-[node name="Muzzle" type="Node2D" parent="Player"]
-position = Vector2(62.22, -36.145)
-
-[node name="MeleeHitbox" type="Area2D" parent="Player"]
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/MeleeHitbox"]
-position = Vector2(66.33502, -5.9574585)
-shape = SubResource("RectangleShape2D_mcffj")
-
-[node name="Hurtbox" type="Area2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hurtbox"]
-position = Vector2(-0.355, -0.345)
-shape = SubResource("RectangleShape2D_45i86")
-
 [node name="enemy_raider" parent="." groups=["Enemy"] instance=ExtResource("15_kghyg")]
 position = Vector2(1727, 523)
 scale = Vector2(1.5, 1.5)
+behavior_type = 1
+sprite_left_offset = 0.0
+attack_damage = 15
+bullet_damage = 10.0
 
-[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
+[node name="Player" parent="." instance=ExtResource("11_8kmui")]
+
+[node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("15_rsuxw")
-player = NodePath("../Player")
 
 [node name="DialogueManager" parent="UI" groups=["DialogueManager"] instance=ExtResource("14_8kmui")]
 offset_left = 18.0
@@ -211,7 +151,4 @@ offset_top = 281.0
 offset_right = 1191.0
 offset_bottom = 289.0
 
-[connection signal="animation_finished" from="Player/Anim" to="Player" method="_on_anim_animation_finished"]
-[connection signal="body_entered" from="Player/MeleeHitbox" to="Player" method="_on_melee_hitbox_body_entered"]
-[connection signal="area_entered" from="Player/Hurtbox" to="Player" method="_on_hurtbox_area_entered"]
 [connection signal="pressed" from="UI/Save" to="UI" method="_on_save_pressed"]

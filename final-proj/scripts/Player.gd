@@ -570,13 +570,15 @@ func _disable_melee_hitbox() -> void:
 		melee_hitbox.monitoring = false
 
 
-func _on_melee_hitbox_body_entered(body: Node) -> void:
-	# Connect MeleeHitbox.body_entered -> this function
+func _on_melee_hitbox_area_entered(area: Area2D) -> void:
+	# Connect MeleeHitbox.area_entered -> this function
+	# Now detects enemy Hurtbox (Area2D) instead of bodies
 	if state != State.ATTACK:
 		return
-	if body == self:
+	if area == self:
 		return
 
+	var body = area.get_parent()
 	if body.has_method("take_damage"):
 		body.take_damage(int(melee_damage))
 
@@ -784,8 +786,6 @@ func _load_1917_gun() -> void:
 func _load_hit_sounds() -> void:
 	generic_hit_clips = [
 		load("res://audio/Hits/Hit.wav"),
-		load("res://audio/Hits/Hits.wav"),
-		load("res://audio/Hits/Hammer Hit.wav")
 	]
 
 	metal_hit_clips = [
