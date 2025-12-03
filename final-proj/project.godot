@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Final_Proj"
-run/main_scene="uid://85yiknyrxbim"
+run/main_scene="uid://cgfe2wtg6tqyy"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://scripts/Global.gd"
-InventoryData="*res://scripts/items/Inventory_data.gd"
+InventoryData="*res://scripts/items/inventory_data.gd"
 
 [gui]
 

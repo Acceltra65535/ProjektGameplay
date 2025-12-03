@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckoy6qcnqrqyy"]
+[gd_scene load_steps=19 format=3 uid="uid://ckoy6qcnqrqyy"]
 
 [ext_resource type="Script" uid="uid://doto5p6akygop" path="res://scripts/CityOutskirtsIntro.gd" id="1_3vqtv"]
 [ext_resource type="Texture2D" uid="uid://dtismfauaccsx" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/road.png" id="2_8kmui"]
@@ -10,9 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://ds2d4i3s4pu8d" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses3.png" id="8_vmr7k"]
 [ext_resource type="Texture2D" uid="uid://nektt2sgimdp" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Pale/houses1.png" id="9_3lpca"]
 [ext_resource type="PackedScene" uid="uid://b30mqinvev5b3" path="res://player.tscn" id="11_8kmui"]
+[ext_resource type="PackedScene" uid="uid://disbb1knb7m3q" path="res://scenes/crate.tscn" id="12_rsuxw"]
+[ext_resource type="Resource" uid="uid://du5nxt14mek2x" path="res://resources/loot_tables/crate_common.tres" id="13_rsuxw"]
 [ext_resource type="PackedScene" uid="uid://4le6yslmtifu" path="res://scenes/chatbox.tscn" id="14_8kmui"]
 [ext_resource type="PackedScene" uid="uid://d1qodutatnp6n" path="res://scenes/enemies/enemy_raider.tscn" id="15_kghyg"]
 [ext_resource type="Script" uid="uid://318gphvcyns7" path="res://scripts/UIs/Save&Load/save_load_manager.gd" id="15_rsuxw"]
+[ext_resource type="PackedScene" uid="uid://85yiknyrxbim" path="res://scenes/Inventory.tscn" id="16_3fl6x"]
 [ext_resource type="PackedScene" uid="uid://daf0l6760wxfn" path="res://Weather2D/sky_setting.tscn" id="16_rihqr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78awf"]
@@ -130,9 +133,19 @@ attack_damage = 15
 bullet_damage = 10.0
 
 [node name="Player" parent="." instance=ExtResource("11_8kmui")]
+collision_mask = 11
+
+[node name="Crate" parent="." instance=ExtResource("12_rsuxw")]
+position = Vector2(1217, 541)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+collision_layer = 8
+loot_table = ExtResource("13_rsuxw")
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("15_rsuxw")
+
+[node name="Inventory" parent="UI" instance=ExtResource("16_3fl6x")]
 
 [node name="DialogueManager" parent="UI" groups=["DialogueManager"] instance=ExtResource("14_8kmui")]
 offset_left = 18.0

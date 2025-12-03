@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bg70flouovhln"]
+
+[ext_resource type="Texture2D" uid="uid://8le5dkq731v1" path="res://assets/PostApocalypse_AssetPack_v1.1.2/Objects/Metal-Plates.png" id="1_ge1yk"]
+[ext_resource type="Script" uid="uid://w3fss37sej5y" path="res://scripts/items/item.gd" id="2_x881v"]
+
+[resource]
+script = ExtResource("2_x881v")
+id = "scrap_metal"
+name = "Scrap Metal"
+description = "Salvaged metal scraps. Useful for crafting."
+icon = ExtResource("1_ge1yk")

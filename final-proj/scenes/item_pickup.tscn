@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5lk2mwx8qh3n"]
+
+[ext_resource type="Script" uid="uid://bvddjlldnkt4u" path="res://scripts/items/item_pickup.gd" id="1_lgqak"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
+radius = 24.0
+
+[node name="ItemPickup" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_lgqak")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pickup")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
