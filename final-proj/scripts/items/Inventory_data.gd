@@ -5,6 +5,7 @@ signal item_added(item: Item, quantity: int)
 signal item_removed(item: Item, quantity: int)
 signal hotbar_changed
 
+
 # Main inventory slots (30 slots as shown in Inventory.tscn)
 const INVENTORY_SIZE: int = 30
 const HOTBAR_SIZE: int = 6
