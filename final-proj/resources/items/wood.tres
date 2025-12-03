@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b28en8ne84pn5"]
+
+[ext_resource type="Texture2D" uid="uid://d2af1bm2nn11s" path="res://assets/PostApocalypse_AssetPack_v1.1.2/Objects/Buildable/Reinforced/Reinforced_wooden-wall_Left-side_Right&Up-connect.png" id="1_w3n26"]
+[ext_resource type="Script" uid="uid://w3fss37sej5y" path="res://scripts/items/item.gd" id="2_4004f"]
+
+[resource]
+script = ExtResource("2_4004f")
+id = "wood"
+name = "Wood"
+description = "Wooden planks salvaged from debris."
+icon = ExtResource("1_w3n26")

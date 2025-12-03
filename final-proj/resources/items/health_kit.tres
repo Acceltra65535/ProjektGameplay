@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bwlhuars5cbrk"]
+
+[ext_resource type="Texture2D" uid="uid://baaegw5yjlm7v" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/Inventory/Objects/Icon_First-Aid-Kit_White.png" id="1_undkx"]
+[ext_resource type="Script" uid="uid://w3fss37sej5y" path="res://scripts/items/item.gd" id="2_5upxu"]
+
+[resource]
+script = ExtResource("2_5upxu")
+id = "health_kit"
+name = "Health Kit"
+description = "Restores 50 health when used."
+icon = ExtResource("1_undkx")
+max_stack = 10
+item_type = 1

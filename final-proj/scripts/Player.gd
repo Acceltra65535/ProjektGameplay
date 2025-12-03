@@ -571,22 +571,32 @@ func _disable_melee_hitbox() -> void:
 
 
 func _on_melee_hitbox_area_entered(area: Area2D) -> void:
-	# Connect MeleeHitbox.area_entered -> this function
-	# Now detects enemy Hurtbox (Area2D) instead of bodies
 	if state != State.ATTACK:
 		return
 	if area == self:
 		return
 
 	var body = area.get_parent()
+	
+	if body == self:
+		return
+	
 	if body.has_method("take_damage"):
-		body.take_damage(int(melee_damage))
+		if body is Destructible:
+			body.take_damage(int(melee_damage))
+		elif body.has_method("get_hit_material"):
+			var knockback_dir: Vector2 = Vector2(1 if not anim.flip_h else -1, -0.3).normalized()
+			var knockback: Vector2 = knockback_dir * 150.0
+			body.take_damage(int(melee_damage), knockback)
+		else:
+			body.take_damage(int(melee_damage))
 
 	var material: int = HitMaterial.FLESH
 	if body.has_method("get_hit_material"):
 		material = body.get_hit_material()
 
 	play_hit_sound(material)
+
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
