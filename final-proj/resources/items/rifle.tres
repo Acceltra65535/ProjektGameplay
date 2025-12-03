@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://nkmb1fp4hfm8"]
+
+[ext_resource type="Texture2D" uid="uid://c82yfunq5wy2h" path="res://assets/PostApocalypse_AssetPack_v1.1.2/Objects/Pickable/Shotgun.png" id="1_mke7p"]
+[ext_resource type="Script" uid="uid://w3fss37sej5y" path="res://scripts/items/item.gd" id="2_guk1s"]
+
+[resource]
+script = ExtResource("2_guk1s")
+id = "rifle"
+name = "rifle"
+description = "rifle"
+icon = ExtResource("1_mke7p")
