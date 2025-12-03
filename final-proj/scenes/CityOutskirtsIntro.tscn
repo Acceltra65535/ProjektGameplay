@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://ckoy6qcnqrqyy"]
 
-[ext_resource type="Script" path="res://scripts/CityOutskirtsIntro.gd" id="1_3vqtv"]
+[ext_resource type="Script" uid="uid://doto5p6akygop" path="res://scripts/CityOutskirtsIntro.gd" id="1_3vqtv"]
 [ext_resource type="Texture2D" uid="uid://dtismfauaccsx" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/road.png" id="2_8kmui"]
 [ext_resource type="Texture2D" uid="uid://d3nq2wpd0518y" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/sky.png" id="3_kghyg"]
 [ext_resource type="Texture2D" uid="uid://bb6njekxyxf3o" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses4.png" id="4_rihqr"]
@@ -78,8 +78,8 @@ scale = Vector2(0.8736978, 0.74861103)
 texture = ExtResource("4_rihqr")
 
 [node name="Tile_2" type="Sprite2D" parent="ParallaxBackground/Layer_mid"]
-position = Vector2(3880, 381.00003)
-scale = Vector2(0.76927084, 0.6638889)
+position = Vector2(3864.2498, 381.00003)
+scale = Vector2(0.7528644, 0.6638889)
 texture = ExtResource("4_rihqr")
 
 [node name="Layer_near" type="Parallax2D" parent="ParallaxBackground"]
