@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckoy6qcnqrqyy"]
+[gd_scene load_steps=20 format=3 uid="uid://ckoy6qcnqrqyy"]
 
 [ext_resource type="Script" path="res://scripts/CityOutskirtsIntro.gd" id="1_3vqtv"]
 [ext_resource type="Texture2D" uid="uid://dtismfauaccsx" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/road.png" id="2_8kmui"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ds2d4i3s4pu8d" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses3.png" id="8_vmr7k"]
 [ext_resource type="Texture2D" uid="uid://nektt2sgimdp" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Pale/houses1.png" id="9_3lpca"]
 [ext_resource type="PackedScene" uid="uid://b30mqinvev5b3" path="res://player.tscn" id="11_8kmui"]
+[ext_resource type="PackedScene" uid="uid://bh4nm21d28edw" path="res://scenes/enemies/enemy_raider_AK47.tscn" id="11_kghyg"]
 [ext_resource type="PackedScene" path="res://scenes/crate.tscn" id="12_rsuxw"]
 [ext_resource type="Resource" uid="uid://du5nxt14mek2x" path="res://resources/loot_tables/crate_common.tres" id="13_rsuxw"]
 [ext_resource type="PackedScene" uid="uid://4le6yslmtifu" path="res://scenes/chatbox.tscn" id="14_8kmui"]
@@ -124,12 +125,16 @@ position = Vector2(4188, 308)
 scale = Vector2(0.521875, 0.55601853)
 texture = ExtResource("9_3lpca")
 
-[node name="enemy_raider" parent="." groups=["Enemy"] instance=ExtResource("15_kghyg")]
+[node name="EnemyRaider" parent="." instance=ExtResource("15_kghyg")]
 position = Vector2(1727, 523)
 scale = Vector2(1.5, 1.5)
 behavior_type = 1
 attack_damage = 15
 bullet_damage = 10.0
+
+[node name="EnemyRaider_AK47" parent="." instance=ExtResource("11_kghyg")]
+position = Vector2(2876, 521)
+scale = Vector2(1.5, 1.5)
 
 [node name="Player" parent="." instance=ExtResource("11_8kmui")]
 collision_mask = 11

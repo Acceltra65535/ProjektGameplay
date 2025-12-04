@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bh4nm21d28edw"]
+[gd_scene load_steps=62 format=3 uid="uid://bh4nm21d28edw"]
 
 [ext_resource type="Script" uid="uid://b7dq4wax8dvxl" path="res://scripts/enemies/enemy_raider_AK47.gd" id="1_vjasl"]
 [ext_resource type="PackedScene" uid="uid://db3qju1cyuacj" path="res://scenes/projectile.tscn" id="2_gapr0"]
@@ -106,30 +106,6 @@ region = Rect2(791, 0, 105, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ulule"]
 atlas = ExtResource("6_lmitb")
 region = Rect2(919, 0, 105, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pg51k"]
-atlas = ExtResource("7_apnnb")
-region = Rect2(24, 0, 104, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bnkl3"]
-atlas = ExtResource("7_apnnb")
-region = Rect2(152, 0, 104, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3q5ou"]
-atlas = ExtResource("7_apnnb")
-region = Rect2(280, 0, 104, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fxjpk"]
-atlas = ExtResource("7_apnnb")
-region = Rect2(408, 0, 104, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rhqq4"]
-atlas = ExtResource("7_apnnb")
-region = Rect2(536, 0, 104, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gobn6"]
-atlas = ExtResource("7_apnnb")
-region = Rect2(664, 0, 104, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7u42l"]
 atlas = ExtResource("7_apnnb")
@@ -320,24 +296,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pg51k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bnkl3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3q5ou")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fxjpk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rhqq4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gobn6")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_7u42l")
 }, {
 "duration": 1.0,
@@ -435,30 +393,36 @@ size = Vector2(20.75, 50.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkhhf"]
 size = Vector2(54, 99)
 
-[node name="EnemyRaider" type="CharacterBody2D"]
+[node name="EnemyRaider_AK47" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_vjasl")
 sprite_left_offset = 22.0
 bullet_scene = ExtResource("2_gapr0")
-near_shoot_range = 250.0
+guard_chase_distance = 300.0
+patrol_chase_distance = 600.0
+shoot_range = 350.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(18.999998, -46)
 scale = Vector2(1.475, 1.5000004)
 sprite_frames = SubResource("SpriteFrames_ob07f")
-animation = &"shot_1"
+animation = &"recharge"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_okckp")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("RectangleShape2D_h21ej")
 
 [node name="AttackArea" type="Area2D" parent="."]
 position = Vector2(44, 39)
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(-5.375, -49.375)
@@ -482,3 +446,5 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_xkhhf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
