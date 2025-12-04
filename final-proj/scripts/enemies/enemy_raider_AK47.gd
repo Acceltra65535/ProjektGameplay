@@ -25,7 +25,7 @@ enum BehaviorType { GUARD, PATROL }
 # Export variables - AK47 specific
 @export_group("AK47 Settings")
 @export var magazine_size: int = 30               # Total bullets before reload
-@export var near_shoot_range: float = 150.0       # Distance threshold for near/far shooting
+@export var near_shoot_range: float = 300.0       # Distance threshold for near/far shooting
 @export var far_shoot_cooldown: float = 2.0       # Cooldown between far shots
 
 # Export variables - Guard behavior
@@ -47,6 +47,7 @@ enum BehaviorType { GUARD, PATROL }
 @onready var attack_area: Area2D = $AttackArea
 @onready var attack_cooldown: Timer = $AttackCooldown
 @onready var shoot_point: Marker2D = $ShootPoint
+@onready var shoot_point_2: Marker2D = $ShootPoint2  # For near shooting
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
@@ -57,6 +58,7 @@ var reload_sound: AudioStream
 
 # Directional node original offsets (local positions)
 var shoot_point_original_offset: Vector2 = Vector2.ZERO
+var shoot_point_2_original_offset: Vector2 = Vector2.ZERO  # For near shooting
 var attack_area_original_offset: Vector2 = Vector2.ZERO
 var hurtbox_original_offset: Vector2 = Vector2.ZERO
 var sprite_original_offset: Vector2 = Vector2.ZERO
@@ -113,6 +115,8 @@ func _ready() -> void:
 	if not directional_offsets_initialized:
 		if shoot_point:
 			shoot_point_original_offset = shoot_point.position
+		if shoot_point_2:
+			shoot_point_2_original_offset = shoot_point_2.position
 		if attack_area:
 			attack_area_original_offset = attack_area.position
 		if hurtbox:
@@ -215,6 +219,12 @@ func _update_directional_offsets() -> void:
 			shoot_point_original_offset.y
 		)
 
+	if shoot_point_2:
+		shoot_point_2.position = Vector2(
+			shoot_point_2_original_offset.x * flip_sign,
+			shoot_point_2_original_offset.y
+		)
+
 	if attack_area:
 		attack_area.position = Vector2(
 			attack_area_original_offset.x * flip_sign,
@@ -287,11 +297,15 @@ func _state_patrol(delta: float) -> void:
 
 
 func _state_chase() -> void:
+	# DEBUG: Print chase state info
+	print("[AK47] _state_chase called. target valid: ", is_instance_valid(target))
+
 	if not is_instance_valid(target):
 		_return_to_home_or_idle()
 		return
 
 	var distance_to_target: float = abs(target.global_position.x - global_position.x)
+	print("[AK47] Distance to target: ", distance_to_target, " shoot_range: ", shoot_range, " near_shoot_range: ", near_shoot_range)
 	var distance_from_home: float = abs(global_position.x - home_position.x)
 
 	# Determine max chase distance based on behavior type
@@ -303,12 +317,27 @@ func _state_chase() -> void:
 		_change_state(State.RETURNING)
 		return
 
-	# Check if we need to reload
+	# Check if we need to reload first
 	if current_ammo <= 0:
 		_change_state(State.RECHARGE)
 		return
 
-	# Determine shooting mode based on distance
+	# Face the target
+	var direction: int = sign(target.global_position.x - global_position.x)
+	facing_direction = direction
+	animated_sprite.flip_h = (direction < 0)
+	_update_directional_offsets()
+
+	# Priority 1: If very close, stop and let AttackArea handle melee
+	# (melee_stop_distance should be smaller than shooting ranges)
+	if distance_to_target <= melee_stop_distance:
+		velocity = Vector2.ZERO
+		if animated_sprite.animation != "idle":
+			animated_sprite.play("idle")
+		# Don't return here - let AttackArea signal trigger melee attack
+		return
+
+	# Priority 2: If within shooting range, start shooting
 	if distance_to_target <= shoot_range:
 		if distance_to_target <= near_shoot_range:
 			# Near range: rapid double shots with shot_1 animation
@@ -318,25 +347,8 @@ func _state_chase() -> void:
 			_change_state(State.SHOOT_FAR)
 		return
 
-	# Stop moving when close enough for melee attack (prevents stacking on player)
-	if distance_to_target <= melee_stop_distance:
-		velocity = Vector2.ZERO
-		# Face the target
-		var direction: int = sign(target.global_position.x - global_position.x)
-		facing_direction = direction
-		animated_sprite.flip_h = (direction < 0)
-		_update_directional_offsets()
-		if animated_sprite.animation != "idle":
-			animated_sprite.play("idle")
-		return
-
-	# Chase the target
-	var direction: int = sign(target.global_position.x - global_position.x)
-	facing_direction = direction
+	# Priority 3: Chase the target (too far to shoot)
 	velocity.x = direction * move_speed
-
-	animated_sprite.flip_h = (direction < 0)
-	_update_directional_offsets()
 
 	if animated_sprite.animation != "run":
 		animated_sprite.play("run")
@@ -469,7 +481,7 @@ func _do_attack() -> void:
 	animated_sprite.play(attack_anim)
 
 
-# Near shooting: double shot with shot_1 animation
+# Near shooting: double shot with shot_1 animation (two bullets with slight delay)
 func _do_shoot_near() -> void:
 	animated_sprite.play("shot_1")
 
@@ -478,21 +490,36 @@ func _do_shoot_near() -> void:
 		audio_player.stream = near_shoot_sounds.pick_random()
 		audio_player.play()
 
-	# Fire 2 bullets
-	if bullet_scene and is_instance_valid(target):
-		var base_dir := Vector2(facing_direction, 0).normalized()
-		var bullet_speed := 600.0
+	# Fire first bullet immediately, second bullet with slight delay
+	_fire_near_bullet()
 
-		for i in range(2):
-			var bullet = bullet_scene.instantiate()
-			get_tree().current_scene.add_child(bullet)
-			bullet.global_position = shoot_point.global_position
-			# Add small random spread for double shot
-			var spread := randf_range(-3.0, 3.0)
-			var dir = base_dir.rotated(deg_to_rad(spread))
-			bullet.setup(dir, bullet_damage, self, bullet_speed)
+	# Use a short timer for the second bullet to create double-tap effect
+	await get_tree().create_timer(0.08).timeout
 
-		current_ammo -= 2
+	# Check if still in SHOOT_NEAR state and not dead before firing second bullet
+	if current_state == State.SHOOT_NEAR and is_instance_valid(target):
+		_fire_near_bullet()
+
+
+# Helper function to fire a single bullet for near shooting
+func _fire_near_bullet() -> void:
+	if not bullet_scene or not is_instance_valid(target):
+		return
+
+	var base_dir := Vector2(facing_direction, 0).normalized()
+	var bullet_speed := 600.0
+
+	var bullet = bullet_scene.instantiate()
+	get_tree().current_scene.add_child(bullet)
+	# Use ShootPoint2 for near shooting
+	bullet.global_position = shoot_point_2.global_position
+
+	# Add slight vertical angle variation for each bullet
+	var spread := randf_range(-5.0, 5.0)
+	var dir = base_dir.rotated(deg_to_rad(spread))
+	bullet.setup(dir, bullet_damage, self, bullet_speed)
+
+	current_ammo -= 1
 
 
 # Far shooting: single shot with shot_2 animation
@@ -607,8 +634,12 @@ func _on_animation_finished() -> void:
 
 # Signal callbacks
 func _on_detection_area_body_entered(body: Node2D) -> void:
+	# DEBUG: Print when any body enters detection area
+	print("[AK47] Body entered DetectionArea: ", body.name, " Groups: ", body.get_groups())
+
 	# Detection is purely based on DetectionArea - no distance check needed
 	if body.is_in_group("Player"):
+		print("[AK47] Player detected! Setting target and changing to CHASE state")
 		target = body
 		# Start chasing from idle, patrol, or returning states
 		if current_state == State.IDLE or current_state == State.PATROL or current_state == State.RETURNING:
