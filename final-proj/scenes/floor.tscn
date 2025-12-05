@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctlnqdq1qn8oo"]
+
+[ext_resource type="Texture2D" uid="uid://c6ahwu2wyj0ds" path="res://assets/PostApocalypse_AssetPack_v1.1.2/Tiles/Background_Bleak-Yellow_TileSet.png" id="1_ukw5w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e00m8"]
+atlas = ExtResource("1_ukw5w")
+region = Rect2(188, 48, 8, 142)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukw5w"]
+size = Vector2(108.09747, 19.141075)
+
+[node name="Floor" type="Area2D"]
+position = Vector2(895.00006, 236.99997)
+scale = Vector2(5.107165, 1.9691336)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(2.396554, 0.76145077)
+texture = SubResource("AtlasTexture_e00m8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_ukw5w")

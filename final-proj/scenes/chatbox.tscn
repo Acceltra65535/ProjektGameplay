@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://7rgx1gvuhomo" path="res://assets/Silver.ttf" id="4_3v5oq"]
 [ext_resource type="Texture2D" uid="uid://qd6n40rolrc3" path="res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_3/Talking.png" id="5_sdv6x"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("character_name_text", "text_box", "left_avatar", "right_avatar")]
+[node name="Control" type="Control" node_paths=PackedStringArray("character_name_text", "text_box", "left_avatar", "right_avatar", "choice_container", "choice_button_template")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +18,8 @@ character_name_text = NodePath("HBoxContainer/Panel/MarginContainer/VBoxContaine
 text_box = NodePath("HBoxContainer/Panel/MarginContainer/VBoxContainer/Content")
 left_avatar = NodePath("HBoxContainer/LeftAvatar")
 right_avatar = NodePath("HBoxContainer/RightAvatar")
+choice_container = NodePath("ChoiceContainer")
+choice_button_template = NodePath("ChoiceContainer/ChoiceButtonTemplate")
 main_dialogue = ExtResource("2_kri7l")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -78,5 +80,29 @@ texture = ExtResource("5_sdv6x")
 expand_mode = 3
 stretch_mode = 5
 flip_h = true
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -350.0
+offset_right = 200.0
+offset_bottom = -210.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="ChoiceButtonTemplate" type="Button" parent="ChoiceContainer"]
+visible = false
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_3v5oq")
+theme_override_font_sizes/font_size = 24
+text = "Choice Template"
 
 [connection signal="gui_input" from="HBoxContainer/Panel/MarginContainer" to="." method="_on_click"]
