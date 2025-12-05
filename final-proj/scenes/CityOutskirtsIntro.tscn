@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://nektt2sgimdp" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Pale/houses1.png" id="9_3lpca"]
 [ext_resource type="PackedScene" uid="uid://b30mqinvev5b3" path="res://player.tscn" id="11_8kmui"]
 [ext_resource type="PackedScene" uid="uid://bh4nm21d28edw" path="res://scenes/enemies/enemy_raider_AK47.tscn" id="11_kghyg"]
-[ext_resource type="PackedScene" path="res://scenes/crate.tscn" id="12_rsuxw"]
+[ext_resource type="PackedScene" uid="uid://disbb1knb7m3q" path="res://scenes/crate.tscn" id="12_rsuxw"]
 [ext_resource type="Resource" uid="uid://du5nxt14mek2x" path="res://resources/loot_tables/crate_common.tres" id="13_rsuxw"]
 [ext_resource type="PackedScene" uid="uid://4le6yslmtifu" path="res://scenes/chatbox.tscn" id="14_8kmui"]
 [ext_resource type="PackedScene" uid="uid://d1qodutatnp6n" path="res://scenes/enemies/enemy_raider.tscn" id="15_kghyg"]
@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://daf0l6760wxfn" path="res://Weather2D/sky_setting.tscn" id="16_rihqr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78awf"]
-size = Vector2(4143, 48.5)
+size = Vector2(4593, 48.5)
 
 [node name="GameRoot" type="Node2D"]
 script = ExtResource("1_3vqtv")
@@ -33,7 +33,7 @@ offset_bottom = 19.0
 position = Vector2(481, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2(1586.5, 608.25)
+position = Vector2(1811.5, 608.25)
 shape = SubResource("RectangleShape2D_78awf")
 
 [node name="Tile_0" type="Sprite2D" parent="Ground"]
@@ -140,7 +140,7 @@ scale = Vector2(1.5, 1.5)
 collision_mask = 11
 
 [node name="Crate" parent="." instance=ExtResource("12_rsuxw")]
-position = Vector2(1288, 540.00006)
+position = Vector2(1272, 573.00006)
 rotation = 1.5707964
 scale = Vector2(3, 3)
 collision_layer = 8
