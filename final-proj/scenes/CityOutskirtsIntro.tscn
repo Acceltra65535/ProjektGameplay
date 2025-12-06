@@ -149,6 +149,7 @@ loot_table = ExtResource("13_rsuxw")
 script = ExtResource("15_rsuxw")
 
 [node name="Inventory" parent="UI" instance=ExtResource("16_3fl6x")]
+theme = null
 
 [node name="DialogueManager" parent="UI" groups=["DialogueManager"] instance=ExtResource("14_8kmui")]
 offset_left = 18.0
