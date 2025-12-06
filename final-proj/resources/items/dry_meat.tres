@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b17bn3ov56fu8"]
+
+[ext_resource type="Texture2D" uid="uid://dkciw22vx6qw8" path="res://assets/PostApocalypse_AssetPack_v1.1.2/Objects/Pickable/dry-meat.png" id="1_4xu6e"]
+[ext_resource type="Script" uid="uid://w3fss37sej5y" path="res://scripts/items/item.gd" id="2_3g3pp"]
+
+[resource]
+script = ExtResource("2_3g3pp")
+id = "dry_meat"
+name = "Dry_meat"
+icon = ExtResource("1_4xu6e")
+max_stack = 10
+item_type = 1

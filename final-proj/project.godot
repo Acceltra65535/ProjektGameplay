@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://scripts/Global.gd"
 InventoryData="*res://scripts/items/inventory_data.gd"
+Systembuff="*res://scripts/buff/buffSystem.gd"
 
 [gui]
 

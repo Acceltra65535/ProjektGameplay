@@ -111,6 +111,10 @@ var footstep_timer: float = 0.0
 @onready var melee_hitbox_collision: CollisionShape2D = $MeleeHitbox/CollisionShape2D
 @onready var hurtbox_collision: CollisionShape2D = $Hurtbox/CollisionShape2D
 
+#@onready var buff_system: BuffSystem = $BuffSystem
+#@onready var buff_system := get_node_or_null("BuffSystem")
+var buff_system := Systembuff
+
 # Original local offsets for directional nodes
 var muzzle_original_offset: Vector2 = Vector2.ZERO
 var melee_hitbox_original_offset: Vector2 = Vector2.ZERO
@@ -330,14 +334,20 @@ func handle_move(input_dir: float, wants_run: bool, delta: float) -> void:
 			is_running = false
 	else:
 		# Regenerate stamina when not running
-		stamina += stamina_regen_rate * delta
+		var regen_buff = buff_system.get_total(BuffSystem.BuffType.STAMINA_REGEN)
+		stamina += stamina_regen_rate *(1.0 + regen_buff)* delta
 		if stamina > max_stamina:
 			stamina = float(max_stamina)
+	
+	
 
 	var current_speed: float = walk_speed
 	if is_running:
 		current_speed = run_speed
-
+	
+	var speed_buff = buff_system.get_total(BuffSystem.BuffType.SPEED)
+	current_speed *= (1.0 + speed_buff)
+	
 	velocity.x = input_dir * current_speed
 
 	# Flip sprite
@@ -581,19 +591,24 @@ func _apply_item_effect(item: Item) -> bool:
 			return false
 			
 		"canned_food":
-			#speedup(80)
+			buff_system.add_buff(BuffSystem.BuffType.STAMINA_REGEN, 0.5, 15.0)
 			return true
 			
 		"canned_soup":
-			#dosth()
+			buff_system.add_buff(BuffSystem.BuffType.SPEED, 0.3, 10.0)
 			return true
-
+		
+		"dry_meat":
+			buff_system.add_buff(BuffSystem.BuffType.ATTACK, 0.4, 20.0)
+			return true
+			
 		"wood":
 			print("I can eat this.")
 			return false
 		
 		"scrap_metal":
 			print("hard to chew")
+			return false
 		
 	return false # unknown item
 
@@ -637,10 +652,11 @@ func _on_melee_hitbox_area_entered(area: Area2D) -> void:
 	
 	if body == self:
 		return
-	
+	var attack_buff = buff_system.get_total(BuffSystem.BuffType.ATTACK)
+	var final_damage = melee_damage * (1.0 + attack_buff)
 	if body.has_method("take_damage"):
 		if body is Destructible:
-			body.take_damage(int(melee_damage))
+			body.take_damage(int(final_damage))
 		elif body.has_method("get_hit_material"):
 			var knockback_dir: Vector2 = Vector2(1 if not anim.flip_h else -1, -0.3).normalized()
 			var knockback: Vector2 = knockback_dir * 150.0
