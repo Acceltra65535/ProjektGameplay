@@ -38,12 +38,14 @@ func _ready() -> void:
 
 
 func setup(stack: ItemStack) -> void:
-	item_stack = stack
+	# Create a copy to avoid reference issues
+	item_stack = stack.duplicate_stack()
 	
-	if stack and stack.item and stack.item.icon:
+	if item_stack and item_stack.item and item_stack.item.icon:
 		if sprite:
-			sprite.texture = stack.item.icon
-
+			sprite.texture = item_stack.item.icon
+	# item_pickup.gd (in setup)
+	print("[ItemPickup.setup] got ", item_stack.item.name, " x", item_stack.quantity)
 
 func _spawn_animation() -> void:
 	# Pop up animation when spawned

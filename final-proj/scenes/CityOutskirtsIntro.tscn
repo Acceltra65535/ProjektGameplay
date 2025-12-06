@@ -143,7 +143,6 @@ collision_mask = 11
 position = Vector2(1276, 564)
 rotation = 1.5707964
 scale = Vector2(3, 3)
-collision_layer = 8
 loot_table = ExtResource("13_rsuxw")
 
 [node name="UI" type="CanvasLayer" parent="."]

@@ -9,12 +9,14 @@
 [sub_resource type="Resource" id="Resource_wood"]
 script = ExtResource("2_entry")
 item = ExtResource("4_wood")
-drop_chance = 70.0
-max_quantity = 2
+min_quantity = 2
+max_quantity = 40
 
 [sub_resource type="Resource" id="Resource_r5klr"]
 script = ExtResource("2_entry")
 item = ExtResource("6_ammo")
+min_quantity = 4
+max_quantity = 20
 metadata/_custom_type_script = "uid://drb8e315cisns"
 
 [sub_resource type="Resource" id="Resource_78hk4"]
