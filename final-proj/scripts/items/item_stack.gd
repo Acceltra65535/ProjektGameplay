@@ -8,6 +8,13 @@ func _init(p_item: Item = null, p_quantity: int = 1) -> void:
 	item = p_item
 	quantity = p_quantity
 
+# Add a static factory method as an alternative:
+static func create(p_item: Item, p_quantity: int = 1) -> ItemStack:
+	var stack := ItemStack.new()
+	stack.item = p_item
+	stack.quantity = p_quantity
+	return stack
+
 
 func can_add(amount: int) -> bool:
 	if item == null:

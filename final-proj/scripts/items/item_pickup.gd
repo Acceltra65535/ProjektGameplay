@@ -17,6 +17,7 @@ var time_alive: float = 0.0
 var can_pickup: bool = false
 var is_attracted: bool = false
 var target_player: Node2D = null
+var is_being_picked_up: bool = false  # Prevent multiple pickups
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
@@ -37,12 +38,14 @@ func _ready() -> void:
 
 
 func setup(stack: ItemStack) -> void:
-	item_stack = stack
+	# Create a copy to avoid reference issues
+	item_stack = stack.duplicate_stack()
 	
-	if stack and stack.item and stack.item.icon:
+	if item_stack and item_stack.item and item_stack.item.icon:
 		if sprite:
-			sprite.texture = stack.item.icon
-
+			sprite.texture = item_stack.item.icon
+	# item_pickup.gd (in setup)
+	print("[ItemPickup.setup] got ", item_stack.item.name, " x", item_stack.quantity)
 
 func _spawn_animation() -> void:
 	# Pop up animation when spawned
@@ -55,6 +58,10 @@ func _spawn_animation() -> void:
 
 
 func _process(delta: float) -> void:
+	# Stop processing if already being picked up
+	if is_being_picked_up:
+		return
+	
 	time_alive += delta
 	
 	# Enable pickup after delay
@@ -76,7 +83,7 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if not can_pickup:
+	if not can_pickup or is_being_picked_up:
 		return
 	
 	if body.is_in_group("Player") or body.is_in_group("player"):
@@ -85,33 +92,51 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _do_pickup() -> void:
+	# Prevent multiple calls
+	if is_being_picked_up:
+		return
+	
+	is_being_picked_up = true
+	set_process(false)  # Stop _process from running
+	
 	if item_stack == null or item_stack.item == null:
 		queue_free()
 		return
+	
+	print("[ItemPickup] Attempting to pick up ", item_stack.item.name, " x", item_stack.quantity)
 	
 	# Try to add to inventory
 	var overflow: int = InventoryData.add_item(item_stack.item, item_stack.quantity)
 	
 	if overflow < item_stack.quantity:
 		# At least some items were picked up
+		var picked_up_amount: int = item_stack.quantity - overflow
+		print("[ItemPickup] Successfully picked up ", picked_up_amount, " items")
 		emit_signal("picked_up", item_stack)
 		_play_pickup_sound()
 		
 		if overflow > 0:
 			# Some items couldn't fit, update stack and drop back
+			print("[ItemPickup] ", overflow, " items couldn't fit in inventory, dropping back")
 			item_stack.quantity = overflow
 			is_attracted = false
+			is_being_picked_up = false
 			target_player = null
 			can_pickup = false
 			time_alive = 0.0
 			original_y = position.y
+			set_process(true)  # Re-enable processing
 		else:
-			# All items picked up
+			# All items picked up, destroy the pickup
+			print("[ItemPickup] All items picked up, destroying pickup")
 			_pickup_animation()
 	else:
-		# Inventory full, can't pick up
+		# Inventory full, can't pick up any
+		print("[ItemPickup] Inventory full! Couldn't pick up any items")
 		is_attracted = false
+		is_being_picked_up = false
 		target_player = null
+		set_process(true)  # Re-enable processing
 
 
 func _play_pickup_sound() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b30mqinvev5b3"]
+[gd_scene load_steps=8 format=3 uid="uid://b30mqinvev5b3"]
 
 [ext_resource type="Script" uid="uid://duat1ekh0wjim" path="res://scripts/Player.gd" id="1_hqtel"]
 [ext_resource type="SpriteFrames" uid="uid://do6xochcykwox" path="res://resources/frames_balanced.tres" id="2_sweqy"]
@@ -10,6 +10,8 @@ size = Vector2(63.180523, 133.03)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b26j0"]
 size = Vector2(65.15997, 69.22499)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hqtel"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(599.085, 524.345)
@@ -55,9 +57,9 @@ position = Vector2(-65, -104)
 position = Vector2(62.22, -36.145)
 
 [node name="MeleeHitbox" type="Area2D" parent="."]
-monitorable = false
 collision_layer = 0
 collision_mask = 4
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeHitbox"]
 position = Vector2(66.33502, -5.9574585)
@@ -68,6 +70,9 @@ shape = SubResource("RectangleShape2D_b26j0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-0.355, -0.345)
 shape = SubResource("RectangleShape2D_dw050")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_hqtel")
 
 [connection signal="animation_finished" from="Anim" to="." method="_on_anim_animation_finished"]
 [connection signal="area_entered" from="MeleeHitbox" to="." method="_on_melee_hitbox_area_entered"]
