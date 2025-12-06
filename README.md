@@ -36,7 +36,7 @@ Beyond the hotbar, the inventory system includes an expanded storage view that c
 
 ### Chatbox
 
-**Path to image**
+![](./Documentation_Images/Chatbox.gif)
 
 The chatbox UI is implemented as a standalone chatbox.tscn scene controlled by the DialogueManager.gd script. The UI consists of a speaker-name label, a text label for dialogue content, and two avatar TextureRect nodes that let characters appear on either the left or right side depending on the current line. A choice container and a hidden template button allow the chatbox to display interactive dialogue choices when needed. All of these nodes are exposed as exported variables so the manager can update them at runtime.
 
