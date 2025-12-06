@@ -14,8 +14,6 @@ size = Vector2(65.15997, 69.22499)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(599.085, 524.345)
 slide_on_ceiling = false
-collision_layer = 1
-collision_mask = 1
 script = ExtResource("1_dqkch")
 character_class = 2
 frames_balanced = ExtResource("2_qlg0r")
@@ -57,9 +55,9 @@ position = Vector2(-65, -104)
 position = Vector2(62.22, -36.145)
 
 [node name="MeleeHitbox" type="Area2D" parent="."]
-monitorable = false
 collision_layer = 0
 collision_mask = 4
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeHitbox"]
 position = Vector2(66.33502, -5.9574585)

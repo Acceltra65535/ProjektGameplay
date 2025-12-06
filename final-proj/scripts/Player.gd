@@ -542,6 +542,59 @@ func take_damage(amount: int) -> void:
 		state = State.HURT
 		anim.play("hurt")
 		_play_hurt_voice()
+		
+		
+func heal(amount: int) -> void:
+	if state == State.DEAD:
+		return
+	
+	health += amount
+	if health > max_health:
+		health = max_health
+
+
+func use_item(item: Item) -> void:
+	if item == null:
+		return
+	if InventoryData.get_item_count(item) < 1:
+		print("You do not have this item.")
+		return
+
+	var used := _apply_item_effect(item)
+
+	if used:
+		var removed := InventoryData.remove_item(item, 1)
+		if removed < 1:
+			print("Warning: Expected to remove item but failed!")
+
+
+func _apply_item_effect(item: Item) -> bool:
+	match item.id:
+		"health_kit":
+			if health < max_health:
+				heal(50)
+				return true
+			return false
+			
+		"canned_food":
+			#speedup(80)
+			return true
+			
+		"canned_soup":
+			#dosth()
+			return true
+
+		"wood":
+			print("I can eat this.")
+			return false
+		
+		"scrap_metal":
+			print("hard to chew")
+		
+	return false # unknown item
+
+
+
 
 
 func _on_anim_animation_finished() -> void:
