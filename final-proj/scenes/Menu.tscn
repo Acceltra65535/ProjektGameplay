@@ -71,9 +71,14 @@ text = "Start
 layout_mode = 2
 text = "Load"
 
-[node name="Multiplayer" type="Button" parent="Menu/VBoxContainer"]
+[node name="Server" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
-text = "Multiplayer"
+text = "Server Create
+"
+
+[node name="Join" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+text = "Join"
 
 [node name="Exit" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
