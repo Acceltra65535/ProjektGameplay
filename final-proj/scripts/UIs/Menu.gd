@@ -4,7 +4,8 @@ extends Control
 @onready var load_button: Button = $Menu/VBoxContainer/Load
 @onready var exit_button: Button = $Menu/VBoxContainer/Exit
 @onready var bgm_player: AudioStreamPlayer = $BgmPlayer
-
+@nonreay var players: Node = $Players
+const PLAYER = preload("res://scenes/player.tscn")
 var peer = ENetMultiplayerPeer.new()
 
 func _ready() -> void:
