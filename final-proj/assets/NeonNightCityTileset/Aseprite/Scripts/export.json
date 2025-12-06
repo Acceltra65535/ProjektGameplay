@@ -1,0 +1,179 @@
+{
+    "directory": "../",
+    "destinations": ["..\\..\\Sprites\\", "C:\\Users\\USER\\Documents\\Godot Projects\\DeadRevolver\\sprites\\NeonCity\\Sprites\\"],
+    "exports": [{
+        "file": "Tilesets",
+        "presets": [{
+            "type": "slices",
+            "filename": "{name}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Backgrounds",
+        "presets": [{
+            "type": "layers",
+            "filename": "{name}_{layer}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Foreground",
+        "presets": [{
+            "type": "sheet",
+            "folder": "Foregrounds",
+            "filename": "{name}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Environment",
+        "presets": [{
+            "type": "sheet",
+            "folder": "Environment",
+            "filename": "{name}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Decals",
+        "presets": [{
+            "type": "sheet",
+            "folder": "Decals",
+            "filename": "{name}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Props",
+        "presets": [{
+            "type": "sheet",
+            "folder": "Props",
+            "filename": "{name}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Barriers",
+        "presets": [{
+            "type": "sheet",
+            "folder": "Props",
+            "filename": "{name}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Buildings",
+        "presets": [{
+            "type": "sheet",
+            "folder": "Buildings",
+            "filename": "{name}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+            
+        }]
+    }, {
+        "file": "ArcadeMachine",
+        "presets": [{
+            "type": "slice_tags",
+            "folder": "Props/ArcadeMachines",
+            "filename": "{name}_{slicename}_{tag}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Bird",
+        "presets": [{
+            "type": "tags",
+            "folder": "Characters",
+            "filename": "{name}_{tag}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Cat",
+        "presets": [{
+            "type": "tags",
+            "folder": "Characters",
+            "filename": "{name}_{tag}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    },   {
+        "file": "PhoneBooths",
+        "presets": [{
+            "type": "sheet",
+            "folder": "Props",
+            "filename": "{name}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Signs",
+        "presets": [{
+            "type": "sheet",
+            "folder": "Buildings",
+            "filename": "{name}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "NeonSigns",
+        "presets": [{
+            "type": "slice_tags",
+            "folder": "Buildings/NeonSigns",
+            "filename": "{name}_{slicename}_{tag}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "NeonArrows",
+        "presets": [{
+            "type": "slice_tags",
+            "folder": "Buildings/NeonSigns",
+            "filename": "NeonSigns_Arrow{slicename}_{tag}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Skateboard",
+        "presets": [{
+            "type": "tags",
+            "folder": "Props",
+            "filename": "{name}_{tag}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Streetlights",
+        "presets": [{
+            "type": "sheet",
+            "folder": "Props",
+            "filename": "{name}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref", "EmissionMap"]
+        }]
+    }, {
+        "file": "SurveillanceCamera",
+        "presets": [{
+            "type": "slice_tags",
+            "folder": "Props/SurveillanceCamera",
+            "filename": "{name}_{slicename}_{tag}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "TrafficLight",
+        "presets": [{
+            "type": "tags",
+            "folder": "Props",
+            "filename": "{name}_{tag}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "TVs",
+        "presets": [{
+            "type": "slice_tags",
+            "folder": "Props/TV",
+            "filename": "{name}_{slicename}_{tag}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "Vehicles",
+        "presets": [{
+            "type": "slice_tags",
+            "filename": "{name}_{slicename}_{tag}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }, {
+        "file": "VendingMachines",
+        "presets": [{
+            "type": "slice_tags",
+            "folder": "Props/VendingMachines",
+            "filename": "{name}_{slicename}_{tag}.png",
+            "ignored_layers": ["NormalMap", "Guide", "Ref"]
+        }]
+    }]
+}

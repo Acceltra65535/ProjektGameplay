@@ -437,7 +437,7 @@ size = Vector2(20.75, 50.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkhhf"]
 size = Vector2(54, 99)
 
-[node name="EnemyRaider" type="CharacterBody2D"]
+[node name="EnemyRaider" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_lu81a")
@@ -454,12 +454,16 @@ animation = &"attack_1"
 shape = SubResource("RectangleShape2D_okckp")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("RectangleShape2D_h21ej")
 
 [node name="AttackArea" type="Area2D" parent="."]
 position = Vector2(44, 39)
+collision_layer = 0
+collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(-5.375, -49.375)
