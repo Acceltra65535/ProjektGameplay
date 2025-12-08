@@ -54,3 +54,141 @@ As the narrative designer on the project, I built a modular dialogue system desi
 To expand on that, I developed the StoryDialogueLibrary, a scriptable system that procedurally assembles the introductory sequences for our three main characters: Elias, Mira, and Jonah. Each intro is made up of hand-authored dialogue beats, deliberately arranged to express character voice, emotional tone, and narrative motif. For example: Elias’s intro leans into themes of memory loss and guilt; Mira’s reflects her survival instincts, distrust, and sharp-edged humor; and Jonah’s explores societal amnesia and quiet philosophical unease. Each line in these sequences carries metadata—like speaker name, avatar ID, and camera-side placement—so we can layer in visual storytelling cues such as shifting perspectives, mirrored dialogues, and echo-like voice overlays.
 
 When dialogue lines include player choices, the system transitions smoothly into an interactive mode, displaying dynamically generated buttons based on DialogueChoice data. These choices feed directly into story flags and determine the path through future dialogue groups, creating branching interactions that feel meaningful. Because the entire system is data-driven and modular, we’re able to maintain a consistent pipeline from authored narrative to in-game presentation—where tone, pacing, and player interaction all work together. The result is a story layer that not only feels integrated with gameplay, but also preserves the distinct voice and thematic direction of each character.
+
+## Main role:Props Zijian Li
+
+#1 Item & Inventory System
+
+The Item & Inventory System is a core component of gameplay experience, responsible for managing all resources and items players acquire, consume, and organize throughout the game. This system employs a modular architecture comprising four parts: Item, ItemStack, InventoryData, and ItemPickup. Together, they form a stable, scalable, and easily debugged item framework.
+
+Item Data Structure (Item / ItemStack)
+
+Each item is represented by an **Item resource file (.tres)** containing its unique ID, name, icon, description, and item type (e.g., consumable, weapon, building material). Items themselves do not store quantity information; quantities are managed by ItemStack objects.
+
+Item: Describes the item's static data
+
+ItemStack: Represents “Item × Quantity,” supporting stacking, splitting, and merging
+
+This separation ensures the item system's data maintainability and scalability: Item definitions can be edited independently, while quantity logic is handled by runtime stack objects.
+
+Inventory (InventoryData)
+
+The inventory consists of two parts:
+
+Main Inventory (30 slots)
+
+Quickbar (6 slots)
+
+System Support:
+
+✔ Automatic stacking (merging identical items)
+✔ Automatic slot detection
+✔ Item removal and quantity updates
+✔ Swapping between main inventory and hotbar
+✔ UI refresh notification via signals
+
+All logic is managed by the InventoryData.gd script, which includes functionalities like add_item, remove_item, swap, and get_item_count.
+
+This system is designed with a separation of data and UI layers: the UI handles presentation, while InventoryData manages actual calculations and data updates.
+
+World Pickup System (ItemPickup)
+
+When enemies drop loot or players open chests, an interactive ItemPickup node is generated. This node features:
+
+Floating animation (bob animation)
+
+Automatic player magnetism (magnetic attraction)
+
+Auto-pickup delay
+
+Icon auto-binding to the Item's icon
+
+When the player touches to pick up the item:
+
+ItemPickup attempts to add the corresponding stack to InventoryData
+
+If fully stored → Self-destructs automatically
+
+If partially stored → Updates remaining quantity and continues hovering
+
+If inventory is full → Remains stationary
+
+This system provides instant feedback (sound effects + animations) and effectively supports the game's pacing.
+
+#2 Buff Factory System
+
+The Buff system grants players temporary stat boosts, such as increased movement speed, enhanced stamina regeneration, or boosted attack power. Designed as an independent functional module, it ensures decoupling from character and item systems.
+
+Buff Data Structure
+
+Each Buff contains:
+
+Buff type (Speed, Attack, HP Regeneration, etc.)
+Buff value (e.g., +20% Speed)
+Duration
+Remaining runtime
+
+The BuffSystem maintains all active Buffs as an array, managing countdowns and cleanup in _process(delta).
+
+Buff Calculation Model
+
+When a character queries a specific ability (e.g., Speed buff):
+
+get_total(BuffType.SPEED)
+
+The system aggregates all active buffs of the same type and returns the final bonus value.
+
+This design offers high composability—for example, two different drinks providing Speed buffs will stack their effects.
+
+Buff Factory (Consumables) Integration
+
+Each consumable invokes BuffSystem upon use:
+
+Example: Energy drink provides +20% Speed for 30 seconds:
+
+buff_system.add_buff(BuffType.SPEED, 0.2, 30.0)
+
+Example: Nutrition supplement increases Stamina Regeneration:
+
+buff_system.add_buff(BuffType.STAMINA_REGEN, 0.4, 20.0)
+
+
+The Buff Factory design ensures:
+
+Each consumable only needs to define its buff behavior
+
+No modification to Player or Inventory logic
+
+Future additions of new items require no changes to the underlying system, enabling high scalability.
+
+#3 Health & Stamina UI System
+
+#4 System Integration and Design Motivation
+
+The Item System, Buff System, and UI form a complete feedback loop:
+
+Player picks up an item
+
+The item links to character attributes via the BuffSystem
+
+Character attributes are reflected in real-time on the UI (health bar, stamina bar, speed, attack, etc.)
+
+Player makes next action based on UI information
+
+This closed-loop design creates natural, strong, and intuitive feedback, enhancing the overall player experience.
+
+#5 Conclusion
+
+These three systems collectively form the game's core feedback layer, tightly integrated with the combat system, character system, and level system. Their advantages include:
+
+High scalability (easily add new items, buffs, or UI effects)
+
+Data-driven (easy to debug and balance)
+
+Architectural decoupling (each system has a single, clear responsibility)
+
+Excellent gameplay experience (instant feedback + animated reinforcement + clear information)
+
+Translated with DeepL.com (free version)
+
+
