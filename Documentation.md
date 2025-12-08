@@ -7,8 +7,8 @@
 
 
 # Main Roles #
+Type our roles here
 
-- User Interface + Narrative design: [William Yu](https://github.com/WillYu2004)
 
 ## User Interface (William Yu)
 
