@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://rcm8p1ftlddo"]
+
+[ext_resource type="Texture2D" uid="uid://bpf6cb516ys8e" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/Hunger/Hunger-Bar.png" id="1_rkrfi"]
+[ext_resource type="Texture2D" uid="uid://5vgokoj6y1lq" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/Hunger/Hunger.png" id="2_8rvg4"]
+[ext_resource type="Script" uid="uid://dklal7lbqk062" path="res://scripts/Player_info_Ui/bar_stamina_.gd" id="3_f4hhu"]
+
+[node name="Stamina_bar" type="TextureProgressBar"]
+texture_under = ExtResource("1_rkrfi")
+texture_progress = ExtResource("2_8rvg4")
+script = ExtResource("3_f4hhu")

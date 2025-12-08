@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckoy6qcnqrqyy"]
+[gd_scene load_steps=26 format=3 uid="uid://ckoy6qcnqrqyy"]
 
 [ext_resource type="Script" uid="uid://doto5p6akygop" path="res://scripts/CityOutskirtsIntro.gd" id="1_3vqtv"]
 [ext_resource type="Texture2D" uid="uid://dtismfauaccsx" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/road.png" id="2_8kmui"]
@@ -18,6 +18,12 @@
 [ext_resource type="Script" uid="uid://318gphvcyns7" path="res://scripts/UIs/Save&Load/save_load_manager.gd" id="15_rsuxw"]
 [ext_resource type="PackedScene" uid="uid://85yiknyrxbim" path="res://scenes/Inventory.tscn" id="16_3fl6x"]
 [ext_resource type="PackedScene" uid="uid://daf0l6760wxfn" path="res://Weather2D/sky_setting.tscn" id="16_rihqr"]
+[ext_resource type="Texture2D" uid="uid://ngkvtirttge2" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/HP/HP-Bar.png" id="19_2vkgx"]
+[ext_resource type="Texture2D" uid="uid://b06p6s31gst63" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/HP/HP.png" id="20_f57h4"]
+[ext_resource type="Script" uid="uid://us4pjwlvp223" path="res://scripts/Player_info_Ui/bar_health.gd" id="21_r0ukt"]
+[ext_resource type="Texture2D" uid="uid://bkhooxoce0j8a" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/Menu/Scrollbar.png" id="22_trxk3"]
+[ext_resource type="Texture2D" uid="uid://b0130j3x0geri" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/HP/energy.png" id="23_2vkgx"]
+[ext_resource type="Script" uid="uid://dklal7lbqk062" path="res://scripts/Player_info_Ui/bar_stamina_.gd" id="24_n0rkm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78awf"]
 size = Vector2(4593, 48.5)
@@ -166,5 +172,34 @@ offset_left = 1183.0
 offset_top = 281.0
 offset_right = 1191.0
 offset_bottom = 289.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI"]
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.031000001
+offset_left = 32.000008
+offset_top = 13.000001
+offset_right = 46.68004
+offset_bottom = 32.91203
+scale = Vector2(2.9374156, 2.6305466)
+texture_under = ExtResource("19_2vkgx")
+texture_over = ExtResource("19_2vkgx")
+texture_progress = ExtResource("20_f57h4")
+texture_progress_offset = Vector2(10, 3.5)
+tint_under = Color(1.1801987, 1.1801987, 1.1801987, 1)
+script = ExtResource("21_r0ukt")
+
+[node name="StemmaBar2" type="TextureProgressBar" parent="UI"]
+offset_left = 61.999992
+offset_top = 40.0
+offset_right = 166.0
+offset_bottom = 105.0
+scale = Vector2(2.0127301, 2.7410173)
+max_value = 80.0
+texture_under = ExtResource("22_trxk3")
+texture_progress = ExtResource("23_2vkgx")
+texture_progress_offset = Vector2(2.9, 3)
+tint_progress = Color(1, 0.915, 0.14999998, 1)
+script = ExtResource("24_n0rkm")
 
 [connection signal="pressed" from="UI/Save" to="UI" method="_on_save_pressed"]

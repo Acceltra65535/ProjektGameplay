@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 # Command scripts
 const PlayerCommand = preload("res://scripts/commands/command.gd")
 const MoveCommand = preload("res://scripts/commands/move_command.gd")
@@ -48,10 +48,10 @@ const JUMP_VELOCITY: float = -420.0
 var gravity: float = 0.0
 
 # Stats
-var max_health: int = 100
-var health: int = 100
-var max_stamina: int = 100
-var stamina: float = 100.0
+@export var max_health: int = 100
+@export var health: int = 100
+@export var max_stamina: int = 100
+@export var stamina: float = 100.0
 
 # Stamina rates
 var stamina_regen_rate: float = 15.0      # per second
@@ -113,7 +113,10 @@ var footstep_timer: float = 0.0
 
 #@onready var buff_system: BuffSystem = $BuffSystem
 #@onready var buff_system := get_node_or_null("BuffSystem")
+# Buff system and Ui bar
 var buff_system := Systembuff
+@onready var health_bar = $CanvasLayer/HealthBar2
+@onready var stamina_bar = $CanvasLayer/StemmaBar
 
 # Original local offsets for directional nodes
 var muzzle_original_offset: Vector2 = Vector2.ZERO
@@ -167,6 +170,9 @@ var recharge_command: PlayerCommand
 var is_frozen: bool = false
 
 
+signal health_changed(current, max)
+signal stamina_changed(current, max)
+
 func _ready() -> void:
 	randomize()
 	gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -193,6 +199,8 @@ func _ready() -> void:
 			hurtbox_original_offset = hurtbox_collision.position
 		directional_offsets_initialized = true
 		_update_directional_offsets()
+
+
 
 
 func _create_commands() -> void:
@@ -262,7 +270,7 @@ func _apply_class_stats() -> void:
 
 	health = max_health
 	stamina = float(max_stamina)
-
+	
 
 func set_frozen(value: bool) -> void:
 	is_frozen = value
@@ -329,6 +337,7 @@ func handle_move(input_dir: float, wants_run: bool, delta: float) -> void:
 
 	if is_running:
 		stamina -= stamina_run_cost_rate * delta
+		stamina_changed.emit()
 		if stamina <= 0.0:
 			stamina = 0.0
 			is_running = false
@@ -336,6 +345,7 @@ func handle_move(input_dir: float, wants_run: bool, delta: float) -> void:
 		# Regenerate stamina when not running
 		var regen_buff = buff_system.get_total(BuffSystem.BuffType.STAMINA_REGEN)
 		stamina += stamina_regen_rate *(1.0 + regen_buff)* delta
+		stamina_changed.emit()
 		if stamina > max_stamina:
 			stamina = float(max_stamina)
 	
@@ -556,7 +566,7 @@ func take_damage(amount: int) -> void:
 		state = State.HURT
 		anim.play("hurt")
 		_play_hurt_voice()
-		
+	health_changed.emit()
 		
 func heal(amount: int) -> void:
 	if state == State.DEAD:
@@ -565,7 +575,7 @@ func heal(amount: int) -> void:
 	health += amount
 	if health > max_health:
 		health = max_health
-
+	health_changed.emit()
 
 func use_item(item: Item) -> void:
 	if item == null:

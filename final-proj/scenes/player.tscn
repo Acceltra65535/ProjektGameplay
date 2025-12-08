@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://88kf8h2xhdjo"]
+[gd_scene load_steps=14 format=3 uid="uid://88kf8h2xhdjo"]
 
 [ext_resource type="Script" uid="uid://duat1ekh0wjim" path="res://scripts/Player.gd" id="1_dqkch"]
 [ext_resource type="SpriteFrames" uid="uid://do6xochcykwox" path="res://resources/frames_balanced.tres" id="2_qlg0r"]
 [ext_resource type="SpriteFrames" uid="uid://bblb82qfdrkbc" path="res://resources/frames_speed.tres" id="3_tuyoq"]
 [ext_resource type="SpriteFrames" uid="uid://xhwvmhbfvbv2" path="res://resources/frames_tank.tres" id="4_fjrip"]
+[ext_resource type="Texture2D" uid="uid://bkhooxoce0j8a" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/Menu/Scrollbar.png" id="5_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://5vgokoj6y1lq" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/Hunger/Hunger.png" id="6_d2wvv"]
+[ext_resource type="Script" uid="uid://dklal7lbqk062" path="res://scripts/Player_info_Ui/bar_stamina_.gd" id="7_3v2ag"]
+[ext_resource type="Texture2D" uid="uid://ngkvtirttge2" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/HP/HP-Bar.png" id="8_jej6c"]
+[ext_resource type="Texture2D" uid="uid://b06p6s31gst63" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/HP/HP.png" id="9_f1ej7"]
+[ext_resource type="Script" uid="uid://us4pjwlvp223" path="res://scripts/Player_info_Ui/bar_health.gd" id="10_oprun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smehm"]
 size = Vector2(63.180523, 133.03)
@@ -73,6 +79,31 @@ shape = SubResource("RectangleShape2D_smehm")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_dqkch")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StemmaBar2" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 213.0
+offset_top = 194.0
+offset_right = 317.0
+offset_bottom = 259.0
+scale = Vector2(2.0127301, 2.7410173)
+texture_under = ExtResource("5_y4r1p")
+texture_progress = ExtResource("6_d2wvv")
+script = ExtResource("7_3v2ag")
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.031000001
+offset_left = 185.0
+offset_top = 166.0
+offset_right = 199.68
+offset_bottom = 185.912
+scale = Vector2(2.9374156, 2.6305466)
+texture_under = ExtResource("8_jej6c")
+texture_progress = ExtResource("9_f1ej7")
+script = ExtResource("10_oprun")
 
 [connection signal="animation_finished" from="Anim" to="." method="_on_anim_animation_finished"]
 [connection signal="area_entered" from="MeleeHitbox" to="." method="_on_melee_hitbox_area_entered"]
