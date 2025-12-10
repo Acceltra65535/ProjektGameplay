@@ -65,8 +65,8 @@ A sample dialogue script I wrote to push the story forward: [DialogueScript] (fi
 
 ### Resources used:
 
-- [Chatbox] (https://youtu.be/7c7aZTUITD4?si=ime2pJTvMtp_OIQz)
-- [Save&Load] (https://youtu.be/wSq1QJ-g91M?si=ZH1QeEi7BJYlGch4)
+- [Chatbox](https://youtu.be/7c7aZTUITD4?si=ime2pJTvMtp_OIQz)
+- [Save&Load](https://youtu.be/wSq1QJ-g91M?si=ZH1QeEi7BJYlGch4)
 
 ## Main role:Props Zijian Li
 
