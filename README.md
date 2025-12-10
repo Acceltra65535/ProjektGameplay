@@ -14,6 +14,7 @@ stripped of hope. Along the journey, the player meets other survivors—each wit
 
 # Main Roles #
 - User Interface & Narrative design: William Yu
+- Map design: Fanxi Xu
 
 
 ## User Interface (William Yu)
