@@ -61,7 +61,7 @@ To expand on that, I developed the StoryDialogueLibrary, a scriptable system tha
 
 When dialogue lines include player choices, the system transitions smoothly into an interactive mode, displaying dynamically generated buttons based on DialogueChoice data. These choices feed directly into story flags and determine the path through future dialogue groups, creating branching interactions that feel meaningful. Because the entire system is data-driven and modular, we’re able to maintain a consistent pipeline from authored narrative to in-game presentation—where tone, pacing, and player interaction all work together. The result is a story layer that not only feels integrated with gameplay, but also preserves the distinct voice and thematic direction of each character.
 
-A sample dialogue script I wrote to push the story forward: [DialogueScript] (final-proj/dialogues/DialogueScipts.docx)
+A sample dialogue script I wrote to push the story forward: [DialogueScript](final-proj/dialogues/DialogueScipts.docx)
 
 ### Resources used:
 
