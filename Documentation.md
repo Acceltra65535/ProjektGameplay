@@ -1,13 +1,19 @@
 # Game Basic Information #
-
+The game is a story-driven survival RPG set in a post-apocalyptic world where every choice affects the player’s fate
+and the world’s state. Players must manage resources and health while exploring decayed cities, forests, and ruins. Combat uses a real-time action system blending melee, ranged, and improvised weapons. The survival mechanics emphasize scarcity and strategy—deciding when to fight, flee, trade, or rest can mean the difference between life and death. Environmental hazards like radiation, weather, and hunger add constant tension, requiring tactical planning and emotional resilience.
 ## Summary ##
-
+The aesthetic design will be 2D retro-futuristic, pixel-art post-apocalyptic backgrounds with pixel main characters
+Similar artistic designs are Long Gone, Kingdom. The action system will look like Celeste that includes dash and vertical movement, interacting with objects like doors/ladders will look like Rust so as long as you approach the instances you can interact. The crafting system will look like other survival games with a set of raw materials that you can collect then use them to synthesize a variety of gears, imaging how you can make different types of bullets in Resident Evil with only powder and metals. 
 
 ## Gameplay Explanation ##
+Players can interact with the environment and other survivors. Each encounter presents multiple paths—helping 
+strangers may earn allies or betrayals, while ignoring others might secure short-term safety but long-term loneliness. Players can scavenge materials and craft gears, shaping their personal survival space. The environment itself tells silent stories through abandoned buildings, graffiti, and remnants of the old world, inviting players to piece together humanity’s collapse. Dynamic AI ensures that NPCs and monsters react differently depending on the player’s actions and reputation, creating a living, reactive world.
 
+The story follows a lone wanderer navigating the ruins of civilization, struggling to hold onto humanity in a world 
+stripped of hope. Along the journey, the player meets other survivors—each with their own tragic pasts, motives, and moral boundaries. Through dialogue choices and branching decisions, the player uncovers hidden truths about the apocalypse and faces hard moral dilemmas: who to save, who to sacrifice, and what kind of person to become in the end. 
 
 # Main Roles #
-Type our roles here
+- User Interface & Narrative design: William Yu
 
 
 ## User Interface (William Yu)
@@ -21,7 +27,7 @@ The main menu is the first interface the player encounters when launching the ga
 
 ### Save & load
 
-The save and load interface provides players with a convenient way to manage their game progress and is fully integrated into the main menu system. When the player selects Load from the main menu, the interface communicates with the SaveLoadManager to retrieve stored save files and display them in a structured list. Each save entry is generated using the game’s SceneData format, which captures essential information about the player state, scene, and inventory at the time of saving. The interface then allows the player to select a save slot and seamlessly transition back into the corresponding scene. Similarly, when creating new progress, the Start button initializes a fresh game state managed by the same system, ensuring consistency between new sessions and loaded ones. By connecting UI button signals directly to the save/load system, the menu acts as the central hub that guides the player into either continuing past adventures or beginning a new one.
+The save and load interface provides players with a convenient way to manage their game progress and is fully integrated into the main menu system. When the player selects Load from the main menu, the interface communicates with the [final-proj/scripts/UIs/Save&Load/save_load_manager.gd] to retrieve stored save files and display them in a structured list. Each save entry is generated using the game’s SceneData format, which captures essential information about the player state, scene, and inventory at the time of saving. The interface then allows the player to select a save slot and seamlessly transition back into the corresponding scene. Similarly, when creating new progress, the Start button initializes a fresh game state managed by the same system, ensuring consistency between new sessions and loaded ones. By connecting UI button signals directly to the save/load system, the menu acts as the central hub that guides the player into either continuing past adventures or beginning a new one.
 
 ### Inventory
 
@@ -44,7 +50,7 @@ Dialogue content is data-driven and stored in custom Resource files. A DialogueG
 
 When the game calls start_dialogue(group), the manager becomes active, shows the chatbox, and begins presenting lines with display_next_dialogue(). Clicking on the chatbox advances the conversation unless choices are currently visible, in which case the player must select a button. When choices appear, the manager duplicates the template button for each valid choice and connects their signals to _on_choice_selected(), which handles flag updates, branching, or scene transitions.
 
-A typewriter effect is handled using a tween, which is an embedded system in godot. When displaying a new line, the manager clears the text label and schedules a series of tween callbacks—each appending one character at a short interval—so the dialogue appears gradually. If the player clicks while text is still typing, the tween is canceled and the full line is shown instantly.
+A typewriter effect is handled using a tween[https://github.com/Acceltra65535/ProjektGameplay/blob/c0e447c07cc68c0c91ea6e5e91f6eea011a16387/final-proj/scripts/UIs/Dialogue/dialogue_manager.gd#L21], which is an embedded system in godot. When displaying a new line, the manager clears the text label and schedules a series of tween callbacks—each appending one character at a short interval—so the dialogue appears gradually. If the player clicks while text is still typing, the tween is canceled and the full line is shown instantly.
 
 ## Subrole:
 ### Narration and dialogue
@@ -54,6 +60,8 @@ As the narrative designer on the project, I built a modular dialogue system desi
 To expand on that, I developed the StoryDialogueLibrary, a scriptable system that procedurally assembles the introductory sequences for our three main characters: Elias, Mira, and Jonah. Each intro is made up of hand-authored dialogue beats, deliberately arranged to express character voice, emotional tone, and narrative motif. For example: Elias’s intro leans into themes of memory loss and guilt; Mira’s reflects her survival instincts, distrust, and sharp-edged humor; and Jonah’s explores societal amnesia and quiet philosophical unease. Each line in these sequences carries metadata—like speaker name, avatar ID, and camera-side placement—so we can layer in visual storytelling cues such as shifting perspectives, mirrored dialogues, and echo-like voice overlays.
 
 When dialogue lines include player choices, the system transitions smoothly into an interactive mode, displaying dynamically generated buttons based on DialogueChoice data. These choices feed directly into story flags and determine the path through future dialogue groups, creating branching interactions that feel meaningful. Because the entire system is data-driven and modular, we’re able to maintain a consistent pipeline from authored narrative to in-game presentation—where tone, pacing, and player interaction all work together. The result is a story layer that not only feels integrated with gameplay, but also preserves the distinct voice and thematic direction of each character.
+
+A sample dialogue script I wrote to push the story forward:
 
 ## Main role:Props Zijian Li
 
