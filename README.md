@@ -50,7 +50,7 @@ Dialogue content is data-driven and stored in custom Resource files. A DialogueG
 
 When the game calls start_dialogue(group), the manager becomes active, shows the chatbox, and begins presenting lines with display_next_dialogue(). Clicking on the chatbox advances the conversation unless choices are currently visible, in which case the player must select a button. When choices appear, the manager duplicates the template button for each valid choice and connects their signals to _on_choice_selected(), which handles flag updates, branching, or scene transitions.
 
-A typewriter effect is handled using a tween[https://github.com/Acceltra65535/ProjektGameplay/blob/c0e447c07cc68c0c91ea6e5e91f6eea011a16387/final-proj/scripts/UIs/Dialogue/dialogue_manager.gd#L21], which is an embedded system in godot. When displaying a new line, the manager clears the text label and schedules a series of tween callbacks—each appending one character at a short interval—so the dialogue appears gradually. If the player clicks while text is still typing, the tween is canceled and the full line is shown instantly.
+A typewriter effect is handled using a tween (https://github.com/Acceltra65535/ProjektGameplay/blob/c0e447c07cc68c0c91ea6e5e91f6eea011a16387/final-proj/scripts/UIs/Dialogue/dialogue_manager.gd#L21), which is an embedded system in godot. When displaying a new line, the manager clears the text label and schedules a series of tween callbacks—each appending one character at a short interval—so the dialogue appears gradually. If the player clicks while text is still typing, the tween is canceled and the full line is shown instantly.
 
 ## Subrole:
 ### Narration and dialogue
@@ -61,7 +61,12 @@ To expand on that, I developed the StoryDialogueLibrary, a scriptable system tha
 
 When dialogue lines include player choices, the system transitions smoothly into an interactive mode, displaying dynamically generated buttons based on DialogueChoice data. These choices feed directly into story flags and determine the path through future dialogue groups, creating branching interactions that feel meaningful. Because the entire system is data-driven and modular, we’re able to maintain a consistent pipeline from authored narrative to in-game presentation—where tone, pacing, and player interaction all work together. The result is a story layer that not only feels integrated with gameplay, but also preserves the distinct voice and thematic direction of each character.
 
-A sample dialogue script I wrote to push the story forward:
+A sample dialogue script I wrote to push the story forward: [DialogueScript] (final-proj/dialogues/DialogueScipts.docx)
+
+### Resources used:
+
+- [Chatbox] (https://youtu.be/7c7aZTUITD4?si=ime2pJTvMtp_OIQz)
+- [Save&Load] (https://youtu.be/wSq1QJ-g91M?si=ZH1QeEi7BJYlGch4)
 
 ## Main role:Props Zijian Li
 
