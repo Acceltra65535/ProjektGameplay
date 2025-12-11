@@ -491,7 +491,7 @@ A sample dialogue script I wrote to push the story forward: [DialogueScript](fin
 
 ---
 
-## Main role:Props Zijian Li
+## Main role:Props (Zijian Li)
 
 ## Item & Inventory System
 
