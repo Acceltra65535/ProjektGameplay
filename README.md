@@ -195,6 +195,11 @@ This closed-loop design creates natural, strong, and intuitive feedback, enhanci
 
 ## Multiplayer feature
 
+Developed using the Godot engine, the game features a local multiplayer co-op system. By refactoring the input processing logic and character instantiation mechanisms, we successfully embedded multiplayer interaction functionality into the existing single-player gameplay, supporting multiple controllers and split-screen/shared-screen co-op. In terms of technical details, we designed limited resource allocation and shared camera logic specifically for local multiplayer, significantly enhancing the game's replay value and social aspects.
+
+## Boss feature
+
+The basic movement logic for the boss character has been designed and implemented. This includes tracking, pre-attack warning signals, and multi-stage state transitions.
 
 ## Conclusion
 
