@@ -15,6 +15,8 @@ stripped of hope. Along the journey, the player meets other survivors—each wit
 # Main Roles #
 - Lead Developer, Gameplay & Systems Design: Siyun Chen
 - User Interface & Narrative design: William Yu
+- Systems and Tools Engineer: Alex Yuan
+- Main character Props: Zijian Li
 - Map design: Fanxi Xu
 
 ## Characters, Story & Scene Design (Siyun Chen)
@@ -487,6 +489,8 @@ A sample dialogue script I wrote to push the story forward: [DialogueScript](fin
 - [Chatbox](https://youtu.be/7c7aZTUITD4?si=ime2pJTvMtp_OIQz)
 - [Save&Load](https://youtu.be/wSq1QJ-g91M?si=ZH1QeEi7BJYlGch4)
 
+---
+
 ## Main role:Props Zijian Li
 
 ## Item & Inventory System
@@ -546,6 +550,8 @@ If partially stored → Updates remaining quantity and continues hovering
 If inventory is full → Remains stationary
 
 This system provides instant feedback (sound effects + animations) and effectively supports the game's pacing.
+
+---
 
 ## Buff Factory System
 
@@ -609,6 +615,7 @@ Player makes next action based on UI information
 
 This closed-loop design creates natural, strong, and intuitive feedback, enhancing the overall player experience.
 
+---
 
 ## Systems and Tools Engineer (Alex Yuan)
 
@@ -623,6 +630,27 @@ The basic movement logic for the boss character has been designed and implemente
 ## Sub role
 
 Find bug and fix it.
+
+---
+
+## Map/Scene Design (Fanxi Xu)
+
+## Stage 2
+
+![](./Documentation_Images/Stage2.png)
+
+## Stage 3
+
+![](./Documentation_Images/Stage3.png)
+![](./Documentation_Images/Stage3.2.png)
+![](./Documentation_Images/Stage3.3.png)
+
+## Stage 4
+
+![](./Documentation_Images/Stage4.png)
+![](./Documentation_Images/Stage4.2.png)
+
+---
 
 ## Conclusion
 
