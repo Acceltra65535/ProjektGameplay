@@ -69,8 +69,6 @@ Impact sounds in [audio/Hits](final-proj/audio/Hits) include Metal Hit (6 variat
 
 I designed and implemented the complete character system featuring three distinct playable classes. Rather than simply providing cosmetic differences, each character has fundamentally different gameplay mechanics that affect combat strategy, exploration pace, and resource management.
 
-![](./Documentation_Images/CharacterSelect.gif)
-
 The character system architecture is built around the `CharacterClass` enum defined in [Player.gd](final-proj/scripts/Player.gd): When the game starts, the `_apply_class_stats()` function reads `Global.selected_class` and configures all character parameters accordingly. This function is also called when loading a saved game to ensure stats match the saved character selection.
 
 **Character Stats Comparison:**
@@ -123,7 +121,7 @@ To prevent repetitive audio, the player script tracks the last-used index for ea
 
 ### Projectile System
 
-I wrote the complete projectile system in [scripts/projectile.gd](final-proj/scripts/projectile.gd). When a player fires their weapon, `_spawn_projectile()` (Player.gd lines 537-555) instantiates a projectile at the muzzle position and calls the `setup()` method with direction, damage, shooter reference, and default hit material.
+I wrote the complete projectile system in [scripts/projectile.gd](final-proj/scripts/projectile.gd). When a player fires their weapon, `_spawn_projectile()` instantiates a projectile at the muzzle position and calls the `setup()` method with direction, damage, shooter reference, and default hit material.
 
 The projectile physics work as follows:
 
@@ -145,13 +143,13 @@ I created the **Raider AK47** variant ([scripts/enemies/enemy_raider_AK47.gd](fi
 
 **Critical Bugs Fixed:**
 
-1. **Sprite Offset Drift**: The original raider sprite was not centered, causing the visual position to shift dramatically when changing facing direction. I implemented a `sprite_left_offset` system (line 16) that compensates for asymmetric sprites by applying an X-axis offset when `flip_h` is true. The `_update_directional_offsets()` function (lines 160-197) recalculates all node positions whenever the enemy changes direction.
+1. **Sprite Offset Drift**: The original raider sprite was not centered, causing the visual position to shift dramatically when changing facing direction. I implemented a `sprite_left_offset` system that compensates for asymmetric sprites by applying an X-axis offset when `flip_h` is true. The `_update_directional_offsets()` function (lines 160-197) recalculates all node positions whenever the enemy changes direction.
 
 2. **Player-Enemy Collision Blocking**: Players would get stuck against enemies, unable to pass through them. I reconfigured the collision layers which allows physical separation while still permitting Area2D-based damage detection.
 
 3. **Dead Enemy Bullet Blocking**: When enemies died, their collision shapes remained active, blocking player projectiles. The death state now properly disables all collision.
 
-4. **Directional Node Misalignment**: Attack areas, hurtboxes, and shoot points were not mirroring correctly. I implemented an offset caching system (lines 98-110) that stores original positions on `_ready()` and applies proper mirroring in `_update_directional_offsets()`.
+4. **Directional Node Misalignment**: Attack areas, hurtboxes, and shoot points were not mirroring correctly. I implemented an offset caching system that stores original positions on `_ready()` and applies proper mirroring in `_update_directional_offsets()`.
 
 **Behavior System:**
 
@@ -169,7 +167,7 @@ The raider uses a finite state machine with two configurable behavior types:
 - Chases player within `patrol_chase_distance` (default 300 pixels)
 - Uses ranged attacks when player is beyond `shoot_range` (default 200 pixels)
 
-The state machine (lines 133-157) handles transitions between: `IDLE`, `PATROL`, `CHASE`, `ATTACK`, `AIMING`, `SHOOT`, `RECHARGE`, `COOLDOWN`, `HURT`, `DEATH`, and `RETURNING`.
+The state machine handles transitions between: `IDLE`, `PATROL`, `CHASE`, `ATTACK`, `AIMING`, `SHOOT`, `RECHARGE`, `COOLDOWN`, `HURT`, `DEATH`, and `RETURNING`.
 
 **Raider AK47 Variant:**
 
@@ -235,7 +233,6 @@ I edited the character portrait images from the original sprite sheets to create
 The original dialogue system provided basic text display functionality but lacked the features necessary for a story-driven game. I performed extensive modifications to transform it into a robust narrative engine capable of supporting branching storylines, player choices, and dynamic world state.
 
 ![](./Documentation_Images/DialogueSystem.gif)
-*(Place a GIF here showing dialogue with choices and character freezing)*
 
 **Original System Limitations:**
 
@@ -247,21 +244,7 @@ The original dialogue system provided basic text display functionality but lacke
 
 **Freeze System Implementation:**
 
-I implemented a freeze mechanism in [CityOutskirtsIntro.gd](final-proj/scripts/CityOutskirtsIntro.gd) that halts all gameplay during dialogue. When `dialogue_started` signal is emitted (lines 113-125):
-
-```gdscript
-func _on_dialogue_started() -> void:
-    var player := get_tree().get_first_node_in_group("Player")
-    if player != null and player.has_method("set_frozen"):
-        player.set_frozen(true)
-
-    var enemies := get_tree().get_nodes_in_group("Enemy")
-    for e in enemies:
-        if e.has_method("set_frozen"):
-            e.set_frozen(true)
-```
-
-Both Player and enemy scripts implement `set_frozen()` which sets an `is_frozen` flag. When frozen, entities still apply gravity (so they don't float), but ignore all input and commands. This ensures characters land properly if dialogue triggers mid-jump while preventing any actions during conversation.
+I implemented a freeze mechanism in [CityOutskirtsIntro.gd](final-proj/scripts/CityOutskirtsIntro.gd) that halts all gameplay during dialogue. When `dialogue_started` signal is emitted: Both Player and enemy scripts implement `set_frozen()` which sets an `is_frozen` flag. When frozen, entities still apply gravity (so they don't float), but ignore all input and commands. This ensures characters land properly if dialogue triggers mid-jump while preventing any actions during conversation.
 
 **Choice System Architecture:**
 
@@ -283,7 +266,7 @@ This structure enables:
 - **Branching conversations**: Choices can redirect to entirely different DialogueGroups
 - **Scene transitions**: Choices can directly load new scenes (used for area transitions)
 
-The [DialogueManager](final-proj/scripts/UIs/Dialogue/dialogue_manager.gd) handles choice display in `_show_choices()` (lines 157-200). It dynamically creates buttons by cloning a template, filters out choices that don't meet flag requirements, and connects button signals to `_on_choice_selected()` for handling the player's decision.
+The [DialogueManager](final-proj/scripts/UIs/Dialogue/dialogue_manager.gd) handles choice display in `_show_choices()`. It dynamically creates buttons by cloning a template, filters out choices that don't meet flag requirements, and connects button signals to `_on_choice_selected()` for handling the player's decision.
 
 **Story Flag System:**
 
@@ -317,7 +300,7 @@ This variant requires the player to press an interact key while inside the trigg
 - **Multi-input support**: Checks for configured action, falls back to "ui_accept", then raw E key
 - **Hint label management**: Automatically creates and positions a Label node if none is assigned
 
-The interact check in `_check_interact_input()` (lines 75-94) handles edge cases like action not existing in InputMap and implements "just pressed" detection for raw key input using metadata flags.
+The interact check in `_check_interact_input()` handles edge cases like action not existing in InputMap and implements "just pressed" detection for raw key input using metadata flags.
 
 **Scene Transition Dialogues:**
 
@@ -330,7 +313,6 @@ For moving between game areas, I created [scene_transition_dialogues.gd](final-p
 I designed and implemented the first complete playable scene, [CityOutskirtsIntro.tscn](final-proj/scenes/CityOutskirtsIntro.tscn), which serves as the template for all subsequent levels. This scene demonstrates the integration of parallax backgrounds, enemy placement, dialogue triggering, and weather effects.
 
 ![](./Documentation_Images/CityOutskirts.gif)
-*(Place a GIF here showing parallax scrolling and gameplay)*
 
 **Parallax Background System:**
 
@@ -343,23 +325,17 @@ The scene uses Godot's Parallax2D nodes arranged in four depth layers:
 | Near | ParallaxBackground/Layer_near | 0.7x | Nearby walls and structures |
 | Ground | Ground (StaticBody2D) | 1.0x (no parallax) | Walkable road surface |
 
-Each layer contains multiple sprite tiles positioned to create seamless horizontal scrolling. The z_index values (-4, -3, -2) ensure proper depth ordering without interfering with gameplay elements.
+Each layer contains multiple sprite tiles positioned to create seamless horizontal scrolling. The z_index values ensure proper depth ordering without interfering with gameplay elements.
 
 **Scene Controller ([CityOutskirtsIntro.gd](final-proj/scripts/CityOutskirtsIntro.gd)):**
 
 The controller script handles:
 
-1. **Dialogue manager discovery** (lines 88-98): Searches for DialogueManager node by direct path, then by group
-2. **Signal connections** (lines 19-20): Connects to `dialogue_started` and `dialogue_finished` for freeze control
-3. **Intro dialogue triggering** (lines 72-85): First key press starts the character-appropriate intro sequence
-4. **Save/load integration** (lines 41-69): Applies loaded game state including position and facing direction
-5. **Character-based dialogue routing** (lines 101-110): Maps `Global.selected_class` to character IDs
-
-**Enemy Placement:**
-
-The scene includes both raider types to demonstrate combat variety:
-- `EnemyRaider` at position (1727, 523) with PATROL behavior - walks back and forth, uses melee
-- `EnemyRaider_AK47` at position (2876, 521) - stationary guard with ranged attacks
+1. **Dialogue manager discovery**: Searches for DialogueManager node by direct path, then by group
+2. **Signal connections**: Connects to `dialogue_started` and `dialogue_finished` for freeze control
+3. **Intro dialogue triggering**: First key press starts the character-appropriate intro sequence
+4. **Save/load integration**: Applies loaded game state including position and facing direction
+5. **Character-based dialogue routing**): Maps `Global.selected_class` to character IDs
 
 ---
 
@@ -368,27 +344,16 @@ The scene includes both raider types to demonstrate combat variety:
 I created the opening cutscene that plays before character selection, establishing the game's atmosphere and narrative context. The cutscene is implemented in [Cutscene_Intro.tscn](final-proj/scenes/cutscene/Cutscene_Intro.tscn) and controlled by [CutsceneIntro.gd](final-proj/scripts/CutsceneIntro.gd).
 
 ![](./Documentation_Images/IntroCutscene.gif)
-*(Place a GIF here showing the satellite animation and broadcast text)*
 
 **Visual Composition:**
 
 The cutscene layers multiple visual elements:
-- **SpaceBackground**: Blue-tinted space backdrop (4.2x scaled for screen coverage)
+- **SpaceBackground**: Blue-tinted space backdrop
 - **Stars**: Overlay texture adding depth to space scene
-- **Satellite**: Animated orbital cannon using `AnimatedTexture` with 4 frames at 2.3x speed
+- **Satellite**: Animated orbital cannon using `AnimatedTexture`
 - **CityBackground**: War-torn cityscape that fades in during transition
 - **FadeRect/FlashRect**: ColorRect nodes for fade and flash effects
 - **BroadcastLabel**: RichTextLabel for the ominous government message
-
-**Animation Sequence:**
-
-The cutscene orchestrates a series of Tween-based animations:
-
-1. **fade_in_from_black()** (lines 34-37): 1.5-second fade from black, easing out
-2. **show_space_with_satellite()** (lines 40-44): Satellite moves from off-screen right (1600, 300) to left (200, 300) over 4 seconds
-3. **transition_to_city()** (lines 47-60): Cross-fade between space and city backgrounds over 2 seconds, then fade out satellite
-4. **white_flash_with_broadcast()** (lines 63-78): Quick white flash (0.2s in, 1s out), then broadcast message fades in
-5. **fade_out_and_change_scene()** (lines 81-90): Final fade to black, then load CharacterSelect scene
 
 The broadcast message reads: "Global Memory Calibration Protocol initiated. Please remain calm; this is merely routine maintenance." This establishes the dystopian setting where memory manipulation is normalized.
 
@@ -398,25 +363,15 @@ The broadcast message reads: "Global Memory Calibration Protocol initiated. Plea
 
 I designed and implemented the character selection interface [CharacterSelect.tscn](final-proj/scenes/CharacterSelect.tscn) and its controller [CharacterSelect.gd](final-proj/scripts/CharacterSelect.gd). This screen bridges the intro cutscene and actual gameplay, allowing players to choose their protagonist.
 
-![](./Documentation_Images/CharacterSelect.png)
-*(Place a screenshot of the character selection screen)*
+![](./Documentation_Images/CharacterSelect.gif)
 
 **UI Layout:**
 
 The interface uses the Paper UI System assets for a thematic appearance:
 - **Background**: NinePatchRect with book/desk texture
-- **Title Label**: "Select Your Character" with custom LabelSettings (120pt font)
+- **Title Label**: "Select Your Character" with custom LabelSettings
 - **Portrait containers**: Three panels displaying cropped character portraits
 - **Selection buttons**: Styled buttons beneath each portrait
-
-**Selection Logic:**
-
-The script connects button signals to handler functions (lines 10-12):
-```gdscript
-btn_balanced.pressed.connect(_on_balanced_pressed)
-btn_speed.pressed.connect(_on_speed_pressed)
-btn_tank.pressed.connect(_on_tank_pressed)
-```
 
 Each handler sets `Global.selected_class` (0, 1, or 2) and calls `_start_game()`, which loads the CityOutskirtsIntro scene. The selected class value persists in the Global autoload, ensuring all subsequent systems (Player stats, dialogue selection, story triggers) respond appropriately.
 
@@ -427,6 +382,8 @@ Each handler sets `Global.selected_class` (0, 1, or 2) and calls `_start_game()`
 I integrated the Weather2D shader-based weather system into gameplay scenes to enhance atmospheric immersion. The system is implemented through [Weather2D/sky_setting.tscn](final-proj/Weather2D/sky_setting.tscn) which is instanced in level scenes.
 
 **Weather Features:**
+
+![](./Documentation_Images/Weather.gif)
 
 The Weather2D system provides:
 - **Dynamic sky gradients**: Smooth color transitions for time-of-day effects
@@ -440,7 +397,7 @@ The shaders are located in [Weather2D/shader/](final-proj/Weather2D/shader/):
 - `shader_raindrops_on_screen.gdshader`: Screen-space water droplet overlay
 - `shader_water.gdshader`: Water surface reflections
 
-In CityOutskirtsIntro.tscn, the `sky_setting.tscn` is instanced (line 20 references the PackedScene) to add weather ambiance without requiring manual shader setup in each scene.
+In CityOutskirtsIntro.tscn, the `sky_setting.tscn` is instanced to add weather ambiance without requiring manual shader setup in each scene.
 
 ---
 
@@ -473,6 +430,8 @@ Throughout development, I identified and resolved numerous issues:
 - **Collision layer conflicts**: Resolved player-enemy-projectile interaction issues by properly configuring layer/mask bits
 - **Audio playback**: Fixed overlapping sounds and implemented variation systems to prevent repetition
 - **Save/load integration**: Ensured character selection persists through save/load cycles and stats are properly restored
+
+**See Narration and dialogue (William Yu & Siyun Chen)**
 
 ---
 
