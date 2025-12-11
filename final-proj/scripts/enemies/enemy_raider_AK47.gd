@@ -297,15 +297,12 @@ func _state_patrol(delta: float) -> void:
 
 
 func _state_chase() -> void:
-	# DEBUG: Print chase state info
-	print("[AK47] _state_chase called. target valid: ", is_instance_valid(target))
 
 	if not is_instance_valid(target):
 		_return_to_home_or_idle()
 		return
 
 	var distance_to_target: float = abs(target.global_position.x - global_position.x)
-	print("[AK47] Distance to target: ", distance_to_target, " shoot_range: ", shoot_range, " near_shoot_range: ", near_shoot_range)
 	var distance_from_home: float = abs(global_position.x - home_position.x)
 
 	# Determine max chase distance based on behavior type
@@ -634,12 +631,9 @@ func _on_animation_finished() -> void:
 
 # Signal callbacks
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	# DEBUG: Print when any body enters detection area
-	print("[AK47] Body entered DetectionArea: ", body.name, " Groups: ", body.get_groups())
 
 	# Detection is purely based on DetectionArea - no distance check needed
 	if body.is_in_group("Player"):
-		print("[AK47] Player detected! Setting target and changing to CHASE state")
 		target = body
 		# Start chasing from idle, patrol, or returning states
 		if current_state == State.IDLE or current_state == State.PATROL or current_state == State.RETURNING:

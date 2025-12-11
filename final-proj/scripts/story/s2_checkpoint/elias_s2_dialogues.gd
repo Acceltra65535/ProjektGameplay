@@ -99,4 +99,3 @@ static func build_terminal() -> DialogueGroup:
 
 	group.diaglogue_list = list
 	return group
-

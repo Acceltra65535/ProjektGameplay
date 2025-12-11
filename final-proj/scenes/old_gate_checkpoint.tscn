@@ -1,57 +1,57 @@
 [gd_scene load_steps=30 format=3 uid="uid://b86qa70uh8tqp"]
 
-[ext_resource type="Script" uid="uid://doto5p6akygop" path="res://scripts/CityOutskirtsIntro.gd" id="1_ecj4f"]
-[ext_resource type="Texture2D" uid="uid://cuaujhpos668t" path="res://assets/NeonNightCityTileset/tile_plataforma.png" id="2_bcuri"]
-[ext_resource type="Texture2D" uid="uid://cbymty2wt8bw2" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War1/Pale/sky.png" id="3_7h4bs"]
-[ext_resource type="Texture2D" uid="uid://d3nq2wpd0518y" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/sky.png" id="3_ly1ci"]
-[ext_resource type="Texture2D" uid="uid://bb6njekxyxf3o" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses4.png" id="4_fmxss"]
-[ext_resource type="Texture2D" uid="uid://c5310mga87ysc" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses2.png" id="5_bcuri"]
-[ext_resource type="Texture2D" uid="uid://dj8xj4ssjerxe" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/wall.png" id="6_7h4bs"]
-[ext_resource type="Texture2D" uid="uid://dvt2e0dl7q2e7" path="res://assets/NeonNightCityTileset/tile_coisas.png" id="6_se6ya"]
-[ext_resource type="Texture2D" uid="uid://c55vhg70i8j5v" path="res://assets/NeonNightCityTileset/tile_fundo.png" id="7_6dj6g"]
-[ext_resource type="Texture2D" uid="uid://c7h5chypv85f2" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses1.png" id="7_se6ya"]
-[ext_resource type="Texture2D" uid="uid://ds2d4i3s4pu8d" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses3.png" id="8_6dj6g"]
-[ext_resource type="Texture2D" uid="uid://cmh1dqt3gbfbm" path="res://assets/NeonNightCityTileset/Sprites/Props/Props.png" id="8_g7s17"]
-[ext_resource type="Texture2D" uid="uid://nektt2sgimdp" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Pale/houses1.png" id="9_g7s17"]
-[ext_resource type="PackedScene" uid="uid://d1qodutatnp6n" path="res://scenes/enemies/enemy_raider.tscn" id="10_vvpmc"]
-[ext_resource type="PackedScene" uid="uid://bh4nm21d28edw" path="res://scenes/enemies/enemy_raider_AK47.tscn" id="11_28x7y"]
-[ext_resource type="PackedScene" uid="uid://b30mqinvev5b3" path="res://player.tscn" id="12_kh81o"]
-[ext_resource type="PackedScene" uid="uid://disbb1knb7m3q" path="res://scenes/crate.tscn" id="13_7f5q7"]
-[ext_resource type="Resource" uid="uid://du5nxt14mek2x" path="res://resources/loot_tables/crate_common.tres" id="14_m5uh8"]
-[ext_resource type="Script" uid="uid://318gphvcyns7" path="res://scripts/UIs/Save&Load/save_load_manager.gd" id="15_t4kcd"]
-[ext_resource type="PackedScene" uid="uid://85yiknyrxbim" path="res://scenes/Inventory.tscn" id="16_hpvyv"]
-[ext_resource type="PackedScene" uid="uid://4le6yslmtifu" path="res://scenes/chatbox.tscn" id="17_3mb7f"]
-[ext_resource type="PackedScene" uid="uid://daf0l6760wxfn" path="res://Weather2D/sky_setting.tscn" id="18_cxv8g"]
+[ext_resource type="Script" uid="uid://doto5p6akygop" path="res://scripts/CityOutskirtsIntro.gd" id="1_jgsiy"]
+[ext_resource type="Texture2D" uid="uid://cuaujhpos668t" path="res://assets/NeonNightCityTileset/tile_plataforma.png" id="2_4d7gx"]
+[ext_resource type="Texture2D" uid="uid://cbymty2wt8bw2" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War1/Pale/sky.png" id="3_8t13i"]
+[ext_resource type="Texture2D" uid="uid://d3nq2wpd0518y" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/sky.png" id="4_8g4xi"]
+[ext_resource type="Texture2D" uid="uid://bb6njekxyxf3o" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses4.png" id="5_06rkw"]
+[ext_resource type="Texture2D" uid="uid://dvt2e0dl7q2e7" path="res://assets/NeonNightCityTileset/tile_coisas.png" id="6_wbnvr"]
+[ext_resource type="Texture2D" uid="uid://c55vhg70i8j5v" path="res://assets/NeonNightCityTileset/tile_fundo.png" id="7_at7ib"]
+[ext_resource type="Texture2D" uid="uid://cmh1dqt3gbfbm" path="res://assets/NeonNightCityTileset/Sprites/Props/Props.png" id="8_g1hu8"]
+[ext_resource type="Texture2D" uid="uid://c5310mga87ysc" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses2.png" id="9_0d048"]
+[ext_resource type="Texture2D" uid="uid://dj8xj4ssjerxe" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/wall.png" id="10_x061t"]
+[ext_resource type="Texture2D" uid="uid://c7h5chypv85f2" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses1.png" id="11_atf8l"]
+[ext_resource type="Texture2D" uid="uid://ds2d4i3s4pu8d" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses3.png" id="12_vql6y"]
+[ext_resource type="Texture2D" uid="uid://nektt2sgimdp" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Pale/houses1.png" id="13_nx2m1"]
+[ext_resource type="PackedScene" uid="uid://d1qodutatnp6n" path="res://scenes/enemies/enemy_raider.tscn" id="14_tig6u"]
+[ext_resource type="PackedScene" uid="uid://bh4nm21d28edw" path="res://scenes/enemies/enemy_raider_AK47.tscn" id="15_yr0ig"]
+[ext_resource type="PackedScene" uid="uid://b30mqinvev5b3" path="res://player.tscn" id="16_rogkh"]
+[ext_resource type="PackedScene" uid="uid://disbb1knb7m3q" path="res://scenes/crate.tscn" id="17_dmmqb"]
+[ext_resource type="Resource" uid="uid://du5nxt14mek2x" path="res://resources/loot_tables/crate_common.tres" id="18_es3re"]
+[ext_resource type="Script" uid="uid://318gphvcyns7" path="res://scripts/UIs/Save&Load/save_load_manager.gd" id="19_2ky0q"]
+[ext_resource type="PackedScene" uid="uid://85yiknyrxbim" path="res://scenes/Inventory.tscn" id="20_o2shc"]
+[ext_resource type="PackedScene" uid="uid://4le6yslmtifu" path="res://scenes/chatbox.tscn" id="21_ivg7i"]
+[ext_resource type="PackedScene" uid="uid://daf0l6760wxfn" path="res://Weather2D/sky_setting.tscn" id="22_j36lf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78awf"]
 size = Vector2(4593, 48.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vvpmc"]
-atlas = ExtResource("2_bcuri")
+atlas = ExtResource("2_4d7gx")
 region = Rect2(0, 248, 544, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_28x7y"]
-atlas = ExtResource("2_bcuri")
+atlas = ExtResource("2_4d7gx")
 region = Rect2(8, 296, 512, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kh81o"]
-atlas = ExtResource("6_se6ya")
+atlas = ExtResource("6_wbnvr")
 region = Rect2(240, 136, 368, 152)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7f5q7"]
-atlas = ExtResource("7_6dj6g")
+atlas = ExtResource("7_at7ib")
 region = Rect2(0, 8, 232, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m5uh8"]
-atlas = ExtResource("7_6dj6g")
+atlas = ExtResource("7_at7ib")
 region = Rect2(224, 128, 232, 152)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4kcd"]
-atlas = ExtResource("8_g7s17")
+atlas = ExtResource("8_g1hu8")
 region = Rect2(0, 816, 584, 72)
 
 [node name="GameRoot" type="Node2D"]
-script = ExtResource("1_ecj4f")
+script = ExtResource("1_jgsiy")
 
 [node name="Test_Level" type="Label" parent="."]
 offset_right = 40.0
@@ -98,13 +98,13 @@ scroll_scale = Vector2(0.1, 0.1)
 [node name="Sky" type="Sprite2D" parent="ParallaxBackground/Layer_far"]
 position = Vector2(2365, 301)
 scale = Vector2(2.4718747, 0.81296295)
-texture = ExtResource("3_7h4bs")
+texture = ExtResource("3_8t13i")
 
 [node name="Tile_0" type="Sprite2D" parent="ParallaxBackground/Layer_far"]
 visible = false
 position = Vector2(2295, 405)
 scale = Vector2(2.386979, 1)
-texture = ExtResource("3_ly1ci")
+texture = ExtResource("4_8g4xi")
 
 [node name="Layer_mid" type="Parallax2D" parent="ParallaxBackground"]
 z_index = -3
@@ -113,17 +113,17 @@ scroll_scale = Vector2(0.3, 0.3)
 [node name="Tile_0" type="Sprite2D" parent="ParallaxBackground/Layer_mid"]
 position = Vector2(732, 390)
 scale = Vector2(0.76927084, 0.6638889)
-texture = ExtResource("4_fmxss")
+texture = ExtResource("5_06rkw")
 
 [node name="Tile_1" type="Sprite2D" parent="ParallaxBackground/Layer_mid"]
 position = Vector2(2302.9998, 377)
 scale = Vector2(0.8736978, 0.74861103)
-texture = ExtResource("4_fmxss")
+texture = ExtResource("5_06rkw")
 
 [node name="Tile_2" type="Sprite2D" parent="ParallaxBackground/Layer_mid"]
 position = Vector2(3929.25, 381.00003)
 scale = Vector2(0.820573, 0.6638889)
-texture = ExtResource("4_fmxss")
+texture = ExtResource("5_06rkw")
 
 [node name="Layer_near" type="Parallax2D" parent="ParallaxBackground"]
 z_index = -2
@@ -198,77 +198,77 @@ texture = SubResource("AtlasTexture_t4kcd")
 visible = false
 position = Vector2(336, 426)
 scale = Vector2(0.34999996, 0.3361111)
-texture = ExtResource("5_bcuri")
+texture = ExtResource("9_0d048")
 
 [node name="Tile_1" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
 visible = false
 position = Vector2(2108, 416)
 scale = Vector2(0.34999996, 0.3361111)
-texture = ExtResource("5_bcuri")
+texture = ExtResource("9_0d048")
 
 [node name="Tile_2" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
 visible = false
 position = Vector2(1005, 423)
 scale = Vector2(0.34999996, 0.3361111)
-texture = ExtResource("6_7h4bs")
+texture = ExtResource("10_x061t")
 
 [node name="Tile_3" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
 visible = false
 position = Vector2(1563, 412.99988)
 scale = Vector2(0.34999996, 0.3361111)
-texture = ExtResource("7_se6ya")
+texture = ExtResource("11_atf8l")
 
 [node name="Tile_4" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
 visible = false
 position = Vector2(2763, 447.00003)
 scale = Vector2(0.34999996, 0.3361111)
-texture = ExtResource("8_6dj6g")
+texture = ExtResource("12_vql6y")
 
 [node name="Tile_5" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
 visible = false
 position = Vector2(3501, 412)
 scale = Vector2(0.34999996, 0.3361111)
-texture = ExtResource("6_7h4bs")
+texture = ExtResource("10_x061t")
 
 [node name="Tile_6" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
 visible = false
 position = Vector2(4188, 308)
 scale = Vector2(0.521875, 0.55601853)
-texture = ExtResource("9_g7s17")
+texture = ExtResource("13_nx2m1")
 
-[node name="EnemyRaider" parent="." instance=ExtResource("10_vvpmc")]
+[node name="EnemyRaider" parent="." instance=ExtResource("14_tig6u")]
 position = Vector2(1727, 523)
 scale = Vector2(1.5, 1.5)
 behavior_type = 1
 attack_damage = 15
 bullet_damage = 10.0
 
-[node name="EnemyRaider_AK47" parent="." instance=ExtResource("11_28x7y")]
+[node name="EnemyRaider_AK47" parent="." instance=ExtResource("15_yr0ig")]
 position = Vector2(2876, 521)
 scale = Vector2(1.5, 1.5)
 
-[node name="Player" parent="." instance=ExtResource("12_kh81o")]
+[node name="Player" parent="." instance=ExtResource("16_rogkh")]
 collision_mask = 11
 
-[node name="Crate" parent="." instance=ExtResource("13_7f5q7")]
+[node name="Crate" parent="." instance=ExtResource("17_dmmqb")]
 position = Vector2(1272, 573.00006)
 rotation = 1.5707964
 scale = Vector2(3, 3)
 collision_layer = 8
-loot_table = ExtResource("14_m5uh8")
+loot_table = ExtResource("18_es3re")
 
 [node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource("15_t4kcd")
+script = ExtResource("19_2ky0q")
 
-[node name="Inventory" parent="UI" instance=ExtResource("16_hpvyv")]
+[node name="Inventory" parent="UI" instance=ExtResource("20_o2shc")]
 
-[node name="DialogueManager" parent="UI" groups=["DialogueManager"] instance=ExtResource("17_3mb7f")]
+[node name="DialogueManager" parent="UI" groups=["DialogueManager"] instance=ExtResource("21_ivg7i")]
 offset_left = 18.0
 offset_top = 9.0
 offset_right = 18.0
 offset_bottom = 9.0
 
-[node name="SkySetting" parent="UI" instance=ExtResource("18_cxv8g")]
+[node name="SkySetting" parent="UI" instance=ExtResource("22_j36lf")]
 visible = false
 rainAmount = 0.20300000000000007
 rainDelta = 0.0

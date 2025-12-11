@@ -5,10 +5,10 @@ class_name StoryDialogueLibrary
 # Story Dialogue Library
 # =============================================================================
 # Scenes:
-#   S1 - City Outskirts (城市荒郊)
-#   S2 - Old Gate Checkpoint (旧记忆关卡口)
-#   S3 - Grey Bazaar Ruins (灰市残骸)
-#   S4 - Perimeter Relay Substation (外环中继站)
+#   S1 - City Outskirts
+#   S2 - Old Gate Checkpoint
+#   S3 - Grey Bazaar Ruins
+#   S4 - Perimeter Relay Substation
 #
 # Characters: elias, mira, jonah
 # =============================================================================

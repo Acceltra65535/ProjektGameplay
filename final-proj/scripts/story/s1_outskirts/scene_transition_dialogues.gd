@@ -68,13 +68,13 @@ static func _build_elias_transition() -> DialogueGroup:
 	d.has_choices = true
 
 	var choice_go := DialogueChoice.new()
-	choice_go.choice_text = "前往旧检查站"
+	choice_go.choice_text = "Go to Old Gate Checkpoint"
 	choice_go.change_scene_path = SCENE_S2_CHECKPOINT
 	choice_go.set_flag = "s1_completed_elias"
 	choice_go.flag_value = true
 
 	var choice_stay := DialogueChoice.new()
-	choice_stay.choice_text = "再看看这里"
+	choice_stay.choice_text = "Now look here"
 	# No scene change - just closes dialogue
 
 	d.choices = [choice_go, choice_stay]
@@ -106,13 +106,13 @@ static func _build_mira_transition() -> DialogueGroup:
 	d.has_choices = true
 
 	var choice_go := DialogueChoice.new()
-	choice_go.choice_text = "前往灰市"
+	choice_go.choice_text = "Go to Grey Bazaar Ruins"
 	choice_go.change_scene_path = SCENE_S3_BAZAAR
 	choice_go.set_flag = "s1_completed_mira"
 	choice_go.flag_value = true
 
 	var choice_stay := DialogueChoice.new()
-	choice_stay.choice_text = "再看看这里"
+	choice_stay.choice_text = "Now look here"
 
 	d.choices = [choice_go, choice_stay]
 	list.append(d)
@@ -143,17 +143,16 @@ static func _build_jonah_transition() -> DialogueGroup:
 	d.has_choices = true
 
 	var choice_go := DialogueChoice.new()
-	choice_go.choice_text = "前往中继站"
+	choice_go.choice_text = "Go to Perimeter Relay"
 	choice_go.change_scene_path = SCENE_S4_RELAY
 	choice_go.set_flag = "s1_completed_jonah"
 	choice_go.flag_value = true
 
 	var choice_stay := DialogueChoice.new()
-	choice_stay.choice_text = "再看看这里"
+	choice_stay.choice_text = "Now look here"
 
 	d.choices = [choice_go, choice_stay]
 	list.append(d)
 
 	group.diaglogue_list = list
 	return group
-

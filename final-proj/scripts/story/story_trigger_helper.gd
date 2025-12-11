@@ -32,7 +32,7 @@ static func get_current_character_id() -> String:
 # =============================================================================
 
 # -----------------------------------------------------------------------------
-# S1 - CITY OUTSKIRTS (城市荒郊)
+# S1 - CITY OUTSKIRTS
 # -----------------------------------------------------------------------------
 # Scene: res://scenes/city_outskirts.tscn (or similar)
 #
@@ -55,12 +55,9 @@ static func get_current_character_id() -> String:
 #   scene_id: "s1"
 #   trigger_key: "transition"
 #   Notes: Shows character-specific dialogue with scene change choice
-#     - Elias → 旧检查站 (S2)
-#     - Mira  → 灰市 (S3)
-#     - Jonah → 中继站 (S4)
 
 # -----------------------------------------------------------------------------
-# S2 - OLD GATE CHECKPOINT (旧记忆关卡口)
+# S2 - OLD GATE CHECKPOINT
 # -----------------------------------------------------------------------------
 # Scene: res://scenes/old_gate_checkpoint.tscn
 #
@@ -89,7 +86,7 @@ static func get_current_character_id() -> String:
 #   set_flag_on_complete: "mira_marked_by_bureau"
 
 # -----------------------------------------------------------------------------
-# S3 - GREY BAZAAR RUINS (灰市残骸)
+# S3 - GREY BAZAAR RUINS
 # -----------------------------------------------------------------------------
 # Scene: res://scenes/grey_bazaar_ruins.tscn
 #
@@ -108,10 +105,10 @@ static func get_current_character_id() -> String:
 #   one_shot: true
 #   For Mira:  StoryDialogueLibrary.build_dialogue("s3", "mira", "vendor")
 #   For Jonah: StoryDialogueLibrary.build_dialogue("s3", "jonah", "rumors")
-#   interact_hint_text: "按 E 与摊贩交谈"
+#   interact_hint_text: "E"
 
 # -----------------------------------------------------------------------------
-# S4 - PERIMETER RELAY SUBSTATION (外环中继站)
+# S4 - PERIMETER RELAY SUBSTATION
 # -----------------------------------------------------------------------------
 # Scene: res://scenes/perimeter_relay.tscn
 #
@@ -132,5 +129,4 @@ static func get_current_character_id() -> String:
 #   For Jonah: StoryDialogueLibrary.build_dialogue("s4", "jonah", "terminal")
 #              Then: StoryDialogueLibrary.build_dialogue("s4", "jonah", "choice")
 #   set_flag_on_complete: "accessed_relay_terminal"
-#   interact_hint_text: "按 E 接入终端"
-
+#   interact_hint_text: "E"
