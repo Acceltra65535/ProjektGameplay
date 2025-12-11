@@ -201,6 +201,10 @@ Developed using the Godot engine, the game features a local multiplayer co-op sy
 
 The basic movement logic for the boss character has been designed and implemented. This includes tracking, pre-attack warning signals, and multi-stage state transitions.
 
+## Sub role
+
+Find bug and fix it.
+
 ## Conclusion
 
 These three systems collectively form the game's core feedback layer, tightly integrated with the combat system, character system, and level system. Their advantages include:
