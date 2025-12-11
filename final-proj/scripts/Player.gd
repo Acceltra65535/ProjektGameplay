@@ -115,8 +115,6 @@ var footstep_timer: float = 0.0
 #@onready var buff_system := get_node_or_null("BuffSystem")
 # Buff system and Ui bar
 var buff_system := Systembuff
-@onready var health_bar = $CanvasLayer/HealthBar2
-@onready var stamina_bar = $CanvasLayer/StemmaBar
 
 # Original local offsets for directional nodes
 var muzzle_original_offset: Vector2 = Vector2.ZERO

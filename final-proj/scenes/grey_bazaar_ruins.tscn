@@ -1,11 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://b86qa70uh8tqp"]
+[gd_scene load_steps=36 format=3 uid="uid://b86qa70uh8tqp"]
 
 [ext_resource type="Script" uid="uid://doto5p6akygop" path="res://scripts/CityOutskirtsIntro.gd" id="1_s6ug1"]
 [ext_resource type="Texture2D" uid="uid://c55vhg70i8j5v" path="res://assets/NeonNightCityTileset/tile_fundo.png" id="2_jaqcp"]
 [ext_resource type="Texture2D" uid="uid://dvt2e0dl7q2e7" path="res://assets/NeonNightCityTileset/tile_coisas.png" id="3_f7ng7"]
 [ext_resource type="Texture2D" uid="uid://cuaujhpos668t" path="res://assets/NeonNightCityTileset/tile_plataforma.png" id="4_7su1a"]
 [ext_resource type="Texture2D" uid="uid://ckfl0bbfn2joe" path="res://assets/NeonNightCityTileset/Sprites/Tilesets/Stairways.png" id="5_8q474"]
-[ext_resource type="Texture2D" uid="uid://b1n0yv4lwwcoq" path="res://assets/Humble Gift - Paper UI System v1.1/Sprites/Content/3 Progress Bars/5.png" id="6_mg4po"]
 [ext_resource type="Texture2D" uid="uid://c0gmy3icms5gb" path="res://assets/NeonNightCityTileset/Sprites/Backgrounds/Backgrounds_Sky.png" id="7_6mckx"]
 [ext_resource type="Texture2D" uid="uid://ctpm8mnwfnx73" path="res://assets/NeonNightCityTileset/Sprites/Backgrounds/Backgrounds_BuildingsBack.png" id="8_x1pfd"]
 [ext_resource type="Texture2D" uid="uid://v4bec6w8us73" path="res://assets/NeonNightCityTileset/Sprites/Backgrounds/Backgrounds_BuildingsMid.png" id="9_krp6s"]
@@ -150,8 +149,8 @@ scale = Vector2(4.765891, -1.3181198)
 texture = SubResource("AtlasTexture_28x7y")
 
 [node name="Stairways" type="Sprite2D" parent="Ground"]
-position = Vector2(1141, 417)
-scale = Vector2(12.602528, 5.801332)
+position = Vector2(1163.4242, 417)
+scale = Vector2(12.976264, 5.801332)
 texture = SubResource("AtlasTexture_hpvyv")
 
 [node name="TilePlataforma2" type="Sprite2D" parent="Ground"]
@@ -165,12 +164,6 @@ texture = SubResource("AtlasTexture_28x7y")
 [node name="Layer_far" type="Parallax2D" parent="ParallaxBackground"]
 z_index = -4
 scroll_scale = Vector2(0.1, 0.1)
-
-[node name="5" type="Sprite2D" parent="ParallaxBackground/Layer_far"]
-visible = false
-position = Vector2(2671.0002, -22.99997)
-scale = Vector2(387.1119, -216.34714)
-texture = ExtResource("6_mg4po")
 
 [node name="BackgroundsSky" type="Sprite2D" parent="ParallaxBackground/Layer_far"]
 position = Vector2(2257, 58.000004)
@@ -186,7 +179,8 @@ position = Vector2(536, 314)
 texture = ExtResource("8_x1pfd")
 
 [node name="BackgroundsBuildingsMid" type="Sprite2D" parent="ParallaxBackground/Layer_mid"]
-position = Vector2(1585, 323)
+position = Vector2(1582.5, 323)
+scale = Vector2(0.9952651, 1)
 texture = ExtResource("9_krp6s")
 
 [node name="BackgroundsBuildingsFar" type="Sprite2D" parent="ParallaxBackground/Layer_mid"]

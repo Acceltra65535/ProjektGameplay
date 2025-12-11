@@ -1,34 +1,119 @@
 extends Resource
 class_name StoryDialogueLibrary
 
-# This uses your existing Dialogue / DialogueGroup classes
-# Make sure dialogue.gd and dialogue_group.gd have:
-#   class_name Dialogue
-#   class_name DialogueGroup
+# =============================================================================
+# Story Dialogue Library
+# =============================================================================
+# Scenes:
+#   S1 - City Outskirts (城市荒郊)
+#   S2 - Old Gate Checkpoint (旧记忆关卡口)
+#   S3 - Grey Bazaar Ruins (灰市残骸)
+#   S4 - Perimeter Relay Substation (外环中继站)
+#
+# Characters: elias, mira, jonah
+# =============================================================================
 
-static func build_intro_for(character_id: String) -> DialogueGroup:
-	# Select which intro to build depending on the character id
-	match character_id:
-		"elias":
+# Shared avatar preloads
+static var _avatars_loaded := false
+static var avatar_elias: Texture2D
+static var avatar_mira: Texture2D
+static var avatar_jonah: Texture2D
+static var avatar_echo: Texture2D
+static var avatar_radio: Texture2D
+static var avatar_recorder: Texture2D
+static var avatar_vendor: Texture2D
+static var avatar_system: Texture2D
+
+
+static func _ensure_avatars() -> void:
+	if _avatars_loaded:
+		return
+	avatar_elias = preload("res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_1/talking.png")
+	avatar_mira = preload("res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_2/talk.png")
+	avatar_jonah = preload("res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_3/Talking.png")
+	avatar_echo = preload("res://assets/space_background_pack/Assets/Blue Version/layered/prop-planet-big.png")
+	avatar_radio = preload("res://assets/space_background_pack/RC Art - Orbital Cannon/Sprites/Type A Ion Cannon_5.png")
+	avatar_recorder = preload("res://assets/PostApocalypse_AssetPack_v1.1.2/Objects/Washing-machine.png")
+	avatar_vendor = avatar_radio  # Placeholder - can be changed
+	avatar_system = avatar_echo   # Placeholder - can be changed
+	_avatars_loaded = true
+
+
+# =============================================================================
+# Main Entry Points
+# =============================================================================
+
+## Build dialogue for a specific scene and character
+## scene_id: "s1", "s2", "s3", "s4"
+## character_id: "elias", "mira", "jonah"
+## trigger_key: optional sub-trigger within scene (e.g., "entrance", "terminal", "npc_vendor")
+static func build_dialogue(scene_id: String, character_id: String, trigger_key: String = "main") -> DialogueGroup:
+	_ensure_avatars()
+
+	var key := "%s_%s_%s" % [scene_id.to_lower(), character_id.to_lower(), trigger_key.to_lower()]
+
+	match key:
+		# S1 - City Outskirts (Intro scenes)
+		"s1_elias_main", "s1_elias_intro":
 			return _build_elias_intro()
-		"mira":
+		"s1_mira_main", "s1_mira_intro":
 			return _build_mira_intro()
-		"jonah":
+		"s1_jonah_main", "s1_jonah_intro":
 			return _build_jonah_intro()
+
+		# S1 - Scene transition (auto-selects based on character)
+		"s1_elias_transition", "s1_mira_transition", "s1_jonah_transition", "s1_transition":
+			return S1SceneTransitionDialogues.build_transition()
+
+		# S2 - Old Gate Checkpoint (uses separate files)
+		"s2_elias_main", "s2_elias_entrance":
+			return EliasS2Dialogues.build_main()
+		"s2_elias_terminal":
+			return EliasS2Dialogues.build_terminal()
+		"s2_mira_main", "s2_mira_entrance":
+			return MiraS2Dialogues.build_main()
+		"s2_mira_discovery":
+			return MiraS2Dialogues.build_discovery()
+
+		# S3 - Grey Bazaar Ruins (uses separate files)
+		"s3_mira_main", "s3_mira_entrance":
+			return MiraS3Dialogues.build_main()
+		"s3_mira_vendor":
+			return MiraS3Dialogues.build_vendor()
+		"s3_jonah_main", "s3_jonah_entrance":
+			return JonahS3Dialogues.build_main()
+		"s3_jonah_rumors":
+			return JonahS3Dialogues.build_rumors()
+
+		# S4 - Perimeter Relay Substation (uses separate files)
+		"s4_elias_main", "s4_elias_entrance":
+			return EliasS4Dialogues.build_main()
+		"s4_elias_memory_echo":
+			return EliasS4Dialogues.build_echo()
+		"s4_jonah_main", "s4_jonah_entrance":
+			return JonahS4Dialogues.build_main()
+		"s4_jonah_terminal":
+			return JonahS4Dialogues.build_terminal()
+		"s4_jonah_choice":
+			return JonahS4Choice.build_choice()
+
 		_:
-			return _build_elias_intro()  # Fallback
+			push_warning("StoryDialogueLibrary: Unknown dialogue key: " + key)
+			return null
 
 
-# ---------------- Elias intro ----------------
+## Legacy function for S1 intro compatibility
+static func build_intro_for(character_id: String) -> DialogueGroup:
+	return build_dialogue("s1", character_id, "intro")
+
+
+# =============================================================================
+# S1 - City Outskirts Intro Dialogues
+# =============================================================================
 
 static func _build_elias_intro() -> DialogueGroup:
 	var group := DialogueGroup.new()
 	var list: Array[Dialogue] = []
-
-	# Change these paths to your actual avatar textures
-	var avatar_elias := preload("res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_1/talking.png")
-	var avatar_echo  := preload("res://assets/space_background_pack/Assets/Blue Version/layered/prop-planet-big.png")
-
 	var d: Dialogue
 
 	d = Dialogue.new()
@@ -98,15 +183,9 @@ static func _build_elias_intro() -> DialogueGroup:
 	return group
 
 
-# ---------------- Mira intro ----------------
-
 static func _build_mira_intro() -> DialogueGroup:
 	var group := DialogueGroup.new()
 	var list: Array[Dialogue] = []
-
-	var avatar_mira := preload("res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_2/talk.png")
-	var avatar_radio := preload("res://assets/space_background_pack/RC Art - Orbital Cannon/Sprites/Type A Ion Cannon_5.png")
-
 	var d: Dialogue
 
 	d = Dialogue.new()
@@ -176,16 +255,9 @@ static func _build_mira_intro() -> DialogueGroup:
 	return group
 
 
-# ---------------- Jonah intro ----------------
-
 static func _build_jonah_intro() -> DialogueGroup:
 	var group := DialogueGroup.new()
 	var list: Array[Dialogue] = []
-
-	var avatar_jonah    := preload("res://assets/Survivalist Sprite Sheet Pixel Art Pack/Survivalist_3/Talking.png")
-	var avatar_echo     := preload("res://assets/space_background_pack/Assets/Blue Version/layered/prop-planet-big.png")
-	var avatar_recorder := preload("res://assets/PostApocalypse_AssetPack_v1.1.2/Objects/Washing-machine.png")
-
 	var d: Dialogue
 
 	d = Dialogue.new()

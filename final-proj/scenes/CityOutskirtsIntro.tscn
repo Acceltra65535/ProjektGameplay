@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ckoy6qcnqrqyy"]
+[gd_scene load_steps=28 format=3 uid="uid://ckoy6qcnqrqyy"]
 
 [ext_resource type="Script" uid="uid://doto5p6akygop" path="res://scripts/CityOutskirtsIntro.gd" id="1_3vqtv"]
 [ext_resource type="Texture2D" uid="uid://dtismfauaccsx" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/road.png" id="2_8kmui"]
@@ -24,9 +24,13 @@
 [ext_resource type="Texture2D" uid="uid://bkhooxoce0j8a" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/Menu/Scrollbar.png" id="22_trxk3"]
 [ext_resource type="Texture2D" uid="uid://b0130j3x0geri" path="res://assets/PostApocalypse_AssetPack_v1.1.2/UI/HP/energy.png" id="23_2vkgx"]
 [ext_resource type="Script" uid="uid://dklal7lbqk062" path="res://scripts/Player_info_Ui/bar_stamina_.gd" id="24_n0rkm"]
+[ext_resource type="Script" uid="uid://cui43suw15wrj" path="res://scripts/UIs/Dialogue/auto_dialogue_area.gd" id="25_f57h4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78awf"]
 size = Vector2(4593, 48.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0ukt"]
+size = Vector2(69, 347)
 
 [node name="GameRoot" type="Node2D"]
 script = ExtResource("1_3vqtv")
@@ -202,5 +206,17 @@ texture_progress = ExtResource("23_2vkgx")
 texture_progress_offset = Vector2(2.9, 3)
 tint_progress = Color(1, 0.915, 0.14999998, 1)
 script = ExtResource("24_n0rkm")
+
+[node name="scene_transition" type="Area2D" parent="."]
+script = ExtResource("25_f57h4")
+story_key = "s1_transition"
+use_dynamic_loading = true
+scene_id = "s1"
+trigger_key = "transition"
+one_shot = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene_transition"]
+position = Vector2(4544, 466)
+shape = SubResource("RectangleShape2D_r0ukt")
 
 [connection signal="pressed" from="UI/Save" to="UI" method="_on_save_pressed"]
