@@ -71,7 +71,7 @@ A sample dialogue script I wrote to push the story forward: [DialogueScript](fin
 
 ## Main role:Props Zijian Li
 
-#1 Item & Inventory System
+## Item & Inventory System
 
 The Item & Inventory System is a core component of gameplay experience, responsible for managing all resources and items players acquire, consume, and organize throughout the game. This system employs a modular architecture comprising four parts: Item, ItemStack, InventoryData, and ItemPickup. Together, they form a stable, scalable, and easily debugged item framework.
 
@@ -129,7 +129,7 @@ If inventory is full → Remains stationary
 
 This system provides instant feedback (sound effects + animations) and effectively supports the game's pacing.
 
-#2 Buff Factory System
+## Buff Factory System
 
 The Buff system grants players temporary stat boosts, such as increased movement speed, enhanced stamina regeneration, or boosted attack power. Designed as an independent functional module, it ensures decoupling from character and item systems.
 
@@ -175,9 +175,9 @@ No modification to Player or Inventory logic
 
 Future additions of new items require no changes to the underlying system, enabling high scalability.
 
-#3 Health & Stamina UI System
+## Health & Stamina UI System
 
-#4 System Integration and Design Motivation
+## System Integration and Design Motivation
 
 The Item System, Buff System, and UI form a complete feedback loop:
 
@@ -191,7 +191,9 @@ Player makes next action based on UI information
 
 This closed-loop design creates natural, strong, and intuitive feedback, enhancing the overall player experience.
 
-#5 Conclusion
+
+
+## Conclusion
 
 These three systems collectively form the game's core feedback layer, tightly integrated with the combat system, character system, and level system. Their advantages include:
 
