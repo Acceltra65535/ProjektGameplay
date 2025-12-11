@@ -23,8 +23,8 @@ stripped of hope. Along the journey, the player meets other survivors—each wit
 
 I was responsible for sourcing and purchasing all visual and audio assets used in this project. Finding appropriate post-apocalyptic themed assets that matched our artistic vision required extensive research across multiple asset marketplaces. Each asset pack was evaluated for visual consistency, animation quality, and licensing terms before integration into the project.
 
-![](./Documentation_Images/AssetOverview.png)
-*(Place a screenshot here showing various assets in use)*
+![](./Documentation_Images/AssetOverview1.png)
+![](./Documentation_Images/AssetOverview2.png)
 
 **Visual Assets Sources:**
 
@@ -42,6 +42,8 @@ I was responsible for sourcing and purchasing all visual and audio assets used i
 **Audio Assets & Processing:**
 
 All character voice audio files required extensive post-processing. The original assets came as single long audio tracks containing multiple sound effects recorded sequentially. Using **Audacity**, I performed the following workflow for each voice pack:
+
+![](./Documentation_Images/Audacity.png)
 
 1. **Noise reduction** to clean up background hiss
 2. **Silence detection** to identify individual sound boundaries
@@ -68,15 +70,8 @@ Impact sounds in [audio/Hits](final-proj/audio/Hits) include Metal Hit (6 variat
 I designed and implemented the complete character system featuring three distinct playable classes. Rather than simply providing cosmetic differences, each character has fundamentally different gameplay mechanics that affect combat strategy, exploration pace, and resource management.
 
 ![](./Documentation_Images/CharacterSelect.gif)
-*(Place a GIF here showing character selection and the three characters in action)*
 
-The character system architecture is built around the `CharacterClass` enum defined in [Player.gd](final-proj/scripts/Player.gd) (line 15):
-
-```gdscript
-enum CharacterClass { BALANCED, SPEED, TANK }
-```
-
-When the game starts, the `_apply_class_stats()` function (lines 217-276) reads `Global.selected_class` and configures all character parameters accordingly. This function is also called when loading a saved game to ensure stats match the saved character selection.
+The character system architecture is built around the `CharacterClass` enum defined in [Player.gd](final-proj/scripts/Player.gd): When the game starts, the `_apply_class_stats()` function reads `Global.selected_class` and configures all character parameters accordingly. This function is also called when loading a saved game to ensure stats match the saved character selection.
 
 **Character Stats Comparison:**
 
@@ -99,24 +94,30 @@ When the game starts, the `_apply_class_stats()` function (lines 217-276) reads 
 Each character uses a different `WeaponKind` enum value (line 30), which affects reload behavior. The rifle uses `_reload_one_round()` (lines 474-484) which adds a single bullet per reload animation, simulating bolt-action operation. Pistols use `_reload_full_mag()` (lines 486-498) which refills the entire magazine from reserve ammo in one reload cycle.
 
 The weapon's feel is further differentiated through distinct audio:
+
 - Elias's rifle has a powerful, echoing shot with a slow reload
+  ![](./Documentation_Images/rifle.gif)
 - Mira's 1911 has a sharp, quick shot with a magazine slap reload
+  ![](./Documentation_Images/1911.gif)
 - Jonah's revolver has a heavy thud with individual round loading sounds
+  ![](./Documentation_Images/revolver.gif)
 
 **Animation Binding:**
 
-Each character has a unique `SpriteFrames` resource assigned via the `frames_balanced`, `frames_speed`, and `frames_tank` export variables. These are swapped in `_apply_class_stats()` (lines 237-238, 254-255, 271-272), ensuring the correct sprite sheet is used for all animations. The animation names (idle, walk, run, jump, attack_1, attack_2, shot, recharge, hurt, dead) are consistent across all three sprite sheets, allowing the animation state machine to work identically regardless of character selection.
+  ![](./Documentation_Images/action.gif)
+  
+Each character has a unique `SpriteFrames` resource assigned via the `frames_balanced`, `frames_speed`, and `frames_tank` export variables. These are swapped in `_apply_class_stats()`, ensuring the correct sprite sheet is used for all animations. The animation names (idle, walk, run, jump, attack_1, attack_2, shot, recharge, hurt, dead) are consistent across all three sprite sheets, allowing the animation state machine to work identically regardless of character selection.
 
 **Voice Clip System:**
 
 The `_load_audio_for_class()` function dynamically populates audio arrays based on character selection. For each character, separate arrays are maintained for:
-- `jump_voice_clips`: Effort sounds when jumping (2-3 variations)
-- `attack_voice_clips`: Battle cries during melee attacks (2-3 variations)
-- `light_hurt_voice_clips`: Minor damage reactions (4-5 variations)
-- `heavy_hurt_voice_clips`: Major damage reactions (2-3 variations)
-- `death_voice_clips`: Death sounds (3-4 variations)
+- `jump_voice_clips`: Effort sounds when jumping (3 variations)
+- `attack_voice_clips`: Battle cries during melee attacks (3 variations)
+- `light_hurt_voice_clips`: Minor damage reactions (5 variations)
+- `heavy_hurt_voice_clips`: Major damage reactions (3 variations)
+- `death_voice_clips`: Death sounds (4 variations)
 
-To prevent repetitive audio, the player script tracks the last-used index for each category (lines 148-153) and ensures the same clip isn't played twice consecutively.
+To prevent repetitive audio, the player script tracks the last-used index for each category and ensures the same clip isn't played twice consecutively.
 
 ---
 
@@ -141,20 +142,12 @@ This system prevents bullets from hitting the shooter, provides satisfying audio
 I created the **Raider AK47** variant ([scripts/enemies/enemy_raider_AK47.gd](final-proj/scripts/enemies/enemy_raider_AK47.gd)) and performed a complete overhaul of the base **Raider** enemy ([scripts/enemies/enemy_raider.gd](final-proj/scripts/enemies/enemy_raider.gd)). The original raider implementation had several critical issues that made it unsuitable for actual gameplay.
 
 ![](./Documentation_Images/RaiderCombat.gif)
-*(Place a GIF here demonstrating raider patrol, chase, and combat behavior)*
 
 **Critical Bugs Fixed:**
 
 1. **Sprite Offset Drift**: The original raider sprite was not centered, causing the visual position to shift dramatically when changing facing direction. I implemented a `sprite_left_offset` system (line 16) that compensates for asymmetric sprites by applying an X-axis offset when `flip_h` is true. The `_update_directional_offsets()` function (lines 160-197) recalculates all node positions whenever the enemy changes direction.
 
-2. **Player-Enemy Collision Blocking**: Players would get stuck against enemies, unable to pass through them. I reconfigured the collision layers (lines 83-88):
-   ```gdscript
-   set_collision_layer_value(1, false)  # Remove from player layer
-   set_collision_layer_value(2, true)   # Enemy layer
-   set_collision_mask_value(1, false)   # Don't collide with player
-   set_collision_mask_value(2, false)   # Don't collide with other enemies
-   ```
-   This allows physical separation while still permitting Area2D-based damage detection.
+2. **Player-Enemy Collision Blocking**: Players would get stuck against enemies, unable to pass through them. I reconfigured the collision layers which allows physical separation while still permitting Area2D-based damage detection.
 
 3. **Dead Enemy Bullet Blocking**: When enemies died, their collision shapes remained active, blocking player projectiles. The death state now properly disables all collision.
 
@@ -320,7 +313,7 @@ This trigger type automatically starts dialogue when the player enters its colli
 
 This variant requires the player to press an interact key while inside the trigger zone. Additional features:
 
-- **Interact hint**: Displays customizable prompt text (default: "按 E 互动") when player is in range
+- **Interact hint**: Displays customizable prompt text (default: " Press E to interact") when player is in range
 - **Multi-input support**: Checks for configured action, falls back to "ui_accept", then raw E key
 - **Hint label management**: Automatically creates and positions a Label node if none is assigned
 
@@ -328,7 +321,7 @@ The interact check in `_check_interact_input()` (lines 75-94) handles edge cases
 
 **Scene Transition Dialogues:**
 
-For moving between game areas, I created [scene_transition_dialogues.gd](final-proj/scripts/story/s1_outskirts/scene_transition_dialogues.gd) which provides choice-based scene loading. When triggered, it displays character-specific dialogue ending with choices like "前往旧检查站" (Go to Old Checkpoint). Selecting these choices sets the `change_scene_path` on the DialogueChoice, which the DialogueManager uses to call `get_tree().change_scene_to_file()`.
+For moving between game areas, I created [scene_transition_dialogues.gd](final-proj/scripts/story/s1_outskirts/scene_transition_dialogues.gd) which provides choice-based scene loading. When triggered, it displays character-specific dialogue ending with choices like "Go to Old Checkpoint". Selecting these choices sets the `change_scene_path` on the DialogueChoice, which the DialogueManager uses to call `get_tree().change_scene_to_file()`.
 
 ---
 
