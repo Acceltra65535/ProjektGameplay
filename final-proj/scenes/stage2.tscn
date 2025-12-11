@@ -1,0 +1,282 @@
+[gd_scene load_steps=30 format=3 uid="uid://b86qa70uh8tqp"]
+
+[ext_resource type="Script" uid="uid://doto5p6akygop" path="res://scripts/CityOutskirtsIntro.gd" id="1_ecj4f"]
+[ext_resource type="Texture2D" uid="uid://cuaujhpos668t" path="res://assets/NeonNightCityTileset/tile_plataforma.png" id="2_bcuri"]
+[ext_resource type="Texture2D" uid="uid://cbymty2wt8bw2" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War1/Pale/sky.png" id="3_7h4bs"]
+[ext_resource type="Texture2D" uid="uid://d3nq2wpd0518y" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/sky.png" id="3_ly1ci"]
+[ext_resource type="Texture2D" uid="uid://bb6njekxyxf3o" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses4.png" id="4_fmxss"]
+[ext_resource type="Texture2D" uid="uid://c5310mga87ysc" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses2.png" id="5_bcuri"]
+[ext_resource type="Texture2D" uid="uid://dj8xj4ssjerxe" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/wall.png" id="6_7h4bs"]
+[ext_resource type="Texture2D" uid="uid://dvt2e0dl7q2e7" path="res://assets/NeonNightCityTileset/tile_coisas.png" id="6_se6ya"]
+[ext_resource type="Texture2D" uid="uid://c55vhg70i8j5v" path="res://assets/NeonNightCityTileset/tile_fundo.png" id="7_6dj6g"]
+[ext_resource type="Texture2D" uid="uid://c7h5chypv85f2" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses1.png" id="7_se6ya"]
+[ext_resource type="Texture2D" uid="uid://ds2d4i3s4pu8d" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Bright/houses3.png" id="8_6dj6g"]
+[ext_resource type="Texture2D" uid="uid://cmh1dqt3gbfbm" path="res://assets/NeonNightCityTileset/Sprites/Props/Props.png" id="8_g7s17"]
+[ext_resource type="Texture2D" uid="uid://nektt2sgimdp" path="res://assets/craftpix-771800-free-war-pixel-art-2d-game-backgrounds/PNG/War2/Pale/houses1.png" id="9_g7s17"]
+[ext_resource type="PackedScene" uid="uid://d1qodutatnp6n" path="res://scenes/enemies/enemy_raider.tscn" id="10_vvpmc"]
+[ext_resource type="PackedScene" uid="uid://bh4nm21d28edw" path="res://scenes/enemies/enemy_raider_AK47.tscn" id="11_28x7y"]
+[ext_resource type="PackedScene" uid="uid://b30mqinvev5b3" path="res://player.tscn" id="12_kh81o"]
+[ext_resource type="PackedScene" uid="uid://disbb1knb7m3q" path="res://scenes/crate.tscn" id="13_7f5q7"]
+[ext_resource type="Resource" uid="uid://du5nxt14mek2x" path="res://resources/loot_tables/crate_common.tres" id="14_m5uh8"]
+[ext_resource type="Script" uid="uid://318gphvcyns7" path="res://scripts/UIs/Save&Load/save_load_manager.gd" id="15_t4kcd"]
+[ext_resource type="PackedScene" uid="uid://85yiknyrxbim" path="res://scenes/Inventory.tscn" id="16_hpvyv"]
+[ext_resource type="PackedScene" uid="uid://4le6yslmtifu" path="res://scenes/chatbox.tscn" id="17_3mb7f"]
+[ext_resource type="PackedScene" uid="uid://daf0l6760wxfn" path="res://Weather2D/sky_setting.tscn" id="18_cxv8g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78awf"]
+size = Vector2(4593, 48.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvpmc"]
+atlas = ExtResource("2_bcuri")
+region = Rect2(0, 248, 544, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28x7y"]
+atlas = ExtResource("2_bcuri")
+region = Rect2(8, 296, 512, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh81o"]
+atlas = ExtResource("6_se6ya")
+region = Rect2(240, 136, 368, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f5q7"]
+atlas = ExtResource("7_6dj6g")
+region = Rect2(0, 8, 232, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5uh8"]
+atlas = ExtResource("7_6dj6g")
+region = Rect2(224, 128, 232, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4kcd"]
+atlas = ExtResource("8_g7s17")
+region = Rect2(0, 816, 584, 72)
+
+[node name="GameRoot" type="Node2D"]
+script = ExtResource("1_ecj4f")
+
+[node name="Test_Level" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 19.0
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(481, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(1811.5, 608.25)
+shape = SubResource("RectangleShape2D_78awf")
+
+[node name="TilePlataforma3" type="Sprite2D" parent="Ground"]
+position = Vector2(3754, 588)
+scale = Vector2(1.8630515, 2.9791663)
+texture = SubResource("AtlasTexture_vvpmc")
+
+[node name="TilePlataforma4" type="Sprite2D" parent="Ground"]
+position = Vector2(1838.4746, 590.50275)
+scale = Vector2(2.307079, 2.8542802)
+texture = SubResource("AtlasTexture_vvpmc")
+
+[node name="TilePlataforma" type="Sprite2D" parent="Ground"]
+position = Vector2(0.25, 586.5)
+scale = Vector2(1.8630515, 2.9791663)
+texture = SubResource("AtlasTexture_vvpmc")
+
+[node name="TilePlataforma5" type="Sprite2D" parent="Ground"]
+position = Vector2(2868, 588.00006)
+scale = Vector2(1.7715845, 2.6875012)
+texture = SubResource("AtlasTexture_28x7y")
+
+[node name="TilePlataforma2" type="Sprite2D" parent="Ground"]
+position = Vector2(879, 588)
+scale = Vector2(1.6061752, 2.35988)
+texture = SubResource("AtlasTexture_28x7y")
+
+[node name="ParallaxBackground" type="Parallax2D" parent="."]
+
+[node name="Layer_far" type="Parallax2D" parent="ParallaxBackground"]
+z_index = -4
+scroll_scale = Vector2(0.1, 0.1)
+
+[node name="Sky" type="Sprite2D" parent="ParallaxBackground/Layer_far"]
+position = Vector2(2365, 301)
+scale = Vector2(2.4718747, 0.81296295)
+texture = ExtResource("3_7h4bs")
+
+[node name="Tile_0" type="Sprite2D" parent="ParallaxBackground/Layer_far"]
+visible = false
+position = Vector2(2295, 405)
+scale = Vector2(2.386979, 1)
+texture = ExtResource("3_ly1ci")
+
+[node name="Layer_mid" type="Parallax2D" parent="ParallaxBackground"]
+z_index = -3
+scroll_scale = Vector2(0.3, 0.3)
+
+[node name="Tile_0" type="Sprite2D" parent="ParallaxBackground/Layer_mid"]
+position = Vector2(732, 390)
+scale = Vector2(0.76927084, 0.6638889)
+texture = ExtResource("4_fmxss")
+
+[node name="Tile_1" type="Sprite2D" parent="ParallaxBackground/Layer_mid"]
+position = Vector2(2302.9998, 377)
+scale = Vector2(0.8736978, 0.74861103)
+texture = ExtResource("4_fmxss")
+
+[node name="Tile_2" type="Sprite2D" parent="ParallaxBackground/Layer_mid"]
+position = Vector2(3929.25, 381.00003)
+scale = Vector2(0.820573, 0.6638889)
+texture = ExtResource("4_fmxss")
+
+[node name="Layer_near" type="Parallax2D" parent="ParallaxBackground"]
+z_index = -2
+scroll_scale = Vector2(0.7, 0.7)
+
+[node name="TileFundo14" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(4566, 484)
+texture = SubResource("AtlasTexture_kh81o")
+
+[node name="TileFundo10" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(3179, 504)
+texture = SubResource("AtlasTexture_kh81o")
+
+[node name="TileFundo" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(129, 509.5)
+scale = Vector2(0.7173913, 0.7302632)
+texture = SubResource("AtlasTexture_kh81o")
+
+[node name="TileFundo7" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(1893, 504)
+scale = Vector2(0.9033187, 1.6074616)
+texture = SubResource("AtlasTexture_7f5q7")
+
+[node name="TileFundo11" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(3738.0002, 491)
+scale = Vector2(0.9504308, 1.2678571)
+texture = SubResource("AtlasTexture_m5uh8")
+
+[node name="TileFundo12" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(3958.9998, 487)
+scale = Vector2(0.9033187, 1.6074616)
+texture = SubResource("AtlasTexture_7f5q7")
+
+[node name="TileFundo2" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(411.99997, 503.00003)
+scale = Vector2(0.9504308, 1.2678571)
+texture = SubResource("AtlasTexture_7f5q7")
+
+[node name="TileFundo6" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(1671, 506)
+texture = SubResource("AtlasTexture_m5uh8")
+
+[node name="TileFundo5" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(1441, 504)
+texture = SubResource("AtlasTexture_m5uh8")
+
+[node name="TileFundo3" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(665, 497)
+texture = SubResource("AtlasTexture_m5uh8")
+
+[node name="TileFundo13" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(4221, 468.99997)
+scale = Vector2(0.5373146, 3.830296)
+texture = SubResource("AtlasTexture_t4kcd")
+
+[node name="TileFundo8" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(2202.0002, 449.5)
+scale = Vector2(0.73301744, 5.1249995)
+texture = SubResource("AtlasTexture_t4kcd")
+
+[node name="TileFundo9" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(2770, 452)
+scale = Vector2(0.73301744, 5.2499995)
+texture = SubResource("AtlasTexture_t4kcd")
+
+[node name="TileFundo4" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+position = Vector2(1061, 443.00003)
+scale = Vector2(0.8561644, 5.013889)
+texture = SubResource("AtlasTexture_t4kcd")
+
+[node name="Tile_0" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+visible = false
+position = Vector2(336, 426)
+scale = Vector2(0.34999996, 0.3361111)
+texture = ExtResource("5_bcuri")
+
+[node name="Tile_1" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+visible = false
+position = Vector2(2108, 416)
+scale = Vector2(0.34999996, 0.3361111)
+texture = ExtResource("5_bcuri")
+
+[node name="Tile_2" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+visible = false
+position = Vector2(1005, 423)
+scale = Vector2(0.34999996, 0.3361111)
+texture = ExtResource("6_7h4bs")
+
+[node name="Tile_3" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+visible = false
+position = Vector2(1563, 412.99988)
+scale = Vector2(0.34999996, 0.3361111)
+texture = ExtResource("7_se6ya")
+
+[node name="Tile_4" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+visible = false
+position = Vector2(2763, 447.00003)
+scale = Vector2(0.34999996, 0.3361111)
+texture = ExtResource("8_6dj6g")
+
+[node name="Tile_5" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+visible = false
+position = Vector2(3501, 412)
+scale = Vector2(0.34999996, 0.3361111)
+texture = ExtResource("6_7h4bs")
+
+[node name="Tile_6" type="Sprite2D" parent="ParallaxBackground/Layer_near"]
+visible = false
+position = Vector2(4188, 308)
+scale = Vector2(0.521875, 0.55601853)
+texture = ExtResource("9_g7s17")
+
+[node name="EnemyRaider" parent="." instance=ExtResource("10_vvpmc")]
+position = Vector2(1727, 523)
+scale = Vector2(1.5, 1.5)
+behavior_type = 1
+attack_damage = 15
+bullet_damage = 10.0
+
+[node name="EnemyRaider_AK47" parent="." instance=ExtResource("11_28x7y")]
+position = Vector2(2876, 521)
+scale = Vector2(1.5, 1.5)
+
+[node name="Player" parent="." instance=ExtResource("12_kh81o")]
+collision_mask = 11
+
+[node name="Crate" parent="." instance=ExtResource("13_7f5q7")]
+position = Vector2(1272, 573.00006)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+collision_layer = 8
+loot_table = ExtResource("14_m5uh8")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("15_t4kcd")
+
+[node name="Inventory" parent="UI" instance=ExtResource("16_hpvyv")]
+
+[node name="DialogueManager" parent="UI" groups=["DialogueManager"] instance=ExtResource("17_3mb7f")]
+offset_left = 18.0
+offset_top = 9.0
+offset_right = 18.0
+offset_bottom = 9.0
+
+[node name="SkySetting" parent="UI" instance=ExtResource("18_cxv8g")]
+visible = false
+rainAmount = 0.20300000000000007
+rainDelta = 0.0
+
+[node name="Save" type="Button" parent="UI"]
+offset_left = 1183.0
+offset_top = 281.0
+offset_right = 1191.0
+offset_bottom = 289.0
+
+[connection signal="pressed" from="UI/Save" to="UI" method="_on_save_pressed"]

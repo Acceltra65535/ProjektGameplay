@@ -173,6 +173,11 @@ var is_frozen: bool = false
 signal health_changed(current, max)
 signal stamina_changed(current, max)
 
+# wapens upgrade
+var melee_level: int = 1
+var gun_level: int = 1
+
+
 func _ready() -> void:
 	randomize()
 	gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -622,9 +627,36 @@ func _apply_item_effect(item: Item) -> bool:
 		
 	return false # unknown item
 
+	
+func upgrade_melee_weapon() -> void:
+	var wood_item = Items.WOOD 
+	var cost = 5 * melee_level 
+
+	if InventoryData.get_item_count(wood_item) < cost:
+		print("Not enough wood to upgrade weapon!")
+		return
+	
+	InventoryData.remove_item(wood_item, cost)
+	melee_damage += 5
+	melee_level += 1
+	
+	print("Melee weapon upgraded! Level:", melee_level, " Damage:", melee_damage)
 
 
+func upgrade_ranged_weapon() -> void:
+	var metal_item = Items.METAL
+	var cost = 3 * gun_level + 2  
 
+	if InventoryData.get_item_count(metal_item) < cost:
+		print("Not enough scrap metal to upgrade gun!")
+		return
+
+	InventoryData.remove_item(metal_item, cost)
+
+	weapon_base_damage += 8
+	gun_level += 1
+	print("Gun upgraded! Level:", gun_level, " Damage:", weapon_base_damage)
+	
 
 func _on_anim_animation_finished() -> void:
 	var anim_name := anim.animation
@@ -1013,3 +1045,6 @@ func _play_footstep() -> void:
 			clips = footstep_grass_clips
 
 	_play_random_from(footstep_player, clips, "last_footstep_index")
+	
+
+	

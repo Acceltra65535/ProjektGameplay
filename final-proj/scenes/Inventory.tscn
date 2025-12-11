@@ -53,8 +53,10 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_7f7tj")
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
-offset_right = 84.0
-offset_bottom = 34.0
+offset_left = 233.0
+offset_top = -2.0
+offset_right = 317.0
+offset_bottom = 32.0
 theme_override_font_sizes/font_size = 30
 text = "Inventory"
 
