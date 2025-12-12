@@ -653,7 +653,7 @@ Find bug and fix it.
 
 ---
 
-## AI/Enermies Design (Yuanzhen Wu)
+## AI Design (Yuanzhen Wu)
 
 
 ### New Enemies
