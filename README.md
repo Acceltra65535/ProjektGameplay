@@ -18,6 +18,7 @@ stripped of hope. Along the journey, the player meets other survivors—each wit
 - Systems and Tools Engineer: Alex Yuan
 - Main character Props: Zijian Li
 - Map design: Fanxi Xu
+- AI design： Yuanzhen Wu
 
 ## Characters, Story & Scene Design (Siyun Chen)
 
