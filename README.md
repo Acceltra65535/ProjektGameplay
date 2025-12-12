@@ -653,6 +653,19 @@ Find bug and fix it.
 
 ---
 
+## AI/Enermies Design (Yuanzhen Wu)
+
+## New Enermies Raider
+![](./Documentation_Images/raider.png)
+
+Enemies named Raiders were designed; their logic involves close-range melee attacks at short distances and firing shots at long ranges. A 3-second aiming time was added to allow players to counter their actions.
+
+
+## BOSS Designed
+![](./Documentation_Images/BOSS.png)
+
+Added elite monsters (BOSS) with close-range area attacks, including a combo of Whirlwind Slash and Vertical Slash, and another featuring a thrusting attack. (Due to personal circumstances, I've asked team members to test and adjust the BOSS's specific in-game behavior.)
+
 ## Conclusion
 
 These three systems collectively form the game's core feedback layer, tightly integrated with the combat system, character system, and level system. Their advantages include:
