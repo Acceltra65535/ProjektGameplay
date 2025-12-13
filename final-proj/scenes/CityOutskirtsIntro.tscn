@@ -147,6 +147,7 @@ position = Vector2(2876, 521)
 scale = Vector2(1.5, 1.5)
 
 [node name="Player" parent="." instance=ExtResource("11_8kmui")]
+position = Vector2(600.166, 524.311)
 collision_mask = 11
 
 [node name="Crate" parent="." instance=ExtResource("12_rsuxw")]
@@ -159,9 +160,11 @@ loot_table = ExtResource("13_rsuxw")
 script = ExtResource("15_rsuxw")
 
 [node name="Inventory" parent="UI" instance=ExtResource("16_3fl6x")]
+visible = false
 theme = null
 
 [node name="DialogueManager" parent="UI" groups=["DialogueManager"] instance=ExtResource("14_8kmui")]
+visible = false
 offset_left = 18.0
 offset_top = 9.0
 offset_right = 18.0
@@ -218,5 +221,7 @@ one_shot = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene_transition"]
 position = Vector2(4544, 466)
 shape = SubResource("RectangleShape2D_r0ukt")
+
+[node name="Players" type="Node2D" parent="."]
 
 [connection signal="pressed" from="UI/Save" to="UI" method="_on_save_pressed"]

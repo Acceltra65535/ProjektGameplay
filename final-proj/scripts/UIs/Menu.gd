@@ -43,12 +43,24 @@ func _on_server_button_down() -> void:
 	
 	# Listening another player
 	multiplayer.peer_connected.connect(_on_peer_connected)
+	
+	# Obtain user unique id
+	add_player(multiplayer.get_unique_id())
+
+func add_player(id: int) -> void:
+	var player = PLAYER.instantiate()
+	player.name = str(id)
 
 func _on_peer_connected(id: int) -> void:
+	print("Connected to player", id)
+	
+	# client add player
+	add_player(id)
 	pass
 
 func _on_join_button_down() -> void:
-	pass # Replace with function body.
+	peer.create_client("127.0.0.1", 10000)
+	multiplayer.multiplayer_peer = peer
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

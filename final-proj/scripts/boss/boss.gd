@@ -19,7 +19,8 @@ var player: CharacterBody2D
 @export var detection_range: float = 600.0   # 追踪范围（像素） / Detection range (pixels)
 @export var movement_speed: float = 200.0    # 追踪时的移动速度 / Movement speed during pursuit
 @export var rush_speed: float = 1200.0       # 突进攻击的速度 / Speed for the rush attack
-
+@export var speed := 50
+@onready var navigation_agent_2d: NavigationAgent2D = $Navigation/NavigationAgent2D
 # 生命周期 / Lifecycle
 var current_hp: float = 1000.0 # Boss 的当前生命值 / Boss's current health
 
@@ -55,26 +56,32 @@ func _ready():
 	set_state(State.IDLE)
 	
 func _physics_process(delta):
-	# 核心：根据当前状态处理移动 / Core: Handle movement based on current state
+	# Core: Handle movement based on current state
 	match current_state:
 		State.IDLE, State.PURSUIT:
 			handle_movement_and_tracking(delta)
 			check_attack_cooldown(delta)
 		State.ATTACK_RUSH:
-			# 突进中保持高速移动 / Maintain high speed during rush
+			# Maintain high speed during rush
 			pass
-		_: # 所有攻击和非移动状态下停止 / Stop movement during all attack and non-movement states
+		_: # Stop movement during all attack and non-movement states
 			velocity = Vector2.ZERO
 	
+	var direction = to_local(navigation_agent_2d.get_next_path_position()).normalized()
+	velocity = direction * speed
 	move_and_slide()
 
-# --- 状态机切换函数 / State Machine Transition Function ---
+func _on_timer_tuneiyt() -> void:
+	navigation_agent_2d.target_position = player.position
+	pass
+	
+# State Machine Transition Function
 
 func set_state(new_state: State):
 	if current_state == new_state:
 		return
 		
-	# 退出当前状态的清理工作 / Cleanup logic when exiting current state
+	# Cleanup logic when exiting current state
 	match current_state:
 		State.ATTACK_1:
 			combo_area.monitoring = false 

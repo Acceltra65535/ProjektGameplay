@@ -400,3 +400,10 @@ position = Vector2(57, -1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackAreas/RushHitbox"]
 position = Vector2(-52.75, -17)
 shape = SubResource("RectangleShape2D_atjq5")
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+
+[node name="Timer" type="Timer" parent="Navigation"]
+wait_time = 0.1

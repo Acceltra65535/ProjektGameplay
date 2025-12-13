@@ -624,13 +624,25 @@ This closed-loop design creates natural, strong, and intuitive feedback, enhanci
 
 Developed using the Godot engine, the game features a local multiplayer co-op system. By refactoring the input processing logic and character instantiation mechanisms, we successfully embedded multiplayer interaction functionality into the existing single-player gameplay, supporting multiple controllers and split-screen/shared-screen co-op. In terms of technical details, we designed limited resource allocation and shared camera logic specifically for local multiplayer, significantly enhancing the game's replay value and social aspects.
 
-## Boss feature
+![](./Documentation_Images/network.png)
+
+Established a foundational Client-Server network architecture within Godot, marking the transition from a standalone to a multiplayer environment. The core of this implementation focuses on connection stability and identity management. Specifically, I have engineered a handshake mechanism where the server detects incoming connections and assigns a unique Peer ID to each client. This ensures that every session is distinct and correctly routed.
+
+Implemented a bidirectional resource sharing system. This data pipeline allows the server to synchronize essential game assets and states with connected clients, ensuring consistency across all instances.
+
+## Boss navigation basic feature
 
 The basic movement logic for the boss character has been designed and implemented. This includes tracking, pre-attack warning signals, and multi-stage state transitions.
+
+![](./Documentation_Images/bossnavi.png)
+
+Implemented autonomous navigation logic for the Boss entity, The project now supports a multiplayer environment where connected players can encounter a Boss capable of intelligent, map-aware movement.
 
 ## Sub role
 
 Find bug and fix it.
+
+The scene switching bug has been fixed, and the client-side synchronization logic has been modified.
 
 ---
 

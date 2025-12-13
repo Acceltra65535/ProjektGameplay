@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://du8tkka1fq52l"]
 
-[node name="Boss2" type="Node2D"]
+[node name="Boss2" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="Node2D"]
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+
+[node name="Timer" type="Timer" parent="Navigation"]
+wait_time = 0.1
